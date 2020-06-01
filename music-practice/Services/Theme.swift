@@ -1,5 +1,5 @@
 //
-//  Colors.swift
+//  Theme.swift
 //  music-practice
 //
 //  Created by Sam Garson on 31/05/2020.
@@ -14,4 +14,9 @@ struct Colors {
   static let success = Color("Success")
   static let warning = Color("Warning")
   static let error = Color("Error")
+}
+
+struct Spacing {
+  static let small: CGFloat = 18.0
+  static let medium: CGFloat = 25.0
 }

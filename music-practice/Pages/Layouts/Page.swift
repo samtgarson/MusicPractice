@@ -17,9 +17,11 @@ struct PageView<Content: View>: View {
   
   var body: some View {
     ZStack {
-      Colors.background.edgesIgnoringSafeArea(.top)
+      Colors.background.edgesIgnoringSafeArea(.all)
       VStack {
-        content.foregroundColor(Colors.primary)
+        content
+          .foregroundColor(Colors.primary)
+          .font(.custom("Inter-Light", size: 19))
       }
     }
   }

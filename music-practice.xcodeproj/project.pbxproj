@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220E65062484FAF500B74DE9 /* Instrument+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E65042484FAF500B74DE9 /* Instrument+CoreDataClass.swift */; };
+		220E650924854A6400B74DE9 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E650824854A6400B74DE9 /* Modal.swift */; };
+		220E650E248551C800B74DE9 /* Inter-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220E650A248551C700B74DE9 /* Inter-SemiBoldItalic.otf */; };
+		220E650F248551C800B74DE9 /* Inter-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220E650B248551C700B74DE9 /* Inter-Light.otf */; };
+		220E6510248551C800B74DE9 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220E650C248551C700B74DE9 /* Inter-SemiBold.otf */; };
+		220E6511248551C800B74DE9 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220E650D248551C700B74DE9 /* Inter-LightItalic.otf */; };
+		220E6514248561E900B74DE9 /* TheoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E6513248561E900B74DE9 /* TheoryScreen.swift */; };
+		220E65162485625000B74DE9 /* InstrumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E65152485625000B74DE9 /* InstrumentService.swift */; };
+		220E651B2485736500B74DE9 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E651A2485736500B74DE9 /* BaseService.swift */; };
 		222D80C62484034D0086A37A /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80C52484034D0086A37A /* HomeScreen.swift */; };
-		222D80C8248403740086A37A /* TheoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80C7248403740086A37A /* TheoryScreen.swift */; };
+		222D80C8248403740086A37A /* NewInstrumentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80C7248403740086A37A /* NewInstrumentScreen.swift */; };
 		222D80CA248403E90086A37A /* SongsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80C9248403E80086A37A /* SongsScreen.swift */; };
-		222D80CF2484162F0086A37A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80CE2484162F0086A37A /* Colors.swift */; };
-		222D80D1248416F20086A37A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222D80D0248416F20086A37A /* Colors.xcassets */; };
+		222D80CF2484162F0086A37A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80CE2484162F0086A37A /* Theme.swift */; };
 		222D80D3248418660086A37A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80D2248418660086A37A /* Page.swift */; };
 		222D80D624842B190086A37A /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80D524842B190086A37A /* Main.swift */; };
 		2252299F2483FA5E006F53F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252299E2483FA5E006F53F5 /* AppDelegate.swift */; };
@@ -37,11 +45,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		220E65042484FAF500B74DE9 /* Instrument+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Instrument+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220E650824854A6400B74DE9 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
+		220E650A248551C700B74DE9 /* Inter-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		220E650B248551C700B74DE9 /* Inter-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf"; sourceTree = "<group>"; };
+		220E650C248551C700B74DE9 /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf"; sourceTree = "<group>"; };
+		220E650D248551C700B74DE9 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
+		220E6513248561E900B74DE9 /* TheoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TheoryScreen.swift; path = Layouts/TheoryScreen.swift; sourceTree = "<group>"; };
+		220E65152485625000B74DE9 /* InstrumentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentService.swift; sourceTree = "<group>"; };
+		220E651A2485736500B74DE9 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		222D80C52484034D0086A37A /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
-		222D80C7248403740086A37A /* TheoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryScreen.swift; sourceTree = "<group>"; };
+		222D80C7248403740086A37A /* NewInstrumentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInstrumentScreen.swift; sourceTree = "<group>"; };
 		222D80C9248403E80086A37A /* SongsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsScreen.swift; sourceTree = "<group>"; };
-		222D80CE2484162F0086A37A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		222D80D0248416F20086A37A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		222D80CE2484162F0086A37A /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		222D80D2248418660086A37A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		222D80D524842B190086A37A /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		2252299B2483FA5E006F53F5 /* music-practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "music-practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,13 +100,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220E64FE2484FAB900B74DE9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				220E65042484FAF500B74DE9 /* Instrument+CoreDataClass.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		220E650724854A5900B74DE9 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				220E650824854A6400B74DE9 /* Modal.swift */,
+				222D80D2248418660086A37A /* Page.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		220E6512248551CE00B74DE9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				220E650B248551C700B74DE9 /* Inter-Light.otf */,
+				220E650D248551C700B74DE9 /* Inter-LightItalic.otf */,
+				220E650C248551C700B74DE9 /* Inter-SemiBold.otf */,
+				220E650A248551C700B74DE9 /* Inter-SemiBoldItalic.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		222D80C4248403330086A37A /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				222D80C7248403740086A37A /* TheoryScreen.swift */,
+				220E650724854A5900B74DE9 /* Layouts */,
+				222D80C7248403740086A37A /* NewInstrumentScreen.swift */,
+				220E6513248561E900B74DE9 /* TheoryScreen.swift */,
 				222D80C9248403E80086A37A /* SongsScreen.swift */,
 				222D80C52484034D0086A37A /* HomeScreen.swift */,
-				222D80D2248418660086A37A /* Page.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -98,7 +143,9 @@
 		222D80CB248416040086A37A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				222D80CE2484162F0086A37A /* Colors.swift */,
+				222D80CE2484162F0086A37A /* Theme.swift */,
+				220E651A2485736500B74DE9 /* BaseService.swift */,
+				220E65152485625000B74DE9 /* InstrumentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -134,6 +181,7 @@
 		2252299D2483FA5E006F53F5 /* music-practice */ = {
 			isa = PBXGroup;
 			children = (
+				220E64FE2484FAB900B74DE9 /* Models */,
 				222D80D424842AF30086A37A /* Components */,
 				222D80CB248416040086A37A /* Services */,
 				222D80C4248403330086A37A /* Pages */,
@@ -141,7 +189,7 @@
 				225229A02483FA5E006F53F5 /* SceneDelegate.swift */,
 				225229A52483FA5E006F53F5 /* ContentView.swift */,
 				225229A72483FA60006F53F5 /* Assets.xcassets */,
-				222D80D0248416F20086A37A /* Colors.xcassets */,
+				220E6512248551CE00B74DE9 /* Fonts */,
 				225229AC2483FA60006F53F5 /* LaunchScreen.storyboard */,
 				225229AF2483FA60006F53F5 /* Info.plist */,
 				225229A22483FA5E006F53F5 /* music_practice.xcdatamodeld */,
@@ -272,9 +320,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				225229AE2483FA60006F53F5 /* LaunchScreen.storyboard in Resources */,
-				222D80D1248416F20086A37A /* Colors.xcassets in Resources */,
+				220E6511248551C800B74DE9 /* Inter-LightItalic.otf in Resources */,
+				220E6510248551C800B74DE9 /* Inter-SemiBold.otf in Resources */,
+				220E650F248551C800B74DE9 /* Inter-Light.otf in Resources */,
 				225229AB2483FA60006F53F5 /* Preview Assets.xcassets in Resources */,
 				225229A82483FA60006F53F5 /* Assets.xcassets in Resources */,
+				220E650E248551C800B74DE9 /* Inter-SemiBoldItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,16 +407,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				222D80C8248403740086A37A /* TheoryScreen.swift in Sources */,
+				222D80C8248403740086A37A /* NewInstrumentScreen.swift in Sources */,
+				220E65162485625000B74DE9 /* InstrumentService.swift in Sources */,
 				225229A42483FA5E006F53F5 /* music_practice.xcdatamodeld in Sources */,
+				220E650924854A6400B74DE9 /* Modal.swift in Sources */,
 				222D80D3248418660086A37A /* Page.swift in Sources */,
 				222D80CA248403E90086A37A /* SongsScreen.swift in Sources */,
 				222D80C62484034D0086A37A /* HomeScreen.swift in Sources */,
 				2252299F2483FA5E006F53F5 /* AppDelegate.swift in Sources */,
 				225229A62483FA5E006F53F5 /* ContentView.swift in Sources */,
 				225229A12483FA5E006F53F5 /* SceneDelegate.swift in Sources */,
-				222D80CF2484162F0086A37A /* Colors.swift in Sources */,
+				220E6514248561E900B74DE9 /* TheoryScreen.swift in Sources */,
+				222D80CF2484162F0086A37A /* Theme.swift in Sources */,
+				220E651B2485736500B74DE9 /* BaseService.swift in Sources */,
 				222D80D624842B190086A37A /* Main.swift in Sources */,
+				220E65062484FAF500B74DE9 /* Instrument+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
