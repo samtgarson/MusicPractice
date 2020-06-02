@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "sad.png",
+      "filename" : "BlueGood.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sad@2x.png",
+      "filename" : "BlueGood@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "sad@3x.png",
+      "filename" : "BlueGood@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

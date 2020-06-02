@@ -1,5 +1,5 @@
 //
-//  Theme.swift
+//  Constants.swift
 //  music-practice
 //
 //  Created by Sam Garson on 31/05/2020.
@@ -19,4 +19,12 @@ struct Colors {
 struct Spacing {
   static let small: CGFloat = 18.0
   static let medium: CGFloat = 25.0
+}
+
+let CornerRadius: CGFloat = 5.0
+
+enum Performance {
+  case Good
+  case Bad
+  case Meh
 }

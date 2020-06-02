@@ -22,7 +22,7 @@ struct PageView<Content: View>: View {
         content
           .foregroundColor(Colors.primary)
           .font(.custom("Inter-Light", size: 19))
-      }
+      }.padding(.horizontal, Spacing.small)
     }
   }
 }
@@ -31,8 +31,8 @@ struct PageView<Content: View>: View {
 struct PageView_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
-      Text("Hello..")
-      Text("World!")
+      Text("Hello World")
+      Colors.primary
     }
   }
 }

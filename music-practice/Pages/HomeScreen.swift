@@ -11,7 +11,9 @@ import SwiftUI
 struct HomeScreen: View {
   var body: some View {
     PageView {
-      Text("Home Screen")
+      Header(title: "Welcome!", description: "What shall we practice today?", performance: .Good) {
+        Spacer()
+      }
     }
   }
 }

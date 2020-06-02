@@ -23,26 +23,15 @@ struct ModalView<Content: View>: View {
   
   var body: some View {
     PageView {
-      VStack(spacing: 0) {
-        upperHalf
+      VStack {
+        HeaderContent(title: title, description: description)
+          .padding(Spacing.medium)
+          .background(Color.white)
         lowerHalf
       }
-      .cornerRadius(5)
-      .padding(Spacing.small)
+      .cornerRadius(CornerRadius)
       .frame(maxWidth: 500)
     }
-  }
-  
-  private var upperHalf: some View {
-    VStack(alignment: .leading, spacing: Spacing.small) {
-      Image("blue-happy")
-      Text(title).opacity(0.5)
-      Text(description)
-    }
-    .fixedSize(horizontal: false, vertical: true)
-    .frame(maxWidth: .infinity, alignment: .leading)
-    .padding(Spacing.medium)
-    .background(Color.white)
   }
   
   private var lowerHalf: some View {
