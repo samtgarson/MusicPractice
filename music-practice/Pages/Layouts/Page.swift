@@ -21,8 +21,8 @@ struct PageView<Content: View>: View {
       VStack {
         content
           .foregroundColor(Colors.primary)
-          .font(.custom("Inter-Light", size: 19))
-      }.padding(.horizontal, Spacing.small)
+          .font(Fonts.body)
+      }.padding(.horizontal, Spacing.medium)
     }
   }
 }

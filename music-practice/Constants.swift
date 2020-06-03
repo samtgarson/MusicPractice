@@ -17,8 +17,9 @@ struct Colors {
 }
 
 struct Spacing {
-  static let small: CGFloat = 18.0
-  static let medium: CGFloat = 25.0
+  static let tiny: CGFloat = 6.0
+  static let small: CGFloat = 14.0
+  static let medium: CGFloat = 32.0
 }
 
 let CornerRadius: CGFloat = 5.0
@@ -27,4 +28,14 @@ enum Performance {
   case Good
   case Bad
   case Meh
+}
+
+struct FontSizes {
+  static let body: CGFloat = 19.0
+  static let small: CGFloat = 12.0
+}
+
+struct Fonts {
+  static let body = Font.custom("Inter-Light", size: FontSizes.body)
+  static let small = Font.custom("Inter-Light", size: FontSizes.small)
 }

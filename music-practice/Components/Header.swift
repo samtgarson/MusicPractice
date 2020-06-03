@@ -23,15 +23,25 @@ struct Header<Content: View>: View {
   @Environment(\.statusBar) var statusBar
   
   var body: some View {
-    VStack(spacing: 0) {
+    VStack(spacing: Spacing.small) {
       ZStack {
         bgColor.edgesIgnoringSafeArea(.top)
         HeaderContent(title: title, description: description, performance: performance)
           .padding(Spacing.medium)
-      }.padding(.horizontal, Spacing.small * -1)
+      }.padding(EdgeInsets(
+        top: 0,
+        leading: Spacing.medium * -1,
+        bottom: Spacing.small,
+        trailing: Spacing.medium * -1
+      ))
       content
-        .frame(maxHeight: .infinity, alignment: .top)
+        .frame(
+          maxWidth: .infinity,
+          maxHeight: .infinity,
+          alignment: .topLeading
+        )
         .layoutPriority(1)
+      Spacer().layoutPriority(2)
     }
     .onAppear { self.statusBar.update(.lightContent) }
     .onDisappear { self.statusBar.update(.default) }
@@ -81,7 +91,10 @@ struct HeaderContent: View {
 struct Header_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
-      Header(description: "Description", performance: .Good) { Text("Body") }
+      Header(description: "Description", performance: .Good) {
+        Text("Body")
+        Text("Text")
+      }
     }
   }
 }
