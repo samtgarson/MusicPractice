@@ -6,6 +6,7 @@
 //  Copyright © 2020 Sam Garson. All rights reserved.
 //
 
+#if DEBUG
 import CoreData
 import UIKit
 import SwiftUI
@@ -39,4 +40,4 @@ class SeedService {
     return self
   }
 }
-
+#endif

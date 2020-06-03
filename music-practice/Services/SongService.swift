@@ -9,7 +9,7 @@
 import CoreData
 import SwiftUI
 
-public class SongService: BaseService<Song> {
+public class SongService: BaseService {
   static let defaultSort = [NSSortDescriptor(key: "createdAt", ascending: true)]
   static let entityName = "Song"
   

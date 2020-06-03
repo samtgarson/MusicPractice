@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct ModalView<Content: View>: View {
-  var title: String
+  var title: String?
   var description: String
   var bgColor: Color
   let content: Content
   
-  init(title: String, description: String, bgColor: Color = Colors.success, @ViewBuilder content: () -> Content) {
+  init(title: String? = nil, description: String, bgColor: Color = Colors.success, @ViewBuilder content: () -> Content) {
     self.title = title
     self.bgColor = bgColor
     self.description = description
@@ -23,7 +23,7 @@ struct ModalView<Content: View>: View {
   
   var body: some View {
     PageView {
-      VStack {
+      VStack(spacing: 0) {
         HeaderContent(title: title, description: description)
           .padding(Spacing.medium)
           .background(Color.white)
@@ -47,7 +47,7 @@ struct ModalView<Content: View>: View {
 
 struct ModalView_Previews: PreviewProvider {
   static var previews: some View {
-    ModalView(title: "Welcome!", description: "Add your first instrument to get started.") {
+    ModalView(description: "Add your first instrument to get started.") {
       Text("Hello world")
       Text("This is a very, very, very, very long piece of text.")
     }

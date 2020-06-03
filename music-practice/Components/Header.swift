@@ -68,7 +68,7 @@ struct HeaderContent: View {
   
   var body: some View {
     VStack(alignment: .leading, spacing: Spacing.small) {
-      Image(self.icon)
+      Image(self.icon).padding(.bottom, Spacing.small)
       self.title.map { Text($0).opacity(0.5) }
       Text(self.description).fixedSize(horizontal: false, vertical: true)
     }
