@@ -21,12 +21,21 @@ struct MusicPracticeForm<Fields: View>: View {
   
   var body: some View {
     VStack(spacing: Spacing.medium) {
-      content.environmentObject(state)
+      content
+        .environmentObject(state)
+        .onPreferenceChange(FormValidationKey.self) { self.state.valid = $0 }
       MusicPracticeButton(buttonLabel, onTap: self.onTap)
     }
   }
   
   func onTap () {
+    guard state.valid else {
+      withAnimation {
+        state.submitted = true
+      }
+      return
+    }
+    
     if let handler = onSubmit { handler(state.model) }
   }
 }
