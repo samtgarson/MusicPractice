@@ -21,11 +21,8 @@ struct HomeScreen: View {
 
 struct HomeScreen_Previews: PreviewProvider {
   static var previews: some View {
-    SeedService()
-      .seedSongs()
-      .clearAll(Song.self)
-      .render {
-        HomeScreen()
-      }
+    Seeder {
+      HomeScreen()
+    }
   }
 }

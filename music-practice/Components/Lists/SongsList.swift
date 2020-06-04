@@ -20,12 +20,13 @@ struct SongsList: View {
     self.showAddSong = showAddSong
     self.limit = limit
     self.fetchRequest = SongService.all(limit: limit)
+    
   }
   
+  @State(initialValue: false) var showScreen
+  private var fetchRequest: FetchRequest<Song>
   var showAddSong: ShowAddSongState = .WhenEmpty
   var limit: Int?
-  
-  private var fetchRequest: FetchRequest<Song>
   var songs: FetchedResults<Song> {
     fetchRequest.wrappedValue
   }
@@ -49,19 +50,25 @@ struct SongsList: View {
     }
   }
   
-  private var actionRow: MusicPracticeRow<Image>? {
-    MusicPracticeRow("Add a new song") {
+  private var actionRow: some View {
+    MusicPracticeRow("Add a new song", onTap: { self.showScreen.toggle() }) {
       Image(uiImage: Feather.getIcon(.plus)!)
+    }.sheet(isPresented: $showScreen) {
+      NewSongScreen(show: self.$showScreen)
     }
   }
 }
 
 struct SongsList_Previews: PreviewProvider {
   static var previews: some View {
-    SeedService()
-      .seedSongs()
-      .render {
-        PageView { SongsList(limit: 3) }
+    PreviewWrapper()
+  }
+  
+  struct PreviewWrapper: View {
+    var body: some View {
+      Seeder {
+        PageView { SongsList(showAddSong: .Always, limit: 3) }
       }
+    }
   }
 }

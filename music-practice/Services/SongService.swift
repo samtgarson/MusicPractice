@@ -16,7 +16,7 @@ public class SongService: BaseService {
   static func all(limit: Int?) -> FetchRequest<Song> {
     let request: NSFetchRequest<Song> = Song.fetchRequest()
     request.sortDescriptors = defaultSort
-    request.fetchLimit = limit ?? 0
+    if let limit = limit { request.fetchLimit = limit }
     return FetchRequest(fetchRequest: request)
   }
 

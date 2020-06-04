@@ -10,18 +10,19 @@ import SwiftUI
 import NoveFeatherIcons
 
 struct MusicPracticeButton: View {
-  internal init(_ label: String, onTap: (() -> Void)?) {
+  internal init(_ label: String, icon: Feather.IconName? = nil, onTap: (() -> Void)?) {
     self.label = label
+    self.iconName = icon
     self.onTap = onTap
   }
   
   var label: String
   var onTap: (() -> Void)?
-  
+  var iconName: Feather.IconName?
   var body: some View {
     HStack {
       Text(label)
-      Image(uiImage: Feather.getIcon(.chevronRight)!)
+      icon
     }
     .foregroundColor(.white)
     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -29,14 +30,20 @@ struct MusicPracticeButton: View {
       if let handler = self.onTap { handler() }
     }
   }
+  
+  var icon: Image? {
+    guard let iconName = iconName else { return nil }
+    return Image(uiImage: Feather.getIcon(iconName)!)
+  }
 }
 
 struct MusicPracticeButton_Previews: PreviewProvider {
   static var previews: some View {
     func handler () { print("tapped!") }
-    print("loaded")
+
     return ModalView(description: "Testing a button") {
-      MusicPracticeButton("Press me", onTap: handler)
+      MusicPracticeButton("Take a picture", icon: .aperture, onTap: handler)
+      MusicPracticeButton("Press me") { handler() }
     }
   }
 }

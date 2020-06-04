@@ -7,14 +7,18 @@
 //
 
 import SwiftUI
+import NoveFeatherIcons
 
 struct MusicPracticeForm<Fields: View>: View {
   var buttonLabel: String = "Let's go"
+  var buttonIcon: Feather.IconName?
   var onSubmit: ((FormModel) -> Void)?
   var content: Fields
   @ObservedObject var state = FormService()
   
-  internal init(onSubmit: ((FormModel) -> Void)? = nil, @ViewBuilder content: () -> Fields) {
+  internal init(buttonLabel: String = "Let's go", buttonIcon: Feather.IconName? = nil, onSubmit: ((FormModel) -> Void)? = nil, @ViewBuilder content: () -> Fields) {
+    self.buttonLabel = buttonLabel
+    self.buttonIcon = buttonIcon ?? .chevronRight
     self.content = content()
     self.onSubmit = onSubmit
   }
@@ -24,7 +28,7 @@ struct MusicPracticeForm<Fields: View>: View {
       content
         .environmentObject(state)
         .onPreferenceChange(FormValidationKey.self) { self.state.valid = $0 }
-      MusicPracticeButton(buttonLabel, onTap: self.onTap)
+      MusicPracticeButton(buttonLabel, icon: buttonIcon, onTap: self.onTap)
     }
   }
   
@@ -45,7 +49,7 @@ struct MusicPracticeForm_Previews: PreviewProvider {
     func onSubmit (model: FormModel) { dump(model) }
     
     return ModalView(description: "Test this form") {
-      MusicPracticeForm(onSubmit: onSubmit) {
+      MusicPracticeForm(buttonIcon: .check, onSubmit: onSubmit) {
         MusicPracticeTextField(id: "test", placeholder: "This is a text field", required: true)
       }
     }

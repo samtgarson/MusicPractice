@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct MusicPracticeRow<Icon : View>: View {
-  let label: String
-  let icon: Icon
+  var label: String
+  var icon: Icon
+  var tapHandler: (() -> Void)?
   
-  init(_ label: String, @ViewBuilder content: () -> Icon) {
+  init(_ label: String, onTap: (() -> Void)? = nil, @ViewBuilder content: () -> Icon) {
     self.label = label
     self.icon = content()
+    self.tapHandler = onTap
   }
   
   var body: some View {
@@ -26,15 +28,17 @@ struct MusicPracticeRow<Icon : View>: View {
     .padding(Spacing.small)
     .background(Color.white)
     .cornerRadius(CornerRadius)
+    .onTapGesture {
+      if let handler = self.tapHandler { handler() }
+    }
   }
 }
 
 struct MusicPracticeRow_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
-      MusicPracticeRow("This is a row") {
+      MusicPracticeRow("This is a row", onTap: { print("tapped") }) {
         Circle().fill(Color.red).frame(width: 10, height: 10)
-        
       }
     }
   }
