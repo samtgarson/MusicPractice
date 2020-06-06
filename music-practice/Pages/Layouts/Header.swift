@@ -23,25 +23,23 @@ struct Header<Content: View>: View {
   @Environment(\.statusBar) var statusBar
   
   var body: some View {
-    VStack(spacing: Spacing.small) {
+    VStack(spacing: 0) {
       ZStack {
         bgColor.edgesIgnoringSafeArea(.top)
         HeaderContent(title: title, description: description, performance: performance)
           .padding(Spacing.medium)
-      }.padding(EdgeInsets(
-        top: 0,
-        leading: Spacing.medium * -1,
-        bottom: Spacing.small,
-        trailing: Spacing.medium * -1
-      ))
-      content
-        .frame(
-          maxWidth: .infinity,
-          maxHeight: .infinity,
-          alignment: .topLeading
+      }
+      
+      ScrollView(.vertical) {
+        Spacer().frame(height: Spacing.medium)
+        content
+          .padding(.horizontal, Spacing.medium)
+          .frame(
+            maxWidth: .infinity,
+            alignment: .topLeading
         )
-        .layoutPriority(1)
-      Spacer().layoutPriority(2)
+      }
+      .layoutPriority(1)
     }
     .onAppear { self.statusBar.update(.lightContent) }
     .onDisappear { self.statusBar.update(.default) }
@@ -61,40 +59,13 @@ struct Header<Content: View>: View {
   }
 }
 
-struct HeaderContent: View {
-  var title: String?
-  var description: String
-  var performance: Performance?
-  
-  var body: some View {
-    VStack(alignment: .leading, spacing: Spacing.small) {
-      Image(self.icon).padding(.bottom, Spacing.small)
-      self.title.map { Text($0).opacity(0.5) }
-      Text(self.description).fixedSize(horizontal: false, vertical: true)
-    }
-    .frame(maxWidth: .infinity, alignment: .leading)
-    .foregroundColor(self.fgColor)
-  }
-  
-  var icon: String {
-    let color = performance != nil ? "White" : "Blue"
-    return "\(color)\(performance ?? Performance.Good)"
-  }
-  
-  var fgColor: Color {
-    if performance != nil { return Color.white }
-    
-    return Colors.primary
-  }
-}
-
 struct Header_Previews: PreviewProvider {
   static var previews: some View {
-    PageView {
-      Header(description: "Description", performance: .Good) {
-        Text("Body")
-        Text("Text")
-      }
+    Header(description: "Description", performance: .Good) {
+      Text("Body")
+      Text("Text")
+      Rectangle().stroke(Colors.error).frame(height: 1200)
     }
+    .withDefaultStyles()
   }
 }

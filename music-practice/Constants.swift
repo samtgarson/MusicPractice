@@ -30,12 +30,23 @@ enum Performance {
   case Meh
 }
 
+struct Opacity {
+  static let Faded: Double = 0.75
+  static let VeryFaded: Double = 0.65
+}
+
 struct FontSizes {
-  static let body: CGFloat = 19.0
-  static let small: CGFloat = 12.0
+  static let body: CGFloat = 22.0
+  static let small: CGFloat = body * 0.6
+  static let large: CGFloat = body * 1.5
 }
 
 struct Fonts {
   static let body = Font.custom("Inter-Light", size: FontSizes.body)
   static let small = Font.custom("Inter-Light", size: FontSizes.small)
+  static let large = Font.custom("Inter-Light", size: FontSizes.large)
+  
+  static func sized(_ size: CGFloat) -> Font {
+    Font.custom("Inter-Light", size: size)
+  }
 }

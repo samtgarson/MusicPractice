@@ -16,23 +16,21 @@ struct PageView<Content: View>: View {
   }
   
   var body: some View {
-    ZStack {
-      Colors.background.edgesIgnoringSafeArea(.all)
+    ScrollView {
       VStack {
-        content
-          .foregroundColor(Colors.primary)
-          .font(Fonts.body)
-      }.padding(.horizontal, Spacing.medium)
+        self.content
+          .frame(maxWidth: .infinity, alignment: .leading)
+      }
+      .padding(.horizontal, Spacing.medium)
     }
   }
 }
 
-
 struct PageView_Previews: PreviewProvider {
   static var previews: some View {
-    PageView {
+    PageView() {
       Text("Hello World")
-      Colors.primary
+      RoundedRectangle(cornerRadius: CornerRadius).stroke(Colors.primary).frame(height: 1200)
     }
   }
 }

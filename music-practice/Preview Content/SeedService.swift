@@ -27,9 +27,11 @@ extension NSManagedObjectContext {
 
 struct Seeder<Content : View>: View {
   var context: NSManagedObjectContext
+  var controls: Bool = true
   var content: Content
   
-  init(_ fn: () -> Content) {
+  init(controls: Bool? = nil, _ fn: () -> Content) {
+    self.controls = controls ?? true
     content = fn()
     context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   }
@@ -37,9 +39,11 @@ struct Seeder<Content : View>: View {
   var body: some View {
     VStack {
       content
-      HStack {
-        Button(action: { self.seedAllEntities() }) { Text("Seed data") }
-        Button(action: { self.clearAllEntities() }) { Text("Clear data") }
+      if controls {
+        HStack {
+          Button(action: { self.seedAllEntities() }) { Text("Seed data") }
+          Button(action: { self.clearAllEntities() }) { Text("Clear data") }
+        }        
       }
     }
     .environment(\.managedObjectContext, context)

@@ -15,17 +15,22 @@ struct NewSongScreen: View {
   
   var body: some View {
     ModalView(title: "Add a new song", description: "What song would you like to practice next?") {
-      MusicPracticeForm(buttonLabel: "Save", buttonIcon: .check, onSubmit: { self.createInstrument($0) }) {
+      MusicPracticeForm(buttonLabel: "Save", buttonIcon: .check, onSubmit: createInstrument) {
         MusicPracticeTextField(id: titleFieldName, placeholder: "Song name", required: true)
       }
+      MusicPracticeButton("Never mind", icon: .x, onTap: back).opacity(Opacity.VeryFaded)
     }
   }
   
   func createInstrument(_ model: FormModel) {
     if let title = model[titleFieldName] {
       SongService().create(title: title)
-      self.show = false
+      back()
     }
+  }
+  
+  func back() {
+    self.show = false
   }
 }
 
@@ -42,7 +47,9 @@ struct NewSongScreen_Previews: PreviewProvider {
         PageView {
           SongsList(showAddSong: .Never)
           Button(action: { self.showScreen.toggle() }) { Text("Show screen") }
-        }.sheet(isPresented: $showScreen) {
+        }
+        .withDefaultStyles()
+        .sheet(isPresented: $showScreen) {
           NewSongScreen(show: self.$showScreen)
         }
       }

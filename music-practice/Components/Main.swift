@@ -28,6 +28,7 @@ struct Main: View {
         tabItem(NavRoute.Songs, .music)
         tabItem(NavRoute.Settings, .settings)
       }
+      .background(Color.white.edgesIgnoringSafeArea(.bottom))
     }
   }
   
@@ -61,6 +62,8 @@ struct Main: View {
 
 struct Main_Previews: PreviewProvider {
   static var previews: some View {
-    Main()
+    Seeder(controls: false) {
+      Main().withDefaultStyles()
+    }
   }
 }

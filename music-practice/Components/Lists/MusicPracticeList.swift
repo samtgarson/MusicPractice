@@ -17,7 +17,7 @@ struct MusicPracticeList<T: RandomAccessCollection, R: View, A: View>: View wher
   var body: some View {
     VStack(spacing: Spacing.tiny) {
       ForEach(collection, id: \.self) { item in self.render(item) }
-      if displayAction { actionRow.opacity(0.6) }
+      if displayAction { actionRow.opacity(Opacity.VeryFaded) }
     }.padding(.horizontal, Spacing.small * -1)
   }
 }

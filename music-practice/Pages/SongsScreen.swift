@@ -11,13 +11,16 @@ import SwiftUI
 struct SongsScreen: View {
   var body: some View {
     PageView {
-      Text("Songs Screen")
+      PageTitle("Songs")
+      SongsList(showAddSong: .Always)
     }
   }
 }
 
 struct SongsScreen_Previews: PreviewProvider {
   static var previews: some View {
-    SongsScreen()
+    Seeder {
+      SongsScreen()
+    }
   }
 }
