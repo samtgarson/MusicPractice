@@ -11,26 +11,22 @@ import SwiftUI
 let titleFieldName = "title"
 
 struct NewSongScreen: View {
-  @Binding var show: Bool
+  var hide: () -> Void
   
   var body: some View {
     ModalView(title: "Add a new song", description: "What song would you like to practice next?") {
       MusicPracticeForm(buttonLabel: "Save", buttonIcon: .check, onSubmit: createInstrument) {
         MusicPracticeTextField(id: titleFieldName, placeholder: "Song name", required: true)
       }
-      MusicPracticeButton("Never mind", icon: .x, onTap: back).opacity(Opacity.VeryFaded)
+      MusicPracticeButton("Never mind", icon: .x, onTap: hide).opacity(Opacity.VeryFaded)
     }
   }
   
   func createInstrument(_ model: FormModel) {
     if let title = model[titleFieldName] {
-      SongService().create(title: title)
-      back()
+      _ = SongService().create(title: title)
+      hide()
     }
-  }
-  
-  func back() {
-    self.show = false
   }
 }
 
@@ -50,7 +46,7 @@ struct NewSongScreen_Previews: PreviewProvider {
         }
         .withDefaultStyles()
         .sheet(isPresented: $showScreen) {
-          NewSongScreen(show: self.$showScreen)
+          NewSongScreen() { self.showScreen = false }
         }
       }
     }

@@ -8,22 +8,31 @@
 
 import SwiftUI
 
-struct MusicPracticeRow<Icon : View>: View {
-  var label: String
-  var icon: Icon
+struct RowLabel: View {
+  var text: String
+  
+  init(_ text: String) {
+    self.text = text
+  }
+  
+  var body: some View {
+    Text(text)
+      .frame(maxWidth: .infinity, alignment: .leading)
+  }
+}
+
+struct MusicPracticeRow<Content : View>: View {
+  var content: Content
   var tapHandler: (() -> Void)?
   
-  init(_ label: String, onTap: (() -> Void)? = nil, @ViewBuilder content: () -> Icon) {
-    self.label = label
-    self.icon = content()
+  init(onTap: (() -> Void)? = nil, @ViewBuilder content: () -> Content) {
+    self.content = content()
     self.tapHandler = onTap
   }
   
   var body: some View {
     HStack {
-      Text(label)
-      Spacer()
-      icon
+      content
     }
     .padding(Spacing.small)
     .background(Color.white)
@@ -37,7 +46,8 @@ struct MusicPracticeRow<Icon : View>: View {
 struct MusicPracticeRow_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
-      MusicPracticeRow("This is a row", onTap: { print("tapped") }) {
+      MusicPracticeRow(onTap: { print("tapped") }) {
+        RowLabel("This is a row")
         Circle().fill(Color.red).frame(width: 10, height: 10)
       }
     }

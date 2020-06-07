@@ -33,7 +33,6 @@ struct ModalView<Content: View>: View {
       .frame(maxWidth: 500)
     }
     .padding(.top, Spacing.medium)
-    .withDefaultStyles()
   }
   
   private var lowerHalf: some View {

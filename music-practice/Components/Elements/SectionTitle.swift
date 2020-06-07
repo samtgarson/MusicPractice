@@ -15,7 +15,7 @@ struct SectionTitle: View {
     Text(text.uppercased())
       .font(fontStyle)
       .kerning(2)
-      .fixedSize()
+      .fixedSize(horizontal: true, vertical: false)
   }
   
   var fontStyle = Fonts.small.weight(.medium)

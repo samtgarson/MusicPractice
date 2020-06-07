@@ -20,10 +20,11 @@ struct SongsList: View {
     self.showAddSong = showAddSong
     self.limit = limit
     self.fetchRequest = SongService.all(limit: limit)
-    
   }
   
-  @State(initialValue: false) var showScreen
+  @State(initialValue: false) var showSheet
+  @State() var selected: Song?
+  
   private var fetchRequest: FetchRequest<Song>
   var showAddSong: ShowAddSongState = .WhenEmpty
   var limit: Int?
@@ -32,11 +33,23 @@ struct SongsList: View {
   }
   
   var body: some View {
-    MusicPracticeList(collection: songs, actionRow: actionRow, displayAction: displayAction) { song in
-      MusicPracticeRow(song.title!) {
-        Circle().fill(Colors.primary).frame(width: 10, height: 10)
-      }
+    MusicPracticeList(collection: songs) { song in
+      self.songRow(for: song)
     }
+    .withFooter { self.footer }
+    .sheet(isPresented: $showSheet, onDismiss: {
+      self.selected = nil
+    }, content: {
+      if self.selected != nil {
+        NewSongPracticeScreen(song: self.selected!) {
+          self.showSheet = false
+        }
+      } else {
+        NewSongScreen {
+          self.showSheet = false
+        }
+      }
+    })
   }
   
   private var displayAction: Bool {
@@ -50,11 +63,26 @@ struct SongsList: View {
     }
   }
   
-  private var actionRow: some View {
-    MusicPracticeRow("Add a new song", onTap: { self.showScreen.toggle() }) {
-      Image(uiImage: Feather.getIcon(.plus)!)
-    }.sheet(isPresented: $showScreen) {
-      NewSongScreen(show: self.$showScreen)
+  private func songRow(for song: Song) -> some View {
+    MusicPracticeRow(onTap: {
+      self.showSheet = true
+      self.selected = song
+    }) {
+      Unwrap(song.title) { RowLabel($0) }
+      Circle().fill(Colors.primary).frame(width: 10, height: 10)
+    }
+  }
+  
+  private var footer: some View {
+    Group {
+      if displayAction {
+        MusicPracticeRow(onTap: {
+          self.showSheet = true
+        }) {
+          RowLabel("Add a new song")
+          Image(uiImage: Feather.getIcon(.plus)!)
+        }
+      }
     }
   }
 }
@@ -68,6 +96,7 @@ struct SongsList_Previews: PreviewProvider {
     var body: some View {
       Seeder {
         PageView { SongsList(showAddSong: .Always, limit: 3) }
+        .withDefaultStyles()
       }
     }
   }

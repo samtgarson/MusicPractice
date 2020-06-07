@@ -16,7 +16,7 @@ struct HeaderContent: View {
   var body: some View {
     VStack(alignment: .leading, spacing: Spacing.small) {
       Image(self.icon).padding(.bottom, Spacing.small)
-      self.title.map { Text($0).opacity(Opacity.VeryFaded) }
+      Unwrap(self.title) { t in Text(t).opacity(Opacity.VeryFaded) }
       Text(self.description).fixedSize(horizontal: false, vertical: true)
     }
     .frame(maxWidth: .infinity, alignment: .leading)

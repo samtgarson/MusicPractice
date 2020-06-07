@@ -10,17 +10,29 @@ import SwiftUI
 
 struct PageTitle: View {
   var content: String
+  var showBack: Bool
+  var onBack: () -> Void
   
-  init(_ content: String) {
+  init(_ content: String, showBack: Bool = false, onBack: (() -> Void)? = nil) {
     self.content = content
+    self.showBack = showBack
+    self.onBack = onBack ?? {}
   }
   
   var body: some View {
-    Sticky { _ in
+//    Sticky { _ in
+    HStack {
+      if self.showBack { self.backButton }
       Text(self.content)
         .font(Fonts.large)
-        .padding(.vertical, Spacing.medium)
-    }.frame(height: 100)
+    }
+      //    }
+      .padding(.bottom, Spacing.medium)
+  }
+  
+  private var backButton: some View {
+    Icon(iconName: .chevronLeft)
+      .onTapGesture(perform: onBack)
   }
 }
 
@@ -28,6 +40,7 @@ struct PageTitle_Previews: PreviewProvider {
   static var previews: some View {
     PageView() {
       PageTitle("Theory")
+      SectionTitle(text: "Testing")
       RoundedRectangle(cornerRadius: CornerRadius).stroke(Colors.primary).frame(height: 1200)
     }
   }

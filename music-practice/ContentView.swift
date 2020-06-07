@@ -10,8 +10,10 @@ import SwiftUI
 
 struct ContentView: View {  
   var body: some View {
-    Main()
-      .withDefaultStyles()
+    NavigationWrapper {
+      Main()
+        .withDefaultStyles()
+    }
   }
 }
 
@@ -32,6 +34,8 @@ extension View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    Seeder(controls: false) {
+      ContentView()
+    }
   }
 }

@@ -21,8 +21,9 @@ struct PageView<Content: View>: View {
         self.content
           .frame(maxWidth: .infinity, alignment: .leading)
       }
-      .padding(.horizontal, Spacing.medium)
+      .padding(Spacing.medium)
     }
+    .withDefaultStyles()
   }
 }
 

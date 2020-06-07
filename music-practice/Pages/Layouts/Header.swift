@@ -43,6 +43,7 @@ struct Header<Content: View>: View {
     }
     .onAppear { self.statusBar.update(.lightContent) }
     .onDisappear { self.statusBar.update(.default) }
+    .withDefaultStyles()
   }
   
   var bgColor: Color {
@@ -66,6 +67,5 @@ struct Header_Previews: PreviewProvider {
       Text("Text")
       Rectangle().stroke(Colors.error).frame(height: 1200)
     }
-    .withDefaultStyles()
   }
 }

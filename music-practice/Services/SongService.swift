@@ -1,5 +1,5 @@
 //
-//  DataService.swift
+//  SongService.swift
 //  music-practice
 //
 //  Created by Sam Garson on 01/06/2020.
@@ -9,23 +9,20 @@
 import CoreData
 import SwiftUI
 
-public class SongService: BaseService {
-  static let defaultSort = [NSSortDescriptor(key: "createdAt", ascending: true)]
-  static let entityName = "Song"
-  
-  static func all(limit: Int?) -> FetchRequest<Song> {
+public class SongService: BaseService {  
+  static func all(sort: [NSSortDescriptor]? = defaultSort, limit: Int?) -> FetchRequest<Song> {
     let request: NSFetchRequest<Song> = Song.fetchRequest()
-    request.sortDescriptors = defaultSort
+    request.sortDescriptors = sort
     if let limit = limit { request.fetchLimit = limit }
     return FetchRequest(fetchRequest: request)
   }
 
-  public func create(title: String) {
-    guard let context = managedContext else { return }
+  public func create(title: String) -> Song? {
+    guard let context = managedContext else { return nil }
     
-    let newSong = Song(context: context)
+    let newSong = instantiate(Song.self, context)
     newSong.title = title
-    newSong.createdAt = Date()
     save()
+    return newSong
   }
 }

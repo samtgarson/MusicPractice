@@ -11,12 +11,22 @@ import UIKit
 
 
 public class BaseService {
+  
+  static let defaultSort = [NSSortDescriptor(key: "createdAt", ascending: true)]
+  
   var managedContext:NSManagedObjectContext?
   
   init() {
     if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
       managedContext = appDelegate.persistentContainer.viewContext
     }
+  }
+  
+  func instantiate<T>(_ Entity: T.Type, _ context: NSManagedObjectContext) -> T where T: EntityProtocol {
+    var newInstance = Entity.init(context: context)
+    newInstance.id = UUID()
+    newInstance.createdAt = Date()
+    return newInstance
   }
   
   func save () {

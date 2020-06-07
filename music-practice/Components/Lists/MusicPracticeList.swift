@@ -8,17 +8,32 @@
 
 import SwiftUI
 
-struct MusicPracticeList<T: RandomAccessCollection, R: View, A: View>: View where T.Element: Hashable {
+struct MusicPracticeList<T: RandomAccessCollection, R: View>: View where T.Element: Hashable {
+  
+  internal init(collection: T, displayAction: Bool = true, render: @escaping (T.Element) -> R) {
+    self.collection = collection
+    self.render = render
+  }
+  
   var collection: T
-  var actionRow: A
   var displayAction: Bool = true
   var render: (T.Element) -> R
   
   var body: some View {
     VStack(spacing: Spacing.tiny) {
-      ForEach(collection, id: \.self) { item in self.render(item) }
-      if displayAction { actionRow.opacity(Opacity.VeryFaded) }
-    }.padding(.horizontal, Spacing.small * -1)
+      ForEach(collection, id: \.self) { item in
+        self.render(item)
+      }.padding(.horizontal, Spacing.small * -1)
+    }
+  }
+  
+  func withFooter<F: View>(@ViewBuilder _ footer: @escaping () -> F?) -> some View {
+    VStack(spacing: Spacing.tiny) {
+      body
+      footer()
+        .opacity(Opacity.VeryFaded)
+        .padding(.horizontal, Spacing.small * -1)
+    }
   }
 }
 
@@ -34,18 +49,27 @@ struct MusicPracticeList_Previews: PreviewProvider {
       TestRecord(name: "Test 3")
     ]
     
-    let action = MusicPracticeRow("This is an action row") {
+    let action = MusicPracticeRow() {
+      RowLabel("This is an action row")
       Circle().fill(Colors.primary).frame(width: 10, height: 10)
     }
     
     return PageView {
-      MusicPracticeList(collection: records, actionRow: action) { record in
-        MusicPracticeRow(record.name) { Circle().fill(Color.red).frame(width: 10, height: 10) }
-      }.padding(.bottom, 50)
-      
-      MusicPracticeList(collection: records, actionRow: action, displayAction: false) { record in
-        MusicPracticeRow(record.name) { Circle().fill(Color.red).frame(width: 10, height: 10) }
+      MusicPracticeList(collection: records) { record in
+        MusicPracticeRow() {
+          RowLabel(record.name)
+          Circle().fill(Color.red).frame(width: 10, height: 10)
+        }
       }
-    }
+      .withFooter { action }
+      .padding(.bottom, 50)
+      
+      MusicPracticeList(collection: records) { record in
+        MusicPracticeRow {
+          RowLabel(record.name)
+          Circle().fill(Color.red).frame(width: 10, height: 10)
+        }
+      }
+    }.withDefaultStyles()
   }
 }

@@ -1,5 +1,5 @@
 //
-//  SeedService.swift
+//  Seeder.swift
 //  music-practice
 //
 //  Created by Sam Garson on 03/06/2020.
@@ -51,11 +51,15 @@ struct Seeder<Content : View>: View {
   
   func seedAllEntities() {
     for i in 1...5 {
-      SongService().create(title: "Song \(i)")
+      let song = SongService().create(title: "Song \(i)")
+      if i < 3 {
+        _ = PracticeService().create(.song(song!), Int16.random(in: -1...1))
+      }
     }
   }
   
   func clearAllEntities() {
+    _ = clearAll(SongPractice.self)
     _ = clearAll(Song.self)
   }
   
@@ -63,7 +67,11 @@ struct Seeder<Content : View>: View {
     let entityName = String(describing: Entity.self)
     let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-    try! context.executeAndMergeChanges(using: deleteRequest)
+    do {
+      try context.executeAndMergeChanges(using: deleteRequest)
+    } catch {
+      print("Could not save: \(error).")
+    }
   }
 }
 #endif

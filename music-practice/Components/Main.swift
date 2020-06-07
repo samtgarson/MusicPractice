@@ -19,15 +19,20 @@ enum NavRoute: String {
 struct Main: View {
   @State var selected: NavRoute = .Home
   
+  init() {
+    UITabBar.appearance().isTranslucent = false
+  }
+  
   var body: some View {
     VStack(spacing: 0) {
-      currentView.frame(maxHeight: .infinity)
+      self.currentView
       HStack {
-        tabItem(NavRoute.Home, .home)
-        tabItem(NavRoute.Theory, .bookOpen)
-        tabItem(NavRoute.Songs, .music)
-        tabItem(NavRoute.Settings, .settings)
+        self.tabItem(NavRoute.Home, .home)
+        self.tabItem(NavRoute.Theory, .bookOpen)
+        self.tabItem(NavRoute.Songs, .music)
+        self.tabItem(NavRoute.Settings, .settings)
       }
+      .padding(.bottom, Spacing.small)
       .background(Color.white.edgesIgnoringSafeArea(.bottom))
     }
   }
@@ -41,7 +46,7 @@ struct Main: View {
     case .Songs:
       return AnyView(SongsScreen())
     case .Settings:
-      return AnyView(Text("nope"))
+      return AnyView(SettingsScreen())
     }
   }
   
@@ -63,7 +68,9 @@ struct Main: View {
 struct Main_Previews: PreviewProvider {
   static var previews: some View {
     Seeder(controls: false) {
-      Main().withDefaultStyles()
+      NavigationWrapper {
+        Main().withDefaultStyles()
+      }
     }
   }
 }

@@ -9,6 +9,18 @@
 import UIKit
 import SwiftUI
 
+// Keep the swipe back gesture when the back button is hidden
+extension UINavigationController: UIGestureRecognizerDelegate {
+  override open func viewDidLoad() {
+    super.viewDidLoad()
+    interactivePopGestureRecognizer?.delegate = self
+  }
+  
+  public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return viewControllers.count > 1
+  }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   var window: UIWindow?
