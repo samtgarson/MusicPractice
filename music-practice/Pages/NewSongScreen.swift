@@ -15,10 +15,10 @@ struct NewSongScreen: View {
   
   var body: some View {
     ModalView(title: "Add a new song", description: "What song would you like to practice next?") {
-      MusicPracticeForm(buttonLabel: "Save", buttonIcon: .check, onSubmit: createInstrument) {
-        MusicPracticeTextField(id: titleFieldName, placeholder: "Song name", required: true)
+      MPForm(buttonLabel: "Save", buttonIcon: .check, onSubmit: createInstrument) {
+        MPTextField(id: titleFieldName, placeholder: "Song name", required: true)
       }
-      MusicPracticeButton("Never mind", icon: .x, onTap: hide).opacity(Opacity.VeryFaded)
+      MPButton("Never mind", icon: .x, onTap: hide).opacity(Opacity.VeryFaded)
     }
   }
   

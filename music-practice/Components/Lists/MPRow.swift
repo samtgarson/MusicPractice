@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import NoveFeatherIcons
 
 struct RowLabel: View {
   var text: String
@@ -21,7 +22,7 @@ struct RowLabel: View {
   }
 }
 
-struct MusicPracticeRow<Content : View>: View {
+struct MPRow<Content : View>: View {
   var content: Content
   var tapHandler: (() -> Void)?
   
@@ -43,10 +44,10 @@ struct MusicPracticeRow<Content : View>: View {
   }
 }
 
-struct MusicPracticeRow_Previews: PreviewProvider {
+struct MPRow_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
-      MusicPracticeRow(onTap: { print("tapped") }) {
+      MPRow(onTap: { print("tapped") }) {
         RowLabel("This is a row")
         Circle().fill(Color.red).frame(width: 10, height: 10)
       }

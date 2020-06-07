@@ -9,7 +9,7 @@
 import SwiftUI
 import NoveFeatherIcons
 
-struct MusicPracticeTextField: View {
+struct MPTextField: View {
   var id: String
   var placeholder: String
   var required: Bool = false
@@ -45,12 +45,12 @@ struct MusicPracticeTextField: View {
   }
 }
 
-struct MusicPracticeTextField_Previews: PreviewProvider {
+struct MPTextField_Previews: PreviewProvider {
   
   static var previews: some View {
     ModalView(description: "Test this field") {
-      MusicPracticeForm {
-        MusicPracticeTextField(id: "test", placeholder: "This is a text field")
+      MPForm {
+        MPTextField(id: "test", placeholder: "This is a text field")
       }
     }
   }

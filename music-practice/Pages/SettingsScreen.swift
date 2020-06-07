@@ -16,14 +16,14 @@ struct SettingsScreen: View {
   var body: some View {
     PageView {
       PageTitle("Account")
-      MusicPracticeList(collection: SettingsItems.allCases) { i in
+      MPList(collection: SettingsItems.allCases) { i in
         self.item(i)
       }
     }
   }
   
   func item(_ item: SettingsItems) -> some View {
-    MusicPracticeRow {
+    MPRow {
       NavigationLink(destination: screen(for: item)) {
         RowLabel(item.rawValue)
       }

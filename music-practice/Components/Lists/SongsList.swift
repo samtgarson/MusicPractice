@@ -33,7 +33,7 @@ struct SongsList: View {
   }
   
   var body: some View {
-    MusicPracticeList(collection: songs) { song in
+    MPList(collection: songs) { song in
       self.songRow(for: song)
     }
     .withFooter { self.footer }
@@ -64,7 +64,7 @@ struct SongsList: View {
   }
   
   private func songRow(for song: Song) -> some View {
-    MusicPracticeRow(onTap: {
+    MPRow(onTap: {
       self.showSheet = true
       self.selected = song
     }) {
@@ -76,7 +76,7 @@ struct SongsList: View {
   private var footer: some View {
     Group {
       if displayAction {
-        MusicPracticeRow(onTap: {
+        MPRow(onTap: {
           self.showSheet = true
         }) {
           RowLabel("Add a new song")

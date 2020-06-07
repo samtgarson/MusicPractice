@@ -9,7 +9,7 @@
 import SwiftUI
 import NoveFeatherIcons
 
-struct MusicPracticeButton: View {
+struct MPButton: View {
   internal init(_ label: String, icon: Feather.IconName? = nil, onTap: (() -> Void)?) {
     self.label = label
     self.iconName = icon
@@ -37,13 +37,13 @@ struct MusicPracticeButton: View {
   }
 }
 
-struct MusicPracticeButton_Previews: PreviewProvider {
+struct MPButton_Previews: PreviewProvider {
   static var previews: some View {
     func handler () { print("tapped!") }
 
     return ModalView(description: "Testing a button") {
-      MusicPracticeButton("Take a picture", icon: .aperture, onTap: handler)
-      MusicPracticeButton("Press me") { handler() }
+      MPButton("Take a picture", icon: .aperture, onTap: handler)
+      MPButton("Press me") { handler() }
     }
   }
 }

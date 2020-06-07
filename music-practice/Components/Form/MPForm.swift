@@ -9,7 +9,7 @@
 import SwiftUI
 import NoveFeatherIcons
 
-struct MusicPracticeForm<Fields: View>: View {
+struct MPForm<Fields: View>: View {
   var buttonLabel: String = "Let's go"
   var buttonIcon: Feather.IconName?
   var onSubmit: ((FormModel) -> Void)?
@@ -28,7 +28,7 @@ struct MusicPracticeForm<Fields: View>: View {
       content
         .environmentObject(state)
         .onPreferenceChange(FormValidationKey.self) { self.state.valid = $0 }
-      MusicPracticeButton(buttonLabel, icon: buttonIcon, onTap: self.onTap)
+      MPButton(buttonLabel, icon: buttonIcon, onTap: self.onTap)
     }
   }
   
@@ -44,13 +44,13 @@ struct MusicPracticeForm<Fields: View>: View {
   }
 }
 
-struct MusicPracticeForm_Previews: PreviewProvider {
+struct MPForm_Previews: PreviewProvider {
   static var previews: some View {
     func onSubmit (model: FormModel) { dump(model) }
     
     return ModalView(description: "Test this form") {
-      MusicPracticeForm(buttonIcon: .check, onSubmit: onSubmit) {
-        MusicPracticeTextField(id: "test", placeholder: "This is a text field", required: true)
+      MPForm(buttonIcon: .check, onSubmit: onSubmit) {
+        MPTextField(id: "test", placeholder: "This is a text field", required: true)
       }
     }
   }

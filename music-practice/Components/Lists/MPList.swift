@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MusicPracticeList<T: RandomAccessCollection, R: View>: View where T.Element: Hashable {
+struct MPList<T: RandomAccessCollection, R: View>: View where T.Element: Hashable {
   
   internal init(collection: T, displayAction: Bool = true, render: @escaping (T.Element) -> R) {
     self.collection = collection
@@ -41,7 +41,7 @@ struct TestRecord: Hashable {
   var name: String
 }
 
-struct MusicPracticeList_Previews: PreviewProvider {
+struct MPList_Previews: PreviewProvider {
   static var previews: some View {
     let records = [
       TestRecord(name: "Test 1"),
@@ -49,14 +49,14 @@ struct MusicPracticeList_Previews: PreviewProvider {
       TestRecord(name: "Test 3")
     ]
     
-    let action = MusicPracticeRow() {
+    let action = MPRow() {
       RowLabel("This is an action row")
       Circle().fill(Colors.primary).frame(width: 10, height: 10)
     }
     
     return PageView {
-      MusicPracticeList(collection: records) { record in
-        MusicPracticeRow() {
+      MPList(collection: records) { record in
+        MPRow() {
           RowLabel(record.name)
           Circle().fill(Color.red).frame(width: 10, height: 10)
         }
@@ -64,8 +64,8 @@ struct MusicPracticeList_Previews: PreviewProvider {
       .withFooter { action }
       .padding(.bottom, 50)
       
-      MusicPracticeList(collection: records) { record in
-        MusicPracticeRow {
+      MPList(collection: records) { record in
+        MPRow {
           RowLabel(record.name)
           Circle().fill(Color.red).frame(width: 10, height: 10)
         }

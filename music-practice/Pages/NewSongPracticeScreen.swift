@@ -15,7 +15,7 @@ struct NewSongPracticeScreen: View {
   
   var body: some View {
     Header(title: "You practiced \(song.title!)", description: "Nice work! Practice makes perfect.\n\nHow did it go?") {
-      MusicPracticeList(collection: PracticeDisplay.models) { display in
+      MPList(collection: PracticeDisplay.models) { display in
         self.practiceOption(for: display)
       }.withFooter {
         self.backButton
@@ -24,7 +24,7 @@ struct NewSongPracticeScreen: View {
   }
   
   var backButton: some View {
-    MusicPracticeRow(onTap: hide) {
+    MPRow(onTap: hide) {
       RowLabel("Back")
       Icon(iconName: .x)
     }
@@ -33,7 +33,7 @@ struct NewSongPracticeScreen: View {
   
   
   func practiceOption(for display: PracticeDisplay) -> some View {
-    MusicPracticeRow(onTap: {
+    MPRow(onTap: {
       self.createPractice(display.score)
     }) {
       RowLabel(display.description)

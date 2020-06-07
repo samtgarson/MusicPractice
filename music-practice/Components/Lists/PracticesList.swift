@@ -21,8 +21,8 @@ struct PracticesList: View {
   }
   
   var body: some View {
-    MusicPracticeList(collection: practices) { practice in
-      MusicPracticeRow {
+    MPList(collection: practices) { practice in
+      MPRow {
         RowLabel(self.label(for: practice))
         self.icon(for: practice)
       }
