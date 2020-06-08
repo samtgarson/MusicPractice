@@ -13,7 +13,12 @@ struct SongsScreen: View {
     PageView {
       PageTitle("Songs")
       SectionTitle(text: "Active Songs")
-      SongsList(showAddSong: .Always)
+      SongsList(showAddSong: .Always, filter: .Active)
+      
+      Spacer().frame(height: Spacing.medium)
+      
+      SectionTitle(text: "Archived Songs")
+      SongsList(showAddSong: .Never, filter: .Archived)
     }
   }
 }

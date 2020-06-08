@@ -32,7 +32,7 @@ struct SongRow: View {
     if song.archivedAt == nil {
       return Icon(iconName: .archive)
     } else {
-      return Icon(iconName: .cornerLeftUp)
+      return Icon(iconName: .cornerRightUp)
     }
   }
   
