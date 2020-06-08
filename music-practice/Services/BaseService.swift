@@ -34,6 +34,7 @@ public class BaseService {
     
     do {
       try context.save()
+      context.refreshAllObjects()
     }
     catch let error as NSError {
       print("Could not save. \(error), \(error.userInfo)")

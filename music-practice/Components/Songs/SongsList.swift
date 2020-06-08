@@ -23,7 +23,6 @@ struct SongsList: View {
   }
   
   @State(initialValue: false) var showSheet
-  @State() var selected: Song?
   
   private var fetchRequest: FetchRequest<Song>
   var showAddSong: ShowAddSongState = .WhenEmpty
@@ -34,43 +33,9 @@ struct SongsList: View {
   
   var body: some View {
     MPList(collection: songs) { song in
-      self.songRow(for: song)
+      SongRow(song: song)
     }
     .withFooter { self.footer }
-    .sheet(isPresented: $showSheet, onDismiss: {
-      self.selected = nil
-    }, content: {
-      if self.selected != nil {
-        NewSongPracticeScreen(song: self.selected!) {
-          self.showSheet = false
-        }
-      } else {
-        NewSongScreen {
-          self.showSheet = false
-        }
-      }
-    })
-  }
-  
-  private var displayAction: Bool {
-    switch showAddSong {
-    case .Always:
-      return true
-    case .Never:
-      return false
-    case .WhenEmpty:
-      return songs.count == 0
-    }
-  }
-  
-  private func songRow(for song: Song) -> some View {
-    MPRow(onTap: {
-      self.showSheet = true
-      self.selected = song
-    }) {
-      Unwrap(song.title) { RowLabel($0) }
-      Circle().fill(Colors.primary).frame(width: 10, height: 10)
-    }
   }
   
   private var footer: some View {
@@ -82,7 +47,21 @@ struct SongsList: View {
           RowLabel("Add a new song")
           Image(uiImage: Feather.getIcon(.plus)!)
         }
+        .sheet(isPresented: $showSheet) {
+          NewSongScreen { self.showSheet = false }
+        }
       }
+    }
+  }
+  
+  private var displayAction: Bool {
+    switch showAddSong {
+    case .Always:
+      return true
+    case .Never:
+      return false
+    case .WhenEmpty:
+      return songs.count == 0
     }
   }
 }

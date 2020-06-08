@@ -25,4 +25,14 @@ public class SongService: BaseService {
     save()
     return newSong
   }
+  
+  public func archive(song: Song) {
+    song.archivedAt = Date()
+    save()
+  }
+  
+  public func unarchive(song: Song) {
+    song.archivedAt = nil
+    save()
+  }
 }

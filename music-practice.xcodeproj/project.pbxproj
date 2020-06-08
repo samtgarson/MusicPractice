@@ -55,6 +55,7 @@
 		22A5FD5424881030009E1161 /* MPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5FD5324881030009E1161 /* MPButton.swift */; };
 		22A5FD5624883C92009E1161 /* FormService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5FD5524883C92009E1161 /* FormService.swift */; };
 		22AF152F248D30BC004BD7E1 /* WithDragAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF152E248D30BC004BD7E1 /* WithDragAction.swift */; };
+		22D936EC248D50CD006060D5 /* SongRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D936EB248D50CD006060D5 /* SongRow.swift */; };
 		22DDC18F248BE21C00721D9B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DDC18E248BE21C00721D9B /* Icon.swift */; };
 		4DA31AEBE9824D0C6C9A45BA /* Pods_music_practiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6954E47707DF7ADF093FD1CE /* Pods_music_practiceTests.framework */; };
 		D93BC045B1C21DAC7B8ED883 /* Pods_music_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638A1E4B7570329DAC1C6CE4 /* Pods_music_practice.framework */; };
@@ -123,6 +124,7 @@
 		22A5FD5324881030009E1161 /* MPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPButton.swift; sourceTree = "<group>"; };
 		22A5FD5524883C92009E1161 /* FormService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormService.swift; sourceTree = "<group>"; };
 		22AF152E248D30BC004BD7E1 /* WithDragAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDragAction.swift; sourceTree = "<group>"; };
+		22D936EB248D50CD006060D5 /* SongRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRow.swift; sourceTree = "<group>"; };
 		22DDC18E248BE21C00721D9B /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		505DCCC5D1BBE8F0D54F5221 /* Pods-music-practice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-music-practice.release.xcconfig"; path = "Target Support Files/Pods-music-practice/Pods-music-practice.release.xcconfig"; sourceTree = "<group>"; };
 		638A1E4B7570329DAC1C6CE4 /* Pods_music_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_music_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 		222D80D424842AF30086A37A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				22D936EA248D50A8006060D5 /* Songs */,
 				22A5FD4E24880867009E1161 /* Form */,
 				22A5FD4B2487D33C009E1161 /* Elements */,
 				22A5FD4A2487D333009E1161 /* Lists */,
@@ -286,6 +289,7 @@
 		226E312F248AA31500BEEBC4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				22AF152E248D30BC004BD7E1 /* WithDragAction.swift */,
 				226E312D248A3CC000BEEBC4 /* Unwrap.swift */,
 				2213981F248AE51100B480AE /* Sticky.swift */,
 				2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */,
@@ -306,9 +310,7 @@
 			children = (
 				221CDD832486CBD0008B10D6 /* MPList.swift */,
 				221CDD812486BAB9008B10D6 /* MPRow.swift */,
-				221CDD852486EDDE008B10D6 /* SongsList.swift */,
 				2233677F248C0964008563FF /* PracticesList.swift */,
-				22AF152E248D30BC004BD7E1 /* WithDragAction.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -331,6 +333,15 @@
 				22A5FD5124880E28009E1161 /* MPForm.swift */,
 			);
 			path = Form;
+			sourceTree = "<group>";
+		};
+		22D936EA248D50A8006060D5 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				221CDD852486EDDE008B10D6 /* SongsList.swift */,
+				22D936EB248D50CD006060D5 /* SongRow.swift */,
+			);
+			path = Songs;
 			sourceTree = "<group>";
 		};
 		403EE71E82151B2B06F4F71A /* Frameworks */ = {
@@ -526,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22139829248BC63600B480AE /* NewSongPracticeScreen.swift in Sources */,
+				22D936EC248D50CD006060D5 /* SongRow.swift in Sources */,
 				2212C6172485A45900D6B86C /* Header.swift in Sources */,
 				222D80C8248403740086A37A /* NewSongScreen.swift in Sources */,
 				22139825248BB78400B480AE /* music_practice.xcdatamodeld in Sources */,
