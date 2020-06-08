@@ -23,7 +23,7 @@ struct MPList<T: RandomAccessCollection, R: View>: View where T.Element: Hashabl
     VStack(spacing: Spacing.tiny) {
       ForEach(collection, id: \.self) { item in
         self.render(item)
-      }.padding(.horizontal, Spacing.small * -1)
+      }.padding(.horizontal, -Spacing.small)
     }
   }
   
@@ -32,7 +32,7 @@ struct MPList<T: RandomAccessCollection, R: View>: View where T.Element: Hashabl
       body
       footer()
         .opacity(Opacity.VeryFaded)
-        .padding(.horizontal, Spacing.small * -1)
+        .padding(.horizontal, -Spacing.small)
     }
   }
 }

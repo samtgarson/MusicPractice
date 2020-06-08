@@ -56,7 +56,7 @@ struct WithDragAction<Content: View, A: View>: View {
     Group {
       if showAction {
         Rectangle()
-          .fill(Colors.background)
+          .fill(Color.white)
           .opacity(0.1)
           .onTapGesture {
             if self.showAction {

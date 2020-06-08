@@ -21,11 +21,22 @@ struct PracticesList: View {
   }
   
   var body: some View {
-    MPList(collection: practices) { practice in
-      MPRow {
-        RowLabel(self.label(for: practice))
-        self.icon(for: practice)
+    VStack {
+      MPList(collection: practices) { practice in
+        MPRow {
+          RowLabel(self.label(for: practice))
+          self.icon(for: practice)
+        }
       }
+      if practices.isEmpty { emptyMessage }
+    }
+  }
+  
+  private var emptyMessage: some View {
+    HStack {
+      RowLabel("Go practice a song or some theory!")
+      Spacer().frame(width: Spacing.medium)
+      Icon(iconName: .coffee)
     }
   }
   
