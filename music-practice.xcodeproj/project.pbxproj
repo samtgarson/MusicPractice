@@ -52,6 +52,7 @@
 		2297628B2490C80700B3FA33 /* WeightedAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628A2490C80700B3FA33 /* WeightedAverage.swift */; };
 		2297628D2490DBE900B3FA33 /* SongProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628C2490DBE900B3FA33 /* SongProgressBar.swift */; };
 		2297628F2490DDD400B3FA33 /* PerformanceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628E2490DDD400B3FA33 /* PerformanceColor.swift */; };
+		2297629124910BD700B3FA33 /* CollapsibleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297629024910BD700B3FA33 /* CollapsibleSection.swift */; };
 		22A5FD492487B3AF009E1161 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5FD482487B3AF009E1161 /* Seeder.swift */; };
 		22A5FD4D2487D34D009E1161 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5FD4C2487D34D009E1161 /* SectionTitle.swift */; };
 		22A5FD502488087D009E1161 /* MPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5FD4F2488087D009E1161 /* MPTextField.swift */; };
@@ -125,6 +126,7 @@
 		2297628A2490C80700B3FA33 /* WeightedAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedAverage.swift; sourceTree = "<group>"; };
 		2297628C2490DBE900B3FA33 /* SongProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProgressBar.swift; sourceTree = "<group>"; };
 		2297628E2490DDD400B3FA33 /* PerformanceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceColor.swift; sourceTree = "<group>"; };
+		2297629024910BD700B3FA33 /* CollapsibleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleSection.swift; sourceTree = "<group>"; };
 		22A5FD482487B3AF009E1161 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
 		22A5FD4C2487D34D009E1161 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		22A5FD4F2488087D009E1161 /* MPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextField.swift; sourceTree = "<group>"; };
@@ -216,10 +218,11 @@
 				22A5FD4E24880867009E1161 /* Form */,
 				22A5FD4B2487D33C009E1161 /* Elements */,
 				22A5FD4A2487D333009E1161 /* Lists */,
-				222D80D524842B190086A37A /* Main.swift */,
 				226E312F248AA31500BEEBC4 /* Utilities */,
+				222D80D524842B190086A37A /* Main.swift */,
 				22139821248BAFBD00B480AE /* HeaderContent.swift */,
 				221EC491248C6B2E004672FD /* NavigationWrapper.swift */,
+				2297629024910BD700B3FA33 /* CollapsibleSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				22139820248AE51100B480AE /* Sticky.swift in Sources */,
 				2296B9AB248C4D3500C48348 /* SongsScreen.swift in Sources */,
 				22A5FD5624883C92009E1161 /* FormService.swift in Sources */,
+				2297629124910BD700B3FA33 /* CollapsibleSection.swift in Sources */,
 				22AF152F248D30BC004BD7E1 /* WithDragAction.swift in Sources */,
 				222D80D3248418660086A37A /* Page.swift in Sources */,
 				22139822248BAFBD00B480AE /* HeaderContent.swift in Sources */,

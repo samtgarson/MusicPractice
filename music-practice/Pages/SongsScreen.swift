@@ -17,8 +17,9 @@ struct SongsScreen: View {
       
       Spacer().frame(height: Spacing.medium)
       
-      SectionTitle(text: "Archived Songs")
-      SongsList(showAddSong: .Never, filter: .Archived)
+      CollapsibleSection(title: "Archived Songs") {
+        SongsList(showAddSong: .Never, filter: .Archived)
+      }
     }
   }
 }
