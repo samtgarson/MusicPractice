@@ -9,7 +9,13 @@
 import SwiftUI
 
 struct SongRow: View {
+  internal init(song: Song) {
+    self.song = song
+    self.performance = SongProgressService(song).performance
+  }
+  
   var song: Song
+  var performance: Performance
   
   @State(initialValue: false) var showNewPractice
   @State(initialValue: false) var confirmArchive
@@ -24,7 +30,7 @@ struct SongRow: View {
     if song.archivedAt == nil {
       self.confirmArchive.toggle()
     } else {
-      SongService().unarchive(song: song)
+      withAnimation { SongService().unarchive(song: song) }
     }
   }
   
@@ -39,7 +45,7 @@ struct SongRow: View {
   private var row: some View {
     MPRow(onTap: { self.showNewPractice.toggle() }) {
       Unwrap(song.title) { RowLabel($0) }
-      Circle().fill(Colors.primary).frame(width: 10, height: 10)
+      SongProgressBar(for: performance)
     }
     .sheet(isPresented: $showNewPractice) { self.newPracticeScreen }
     .actionSheet(isPresented: $confirmArchive) { self.archiveSheet }
@@ -49,7 +55,7 @@ struct SongRow: View {
     ActionSheet(
       title: Text("Archive \(song.title!)?"),
       buttons: [
-        .default(Text("Archive it")) { SongService().archive(song: self.song) },
+        .default(Text("Archive it")) { withAnimation { SongService().archive(song: self.song) } },
         .cancel(Text("Never mind"))
       ]
     )

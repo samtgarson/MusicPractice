@@ -9,7 +9,7 @@
 import CoreData
 import SwiftUI
 
-public enum PracticeValue {
+public enum PracticeSubject {
   case song(Song)
 }
 
@@ -25,20 +25,22 @@ public class PracticeService: BaseService {
     return FetchRequest(fetchRequest: request)
   }
 
-  public func create(_ value: PracticeValue, _ score: Int16) {
-    switch value {
+  func create(_ subject: PracticeSubject, _ score: Int16) {
+    switch subject {
     case .song(let song):
-      createSongPractice(song, score)
+      _ = createSongPractice(song, score)
     }
   }
   
-  private func createSongPractice(_ song: Song, _ score: Int16) {
-    guard let context = managedContext else { return }
+  func createSongPractice(_ song: Song, _ score: Int16) -> SongPractice? {
+    guard let context = managedContext else { return nil }
     
     let newPractice = instantiate(SongPractice.self, context)
     newPractice.song = song
     newPractice.score = score
     newPractice.createdAt = Date()
     save()
+    
+    return newPractice
   }
 }
