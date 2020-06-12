@@ -24,7 +24,10 @@ struct PracticesList: View {
     VStack {
       MPList(collection: practices) { practice in
         MPRow {
-          RowLabel(self.label(for: practice))
+          VStack(spacing: Spacing.small * 0.5) {
+            RowLabel(self.label(for: practice))
+            RowLabel(self.formatDate(practice)).font(Fonts.small)
+          }
           self.icon(for: practice)
         }
       }
@@ -51,6 +54,13 @@ struct PracticesList: View {
     switch practice {
     case .song(let songPractice):
       return PracticeDisplay.with(score: songPractice.score)!.iconImage
+    }
+  }
+  
+  private func formatDate(_ practice: PracticeType) -> String {
+    switch practice {
+    case .song(let songPractice):
+      return RelativeDateFormatter(date: songPractice.createdAt!).format()
     }
   }
 }

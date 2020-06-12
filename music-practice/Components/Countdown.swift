@@ -31,6 +31,8 @@ struct Countdown: View {
     
     self.secondsLeft = self.totalSeconds
     self.updateTime()
+    
+    scheduleNotification(in: totalSeconds)
   }
   
   var body: some View {
@@ -121,7 +123,12 @@ struct Countdown: View {
   
   private func exit () {
     self.timer.upstream.connect().cancel()
+    NotificationService().cancelAll()
     self.done()
+  }
+  
+  private func scheduleNotification(in seconds: Double) {
+    NotificationService().schedule(in: seconds, title: "⏲ Time's up!", body: "Report back to let me know how your practice went.")
   }
   
   struct ClockSizeKey: PreferenceKey {

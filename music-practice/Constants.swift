@@ -37,7 +37,7 @@ struct Opacity {
 
 struct FontSizes {
   static let body: CGFloat = 22.0
-  static let small: CGFloat = body * 0.6
+  static let small: CGFloat = body * 0.65
   static let large: CGFloat = body * 1.5
 }
 

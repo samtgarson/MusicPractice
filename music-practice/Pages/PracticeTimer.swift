@@ -76,14 +76,8 @@ struct PracticeTimerScreen_Previews: PreviewProvider {
       func done () { self.showScreen = false }
       
       return Seeder {
-        PageView {
-          Button(action: { self.showScreen.toggle() }) { Text("Show screen") }
-            .padding(.bottom, Spacing.medium)
-        }
-        .sheet(isPresented: $showScreen) {
-          PracticeTimerScreen(subject: "Subject", done: done)
-        }
-        .withDefaultStyles()
+        PracticeTimerScreen(subject: "Subject", done: done)
+          .withDefaultStyles()
       }
     }
   }
