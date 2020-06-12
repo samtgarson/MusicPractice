@@ -45,7 +45,7 @@ struct SongRow: View {
   private var row: some View {
     MPRow(onTap: { self.showNewPractice.toggle() }) {
       Unwrap(song.title) { RowLabel($0) }
-      SongProgressBar(for: performance)
+      ProgressBar(for: performance)
     }
     .sheet(isPresented: $showNewPractice) { self.newPracticeScreen }
     .actionSheet(isPresented: $confirmArchive) { self.archiveSheet }

@@ -13,9 +13,25 @@ struct NewSongPracticeScreen: View {
   var song: Song
   var hide: () -> Void
   
+  @State(initialValue: false) var timerFinished: Bool
+ 
   var body: some View {
+    Group {
+      if timerFinished {
+        newSongScreen
+      } else {
+        practiceTimer
+      }
+    }
+  }
+  
+  private var practiceTimer: some View {
+    PracticeTimerScreen(subject: song.title!, done: { self.timerFinished.toggle() })
+  }
+  
+  private var newSongScreen: some View {
     Header(title: "You practiced \(song.title!)", description: "Nice work! Practice makes perfect.\n\nHow did it go?") {
-      MPList(collection: PracticeDisplay.models) { display in
+      MPList(collection: PracticeDisplay.items) { display in
         self.practiceOption(for: display)
       }.withFooter {
         self.backButton
@@ -25,7 +41,7 @@ struct NewSongPracticeScreen: View {
   
   var backButton: some View {
     MPRow(onTap: hide) {
-      RowLabel("Back")
+      RowLabel("Never mind")
       Icon(iconName: .x)
     }
   }
@@ -62,6 +78,7 @@ struct NewSongPracticeScreen_Previews: PreviewProvider {
       return Seeder {
         PageView {
           Button(action: { self.showScreen.toggle() }) { Text("Show screen") }
+            .padding(.bottom, Spacing.medium)
           PracticesList()
         }
         .sheet(isPresented: $showScreen) {

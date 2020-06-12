@@ -31,7 +31,7 @@ struct PageTitle: View {
   }
   
   private var backButton: some View {
-    Icon(iconName: .chevronLeft)
+    Icon(iconName: .arrowLeft)
       .onTapGesture(perform: onBack)
   }
 }
@@ -39,7 +39,7 @@ struct PageTitle: View {
 struct PageTitle_Previews: PreviewProvider {
   static var previews: some View {
     PageView() {
-      PageTitle("Theory")
+      PageTitle("Theory", showBack: true)
       SectionTitle(text: "Testing")
       RoundedRectangle(cornerRadius: CornerRadius).stroke(Colors.primary).frame(height: 1200)
     }

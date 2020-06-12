@@ -18,7 +18,7 @@ struct MPForm<Fields: View>: View {
   
   internal init(buttonLabel: String = "Let's go", buttonIcon: Feather.IconName? = nil, onSubmit: ((FormModel) -> Void)? = nil, @ViewBuilder content: () -> Fields) {
     self.buttonLabel = buttonLabel
-    self.buttonIcon = buttonIcon ?? .chevronRight
+    self.buttonIcon = buttonIcon ?? .arrowRight
     self.content = content()
     self.onSubmit = onSubmit
   }

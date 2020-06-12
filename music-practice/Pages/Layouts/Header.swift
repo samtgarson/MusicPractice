@@ -27,6 +27,7 @@ struct Header<Content: View>: View {
       ZStack {
         bgColor.edgesIgnoringSafeArea(.top)
         HeaderContent(title: title, description: description, performance: performance)
+          .fixedSize(horizontal: false, vertical: true)
           .padding(Spacing.medium)
       }
       
@@ -62,7 +63,7 @@ struct Header<Content: View>: View {
 
 struct Header_Previews: PreviewProvider {
   static var previews: some View {
-    Header(description: "Description", performance: .Good) {
+    Header(title: "Long title title title title title title title title title title title title ", description: "Description", performance: .Good) {
       Text("Body")
       Text("Text")
       Rectangle().stroke(Colors.error).frame(height: 1200)

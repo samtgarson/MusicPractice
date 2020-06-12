@@ -22,6 +22,8 @@
 		22139825248BB78400B480AE /* music_practice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22139823248BB78400B480AE /* music_practice.xcdatamodeld */; };
 		22139827248BC19A00B480AE /* SongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22139826248BC19A00B480AE /* SongService.swift */; };
 		22139829248BC63600B480AE /* NewSongPracticeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22139828248BC63600B480AE /* NewSongPracticeScreen.swift */; };
+		221951172492443A00D9C1F4 /* PracticeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221951162492443A00D9C1F4 /* PracticeTimer.swift */; };
+		2219511924926EB200D9C1F4 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219511824926EB200D9C1F4 /* Countdown.swift */; };
 		221CDD822486BAB9008B10D6 /* MPRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221CDD812486BAB9008B10D6 /* MPRow.swift */; };
 		221CDD842486CBD0008B10D6 /* MPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221CDD832486CBD0008B10D6 /* MPList.swift */; };
 		221CDD862486EDDE008B10D6 /* SongsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221CDD852486EDDE008B10D6 /* SongsList.swift */; };
@@ -50,7 +52,7 @@
 		2296B9AB248C4D3500C48348 /* SongsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9AA248C4D3500C48348 /* SongsScreen.swift */; };
 		22976288248FEC3C00B3FA33 /* SongProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22976287248FEC3C00B3FA33 /* SongProgressService.swift */; };
 		2297628B2490C80700B3FA33 /* WeightedAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628A2490C80700B3FA33 /* WeightedAverage.swift */; };
-		2297628D2490DBE900B3FA33 /* SongProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628C2490DBE900B3FA33 /* SongProgressBar.swift */; };
+		2297628D2490DBE900B3FA33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628C2490DBE900B3FA33 /* ProgressBar.swift */; };
 		2297628F2490DDD400B3FA33 /* PerformanceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628E2490DDD400B3FA33 /* PerformanceColor.swift */; };
 		2297629124910BD700B3FA33 /* CollapsibleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297629024910BD700B3FA33 /* CollapsibleSection.swift */; };
 		22A5FD492487B3AF009E1161 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5FD482487B3AF009E1161 /* Seeder.swift */; };
@@ -92,6 +94,8 @@
 		22139824248BB78400B480AE /* music_practice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = music_practice.xcdatamodel; sourceTree = "<group>"; };
 		22139826248BC19A00B480AE /* SongService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongService.swift; sourceTree = "<group>"; };
 		22139828248BC63600B480AE /* NewSongPracticeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongPracticeScreen.swift; sourceTree = "<group>"; };
+		221951162492443A00D9C1F4 /* PracticeTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTimer.swift; sourceTree = "<group>"; };
+		2219511824926EB200D9C1F4 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		221CDD812486BAB9008B10D6 /* MPRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRow.swift; sourceTree = "<group>"; };
 		221CDD832486CBD0008B10D6 /* MPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPList.swift; sourceTree = "<group>"; };
 		221CDD852486EDDE008B10D6 /* SongsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsList.swift; sourceTree = "<group>"; };
@@ -124,7 +128,7 @@
 		2296B9AA248C4D3500C48348 /* SongsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsScreen.swift; sourceTree = "<group>"; };
 		22976287248FEC3C00B3FA33 /* SongProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProgressService.swift; sourceTree = "<group>"; };
 		2297628A2490C80700B3FA33 /* WeightedAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedAverage.swift; sourceTree = "<group>"; };
-		2297628C2490DBE900B3FA33 /* SongProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProgressBar.swift; sourceTree = "<group>"; };
+		2297628C2490DBE900B3FA33 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		2297628E2490DDD400B3FA33 /* PerformanceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceColor.swift; sourceTree = "<group>"; };
 		2297629024910BD700B3FA33 /* CollapsibleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleSection.swift; sourceTree = "<group>"; };
 		22A5FD482487B3AF009E1161 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				220E650724854A5900B74DE9 /* Layouts */,
 				222D80C7248403740086A37A /* NewSongScreen.swift */,
 				22139828248BC63600B480AE /* NewSongPracticeScreen.swift */,
+				221951162492443A00D9C1F4 /* PracticeTimer.swift */,
 				220E6513248561E900B74DE9 /* TheoryScreen.swift */,
 				222D80C9248403E80086A37A /* SettingsScreen.swift */,
 				2296B9AA248C4D3500C48348 /* SongsScreen.swift */,
@@ -223,6 +228,7 @@
 				22139821248BAFBD00B480AE /* HeaderContent.swift */,
 				221EC491248C6B2E004672FD /* NavigationWrapper.swift */,
 				2297629024910BD700B3FA33 /* CollapsibleSection.swift */,
+				2219511824926EB200D9C1F4 /* Countdown.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -370,7 +376,7 @@
 			children = (
 				221CDD852486EDDE008B10D6 /* SongsList.swift */,
 				22D936EB248D50CD006060D5 /* SongRow.swift */,
-				2297628C2490DBE900B3FA33 /* SongProgressBar.swift */,
+				2297628C2490DBE900B3FA33 /* ProgressBar.swift */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 				22D936EC248D50CD006060D5 /* SongRow.swift in Sources */,
 				2212C6172485A45900D6B86C /* Header.swift in Sources */,
 				222D80C8248403740086A37A /* NewSongScreen.swift in Sources */,
+				221951172492443A00D9C1F4 /* PracticeTimer.swift in Sources */,
 				22139825248BB78400B480AE /* music_practice.xcdatamodeld in Sources */,
 				220E65162485625000B74DE9 /* PracticeService.swift in Sources */,
 				220E650924854A6400B74DE9 /* Modal.swift in Sources */,
@@ -581,7 +588,7 @@
 				22AF152F248D30BC004BD7E1 /* WithDragAction.swift in Sources */,
 				222D80D3248418660086A37A /* Page.swift in Sources */,
 				22139822248BAFBD00B480AE /* HeaderContent.swift in Sources */,
-				2297628D2490DBE900B3FA33 /* SongProgressBar.swift in Sources */,
+				2297628D2490DBE900B3FA33 /* ProgressBar.swift in Sources */,
 				221CDD862486EDDE008B10D6 /* SongsList.swift in Sources */,
 				222D80CA248403E90086A37A /* SettingsScreen.swift in Sources */,
 				222D80C62484034D0086A37A /* HomeScreen.swift in Sources */,
@@ -610,6 +617,7 @@
 				22336780248C0964008563FF /* PracticesList.swift in Sources */,
 				2296B9A6248C1E9700C48348 /* PracticeDisplay.swift in Sources */,
 				225404AF248BF52600584835 /* EntityProtocol.swift in Sources */,
+				2219511924926EB200D9C1F4 /* Countdown.swift in Sources */,
 				22A5FD492487B3AF009E1161 /* Seeder.swift in Sources */,
 				22A5FD502488087D009E1161 /* MPTextField.swift in Sources */,
 				22A5FD5224880E28009E1161 /* MPForm.swift in Sources */,

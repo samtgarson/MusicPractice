@@ -17,7 +17,7 @@ struct PracticeDisplay: Hashable {
   var score: Int16
   var description: String
   
-  static var models: [PracticeDisplay] {
+  static var items: [PracticeDisplay] {
     [
       self.init(icon: .smile, iconColor: performanceColor(for: .Good), score: 1, description: "It was easy!"),
       self.init(icon: .meh, iconColor: performanceColor(for: .Meh), score: 0, description: "It was OK, needs more work."),
@@ -26,7 +26,7 @@ struct PracticeDisplay: Hashable {
   }
   
   static func with(score: Int16) -> PracticeDisplay? {
-    models.first { $0.score == score }
+    items.first { $0.score == score }
   }
   
   var iconImage: Icon {

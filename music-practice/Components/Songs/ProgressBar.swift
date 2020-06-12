@@ -8,12 +8,14 @@
 
 import SwiftUI
 
-struct SongProgressBar: View {
-  internal init(for performance: Performance) {
+struct ProgressBar: View {
+  internal init(for performance: Performance, monochrome: Bool = false) {
     self.performance = performance
+    self.monochrome = monochrome
   }
   
   var performance: Performance
+  var monochrome: Bool
   
   var body: some View {
     HStack(spacing: 2) {
@@ -28,7 +30,7 @@ struct SongProgressBar: View {
   }
   
   private var color: Color {
-    performanceColor(for: performance)
+    monochrome ? Colors.primary : performanceColor(for: performance)
   }
   
   private var limit: Int {
@@ -46,9 +48,9 @@ struct SongProgressBar: View {
 struct ProgressBar_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      SongProgressBar(for: .Good)
-      SongProgressBar(for: .Meh)
-      SongProgressBar(for: .Bad)
+      ProgressBar(for: .Good)
+      ProgressBar(for: .Meh)
+      ProgressBar(for: .Bad)
     }
   }
 }

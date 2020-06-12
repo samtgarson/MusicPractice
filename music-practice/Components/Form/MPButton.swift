@@ -20,14 +20,15 @@ struct MPButton: View {
   var onTap: (() -> Void)?
   var iconName: Feather.IconName?
   var body: some View {
-    HStack {
-      Text(label)
-      icon
-    }
-    .foregroundColor(.white)
-    .frame(maxWidth: .infinity, alignment: .trailing)
-    .onTapGesture {
+    Button(action: {
       if let handler = self.onTap { handler() }
+    }) {
+      HStack {
+        Text(label)
+        icon
+      }
+      .padding(.vertical, Spacing.small)
+      .frame(maxWidth: .infinity, alignment: .trailing)
     }
   }
   
