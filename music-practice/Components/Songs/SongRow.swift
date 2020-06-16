@@ -11,7 +11,7 @@ import SwiftUI
 struct SongRow: View {
   internal init(song: Song) {
     self.song = song
-    self.performance = SongProgressService(song).performance
+    self.performance = PracticePerformanceService(song.practiceArray).performance
   }
   
   var song: Song

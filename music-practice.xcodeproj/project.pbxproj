@@ -42,17 +42,19 @@
 		225229AB2483FA60006F53F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225229AA2483FA60006F53F5 /* Preview Assets.xcassets */; };
 		225229AE2483FA60006F53F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225229AC2483FA60006F53F5 /* LaunchScreen.storyboard */; };
 		225229B92483FA60006F53F5 /* SongProgressServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225229B82483FA60006F53F5 /* SongProgressServiceTests.swift */; };
-		225404AF248BF52600584835 /* EntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225404AE248BF52600584835 /* EntityProtocol.swift */; };
+		225404AF248BF52600584835 /* EntityProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225404AE248BF52600584835 /* EntityProtocols.swift */; };
 		225404B1248BF54500584835 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225404B0248BF54500584835 /* Song.swift */; };
 		225404B5248BF56700584835 /* SongPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225404B4248BF56700584835 /* SongPractice.swift */; };
 		225A4C4B2493E1A8009F5E1E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C4A2493E1A8009F5E1E /* NotificationService.swift */; };
 		225A4C4D249420F7009F5E1E /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C4C249420F7009F5E1E /* RelativeDateFormatter.swift */; };
+		225A4C4F2494285D009F5E1E /* ScaleLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C4E2494285D009F5E1E /* ScaleLevels.swift */; };
+		225A4C52249542A4009F5E1E /* TheoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C51249542A4009F5E1E /* TheoryService.swift */; };
 		226E312E248A3CC000BEEBC4 /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E312D248A3CC000BEEBC4 /* Unwrap.swift */; };
 		227760AB2486852B0094B78E /* StatusBarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227760AA2486852B0094B78E /* StatusBarService.swift */; };
 		2296B9A6248C1E9700C48348 /* PracticeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */; };
 		2296B9A9248C4CE800C48348 /* PracticeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9A8248C4CE800C48348 /* PracticeLog.swift */; };
 		2296B9AB248C4D3500C48348 /* SongsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9AA248C4D3500C48348 /* SongsScreen.swift */; };
-		22976288248FEC3C00B3FA33 /* SongProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22976287248FEC3C00B3FA33 /* SongProgressService.swift */; };
+		22976288248FEC3C00B3FA33 /* PracticePerformanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22976287248FEC3C00B3FA33 /* PracticePerformanceService.swift */; };
 		2297628B2490C80700B3FA33 /* WeightedAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628A2490C80700B3FA33 /* WeightedAverage.swift */; };
 		2297628D2490DBE900B3FA33 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628C2490DBE900B3FA33 /* ProgressBar.swift */; };
 		2297628F2490DDD400B3FA33 /* PerformanceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297628E2490DDD400B3FA33 /* PerformanceColor.swift */; };
@@ -66,6 +68,9 @@
 		22AF152F248D30BC004BD7E1 /* WithDragAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF152E248D30BC004BD7E1 /* WithDragAction.swift */; };
 		22D936EC248D50CD006060D5 /* SongRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D936EB248D50CD006060D5 /* SongRow.swift */; };
 		22DDC18F248BE21C00721D9B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DDC18E248BE21C00721D9B /* Icon.swift */; };
+		22EE5AA724963A5900D591D7 /* ScaleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE5AA624963A5900D591D7 /* ScaleList.swift */; };
+		22EE5AA92496427800D591D7 /* TheoryLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE5AA82496427800D591D7 /* TheoryLabels.swift */; };
+		22EE5AAB24965B2500D591D7 /* ScalePractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE5AAA24965B2500D591D7 /* ScalePractice.swift */; };
 		4DA31AEBE9824D0C6C9A45BA /* Pods_music_practiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6954E47707DF7ADF093FD1CE /* Pods_music_practiceTests.framework */; };
 		D93BC045B1C21DAC7B8ED883 /* Pods_music_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638A1E4B7570329DAC1C6CE4 /* Pods_music_practice.framework */; };
 /* End PBXBuildFile section */
@@ -120,17 +125,19 @@
 		225229B42483FA60006F53F5 /* music-practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "music-practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		225229B82483FA60006F53F5 /* SongProgressServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProgressServiceTests.swift; sourceTree = "<group>"; };
 		225229BA2483FA60006F53F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		225404AE248BF52600584835 /* EntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityProtocol.swift; sourceTree = "<group>"; };
+		225404AE248BF52600584835 /* EntityProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityProtocols.swift; sourceTree = "<group>"; };
 		225404B0248BF54500584835 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		225404B4248BF56700584835 /* SongPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongPractice.swift; sourceTree = "<group>"; };
 		225A4C4A2493E1A8009F5E1E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		225A4C4C249420F7009F5E1E /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
+		225A4C4E2494285D009F5E1E /* ScaleLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleLevels.swift; sourceTree = "<group>"; };
+		225A4C51249542A4009F5E1E /* TheoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryService.swift; sourceTree = "<group>"; };
 		226E312D248A3CC000BEEBC4 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		227760AA2486852B0094B78E /* StatusBarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarService.swift; sourceTree = "<group>"; };
 		2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDisplay.swift; sourceTree = "<group>"; };
 		2296B9A8248C4CE800C48348 /* PracticeLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeLog.swift; sourceTree = "<group>"; };
 		2296B9AA248C4D3500C48348 /* SongsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsScreen.swift; sourceTree = "<group>"; };
-		22976287248FEC3C00B3FA33 /* SongProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProgressService.swift; sourceTree = "<group>"; };
+		22976287248FEC3C00B3FA33 /* PracticePerformanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticePerformanceService.swift; sourceTree = "<group>"; };
 		2297628A2490C80700B3FA33 /* WeightedAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedAverage.swift; sourceTree = "<group>"; };
 		2297628C2490DBE900B3FA33 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		2297628E2490DDD400B3FA33 /* PerformanceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceColor.swift; sourceTree = "<group>"; };
@@ -144,6 +151,9 @@
 		22AF152E248D30BC004BD7E1 /* WithDragAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDragAction.swift; sourceTree = "<group>"; };
 		22D936EB248D50CD006060D5 /* SongRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRow.swift; sourceTree = "<group>"; };
 		22DDC18E248BE21C00721D9B /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		22EE5AA624963A5900D591D7 /* ScaleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleList.swift; sourceTree = "<group>"; };
+		22EE5AA82496427800D591D7 /* TheoryLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryLabels.swift; sourceTree = "<group>"; };
+		22EE5AAA24965B2500D591D7 /* ScalePractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePractice.swift; sourceTree = "<group>"; };
 		505DCCC5D1BBE8F0D54F5221 /* Pods-music-practice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-music-practice.release.xcconfig"; path = "Target Support Files/Pods-music-practice/Pods-music-practice.release.xcconfig"; sourceTree = "<group>"; };
 		638A1E4B7570329DAC1C6CE4 /* Pods_music_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_music_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6954E47707DF7ADF093FD1CE /* Pods_music_practiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_music_practiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,10 +222,11 @@
 		222D80CB248416040086A37A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				225A4C5024954257009F5E1E /* TheoryServices */,
 				22A5FD5524883C92009E1161 /* FormService.swift */,
 				22976286248FEBE900B3FA33 /* DataServices */,
 				227760AA2486852B0094B78E /* StatusBarService.swift */,
-				22976287248FEC3C00B3FA33 /* SongProgressService.swift */,
+				22976287248FEC3C00B3FA33 /* PracticePerformanceService.swift */,
 				225A4C4A2493E1A8009F5E1E /* NotificationService.swift */,
 			);
 			path = Services;
@@ -224,12 +235,13 @@
 		222D80D424842AF30086A37A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				22EE5AA5249635DB00D591D7 /* Theory */,
 				22D936EA248D50A8006060D5 /* Songs */,
 				22A5FD4E24880867009E1161 /* Form */,
 				22A5FD4B2487D33C009E1161 /* Elements */,
-				22A5FD4A2487D333009E1161 /* Lists */,
 				226E312F248AA31500BEEBC4 /* Utilities */,
 				222D80D524842B190086A37A /* Main.swift */,
+				22EE5AA4249635D300D591D7 /* Practices */,
 				22139821248BAFBD00B480AE /* HeaderContent.swift */,
 				221EC491248C6B2E004672FD /* NavigationWrapper.swift */,
 				2297629024910BD700B3FA33 /* CollapsibleSection.swift */,
@@ -301,11 +313,21 @@
 		225404AD248BF4CD00584835 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				225404AE248BF52600584835 /* EntityProtocol.swift */,
+				225404AE248BF52600584835 /* EntityProtocols.swift */,
 				225404B0248BF54500584835 /* Song.swift */,
 				225404B4248BF56700584835 /* SongPractice.swift */,
+				22EE5AAA24965B2500D591D7 /* ScalePractice.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		225A4C5024954257009F5E1E /* TheoryServices */ = {
+			isa = PBXGroup;
+			children = (
+				225A4C4E2494285D009F5E1E /* ScaleLevels.swift */,
+				225A4C51249542A4009F5E1E /* TheoryService.swift */,
+			);
+			path = TheoryServices;
 			sourceTree = "<group>";
 		};
 		226E312F248AA31500BEEBC4 /* Utilities */ = {
@@ -347,22 +369,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		22A5FD4A2487D333009E1161 /* Lists */ = {
+		22A5FD4B2487D33C009E1161 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
 				221CDD832486CBD0008B10D6 /* MPList.swift */,
 				221CDD812486BAB9008B10D6 /* MPRow.swift */,
-				2233677F248C0964008563FF /* PracticesList.swift */,
-			);
-			path = Lists;
-			sourceTree = "<group>";
-		};
-		22A5FD4B2487D33C009E1161 /* Elements */ = {
-			isa = PBXGroup;
-			children = (
 				22A5FD4C2487D34D009E1161 /* SectionTitle.swift */,
 				2213981D248AE46F00B480AE /* PageTitle.swift */,
 				22DDC18E248BE21C00721D9B /* Icon.swift */,
+				22EE5AA82496427800D591D7 /* TheoryLabels.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -385,6 +400,22 @@
 				2297628C2490DBE900B3FA33 /* ProgressBar.swift */,
 			);
 			path = Songs;
+			sourceTree = "<group>";
+		};
+		22EE5AA4249635D300D591D7 /* Practices */ = {
+			isa = PBXGroup;
+			children = (
+				2233677F248C0964008563FF /* PracticesList.swift */,
+			);
+			path = Practices;
+			sourceTree = "<group>";
+		};
+		22EE5AA5249635DB00D591D7 /* Theory */ = {
+			isa = PBXGroup;
+			children = (
+				22EE5AA624963A5900D591D7 /* ScaleList.swift */,
+			);
+			path = Theory;
 			sourceTree = "<group>";
 		};
 		403EE71E82151B2B06F4F71A /* Frameworks */ = {
@@ -419,6 +450,7 @@
 				225229982483FA5E006F53F5 /* Frameworks */,
 				225229992483FA5E006F53F5 /* Resources */,
 				ABA327CDBF7E4C4AE74E446B /* [CP] Embed Pods Frameworks */,
+				22EE5AA324957A0B00D591D7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -511,6 +543,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		22EE5AA324957A0B00D591D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
+		};
 		2A20D2FBB2006087A93CEA26 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -588,9 +637,11 @@
 				22139825248BB78400B480AE /* music_practice.xcdatamodeld in Sources */,
 				220E65162485625000B74DE9 /* PracticeService.swift in Sources */,
 				220E650924854A6400B74DE9 /* Modal.swift in Sources */,
+				22EE5AAB24965B2500D591D7 /* ScalePractice.swift in Sources */,
 				22139820248AE51100B480AE /* Sticky.swift in Sources */,
 				2296B9AB248C4D3500C48348 /* SongsScreen.swift in Sources */,
 				22A5FD5624883C92009E1161 /* FormService.swift in Sources */,
+				22EE5AA724963A5900D591D7 /* ScaleList.swift in Sources */,
 				2297629124910BD700B3FA33 /* CollapsibleSection.swift in Sources */,
 				22AF152F248D30BC004BD7E1 /* WithDragAction.swift in Sources */,
 				222D80D3248418660086A37A /* Page.swift in Sources */,
@@ -613,18 +664,21 @@
 				226E312E248A3CC000BEEBC4 /* Unwrap.swift in Sources */,
 				225229A12483FA5E006F53F5 /* SceneDelegate.swift in Sources */,
 				220E6514248561E900B74DE9 /* TheoryScreen.swift in Sources */,
+				225A4C4F2494285D009F5E1E /* ScaleLevels.swift in Sources */,
 				2297628B2490C80700B3FA33 /* WeightedAverage.swift in Sources */,
 				2296B9A9248C4CE800C48348 /* PracticeLog.swift in Sources */,
 				221EC492248C6B2E004672FD /* NavigationWrapper.swift in Sources */,
 				22A5FD4D2487D34D009E1161 /* SectionTitle.swift in Sources */,
-				22976288248FEC3C00B3FA33 /* SongProgressService.swift in Sources */,
+				22976288248FEC3C00B3FA33 /* PracticePerformanceService.swift in Sources */,
+				22EE5AA92496427800D591D7 /* TheoryLabels.swift in Sources */,
 				22139827248BC19A00B480AE /* SongService.swift in Sources */,
 				222D80CF2484162F0086A37A /* Constants.swift in Sources */,
 				227760AB2486852B0094B78E /* StatusBarService.swift in Sources */,
 				220E651B2485736500B74DE9 /* BaseService.swift in Sources */,
+				225A4C52249542A4009F5E1E /* TheoryService.swift in Sources */,
 				22336780248C0964008563FF /* PracticesList.swift in Sources */,
 				2296B9A6248C1E9700C48348 /* PracticeDisplay.swift in Sources */,
-				225404AF248BF52600584835 /* EntityProtocol.swift in Sources */,
+				225404AF248BF52600584835 /* EntityProtocols.swift in Sources */,
 				2219511924926EB200D9C1F4 /* Countdown.swift in Sources */,
 				22A5FD492487B3AF009E1161 /* Seeder.swift in Sources */,
 				22A5FD502488087D009E1161 /* MPTextField.swift in Sources */,

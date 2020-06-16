@@ -21,18 +21,29 @@ enum SongFilter {
   case Archived
 }
 
+enum SongSort {
+  case CreatedAt
+  case Performance
+}
+
 struct SongsList: View {
-  internal init(showAddSong: ShowAddSongState = .WhenEmpty, filter: SongFilter = .All, limit: Int? = nil) {
+  internal init(
+    showAddSong: ShowAddSongState = .WhenEmpty,
+    filter: SongFilter = .All,
+    sort: SongSort = .CreatedAt,
+    limit: Int? = nil
+  ) {
     self.showAddSong = showAddSong
     self.limit = limit
+    self.sort = sort
     
     switch filter {
     case .All:
-      self.fetchRequest = SongService.all(limit: limit)
+      self.fetchRequest = SongService.all()
     case .Active:
-      self.fetchRequest = SongService.active(limit: limit)
+      self.fetchRequest = SongService.active()
     case .Archived:
-      self.fetchRequest = SongService.archived(limit: limit)
+      self.fetchRequest = SongService.archived()
     }
   }
   
@@ -41,15 +52,27 @@ struct SongsList: View {
   private var fetchRequest: FetchRequest<Song>
   var showAddSong: ShowAddSongState = .WhenEmpty
   var limit: Int?
-  var songs: FetchedResults<Song> {
-    fetchRequest.wrappedValue
-  }
+  var sort: SongSort
   
   var body: some View {
     MPList(collection: songs) { song in
       SongRow(song: song).transition(.move(edge: .bottom))
     }
     .withFooter { self.footer }
+  }
+  
+  var songs: Array<Song> {
+    var songs = Array(fetchRequest.wrappedValue)
+    if let limit = limit {
+      songs = Array(songs.prefix(limit))
+    }
+// TODO: Allow sorting by performance
+//    if sort == .Performance {
+//      songs = songs.sorted(by: {
+//
+//      })
+//    }
+    return songs
   }
   
   private var footer: some View {

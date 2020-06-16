@@ -6,8 +6,8 @@
 //  Copyright © 2020 Sam Garson. All rights reserved.
 //
 
-//import Foundation
-//import CoreData
+import Foundation
+import CoreData
 
-extension SongPractice: EntityProtocol {
+extension SongPractice: BaseEntityProtocol, PracticeEntityProtocol {
 }

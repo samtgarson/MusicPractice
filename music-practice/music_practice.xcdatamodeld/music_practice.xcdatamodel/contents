@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F96" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ScalePractice" representedClassName=".ScalePractice" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="scaleId" optional="YES" attributeType="String"/>
+        <attribute name="score" optional="YES" attributeType="Integer 16" minValueString="-1" maxValueString="1" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Song" representedClassName=".Song" syncable="YES" codeGenerationType="class">
         <attribute name="archivedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -14,6 +20,7 @@
         <relationship name="song" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="practices" inverseEntity="Song"/>
     </entity>
     <elements>
+        <element name="ScalePractice" positionX="-45" positionY="45" width="128" height="103"/>
         <element name="Song" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="SongPractice" positionX="-36" positionY="27" width="128" height="103"/>
     </elements>

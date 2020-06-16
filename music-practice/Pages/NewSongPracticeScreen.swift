@@ -58,7 +58,7 @@ struct NewSongPracticeScreen: View {
   }
   
   func createPractice(_ score: Int16) {
-    PracticeService().create(.song(song), score)
+    _ = PracticeService().createSongPractice(song, score)
     hide()
   }
 }

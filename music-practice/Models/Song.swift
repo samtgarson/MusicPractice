@@ -9,5 +9,8 @@
 import Foundation
 import CoreData
 
-extension Song: EntityProtocol {
+extension Song: BaseEntityProtocol {
+  public var practiceArray: [SongPractice] {
+    practices?.allObjects as? [SongPractice] ?? []
+  }
 }

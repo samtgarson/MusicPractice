@@ -22,7 +22,7 @@ public class BaseService {
     }
   }
   
-  func instantiate<T>(_ Entity: T.Type, _ context: NSManagedObjectContext) -> T where T: EntityProtocol {
+  func instantiate<T>(_ Entity: T.Type, _ context: NSManagedObjectContext) -> T where T: BaseEntityProtocol {
     var newInstance = Entity.init(context: context)
     newInstance.id = UUID()
     newInstance.createdAt = Date()

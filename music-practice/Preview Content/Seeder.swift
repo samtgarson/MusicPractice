@@ -30,10 +30,10 @@ struct Seeder<Content : View>: View {
   var controls: Bool = true
   var content: Content
   
-  init(controls: Bool? = nil, _ fn: () -> Content) {
+  init(controls: Bool? = nil, _ content: () -> Content) {
     self.controls = controls ?? true
-    content = fn()
-    context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    self.content = content()
+    self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   }
   
   var body: some View {
@@ -51,9 +51,13 @@ struct Seeder<Content : View>: View {
   
   func seedAllEntities() {
     for i in 1...5 {
+      let scale = TheoryService.scaleLevels.randomElement()!.first!
+      _ = PracticeService().createScalePractice(scale, Int16.random(in: -1...1))
+      
       let song = SongService().create(title: "Song \(i)")
+      
       if i < 3 {
-        _ = PracticeService().create(.song(song!), Int16.random(in: -1...1))
+        _ = PracticeService().createSongPractice(song!, Int16.random(in: -1...1))
       }
     }
   }

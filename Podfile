@@ -8,6 +8,7 @@ target 'music-practice' do
   # Pods for music-practice
   
   pod "NoveFeatherIcons", "~> 1.0"
+  pod 'MusicTheorySwift'
 
   target 'music-practiceTests' do
     inherit! :search_paths

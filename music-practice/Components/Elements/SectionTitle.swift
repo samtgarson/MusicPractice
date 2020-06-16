@@ -13,12 +13,11 @@ struct SectionTitle: View {
   
   var body: some View {
     Text(text.uppercased())
-      .font(fontStyle)
+      .font(Fonts.small)
       .kerning(2)
       .fixedSize(horizontal: true, vertical: false)
+      .opacity(Opacity.Faded)
   }
-  
-  var fontStyle = Fonts.small.weight(.medium)
 }
 
 struct SectionTitle_Previews: PreviewProvider {

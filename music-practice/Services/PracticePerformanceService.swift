@@ -10,13 +10,13 @@ import Foundation
 
 let a: Double = 100
 
-class SongProgressService {
+class PracticePerformanceService {
   static let maxDays: Double = 30
-  var song: Song
+  var practices: [PracticeEntityProtocol]
   private var memo: Double?
   
-  init(_ song: Song) {
-    self.song = song
+  init(_ practices: [PracticeEntityProtocol]) {
+    self.practices = practices
   }
   
   var performance: Performance {
@@ -47,33 +47,27 @@ class SongProgressService {
     return self.memo!
   }
   
-  func staleness(_ practice: SongPractice) -> Double {
+  func staleness(_ practice: PracticeEntityProtocol) -> Double {
     guard let createdAt = practice.createdAt else { return 1 }
     
     let sincePractice = createdAt.timeIntervalSinceNow
     let daysSincePractce = Double(sincePractice) / 60 / 60 / 24
-    let normalised = 1 - (daysSincePractce/SongProgressService.maxDays)
+    let normalised = 1 - (daysSincePractce/PracticePerformanceService.maxDays)
     
     // Exponential backoff
     return (pow(a, normalised) - 1) / (a - 1)
   }
   
-  private func filterPractices(_ practice: SongPractice) -> Bool {
+  private func filterPractices(_ practice: PracticeEntityProtocol) -> Bool {
     guard let createdAt = practice.createdAt else { return false }
     
     let sincePractice = createdAt.timeIntervalSinceNow
     let daysSincePractce = Double(sincePractice) / 60 / 60 / 24
-    return daysSincePractce <= SongProgressService.maxDays
+    return daysSincePractce <= PracticePerformanceService.maxDays
   }
   
   private func normaliseScore(_ score: Int16) -> Double {
     (Double(score) / 2) + 0.5
-  }
-  
-  private var practices: [SongPractice] {
-    guard let practices = song.practices else { return [SongPractice]() }
-
-    return practices.allObjects as! [SongPractice]
   }
   
   struct PracticeWeight: WeightAndValue {

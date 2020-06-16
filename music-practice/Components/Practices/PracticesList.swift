@@ -10,14 +10,20 @@ import SwiftUI
 import NoveFeatherIcons
 
 struct PracticesList: View {
-  internal init() {
-    self.songPracticeRequest = PracticeService.songPractices()
-  }
-  
   @State(initialValue: false) var showScreen
-  private var songPracticeRequest: FetchRequest<SongPractice>
+  var songPractices: FetchRequest<SongPractice>
+  var scalePractices: FetchRequest<ScalePractice>
+  
+  init() {
+    self.songPractices = PracticeService.songPractices()
+    self.scalePractices = PracticeService.scalePractices()
+  }
+
   var practices: [PracticeType] {
-    songPracticeRequest.wrappedValue.map { p in PracticeType.song(p) }
+    var practices = [PracticeType]()
+    practices += songPractices.wrappedValue.map { p in PracticeType.song(p) }
+    practices += scalePractices.wrappedValue.map { p in PracticeType.scale(p) }
+    return practices.sorted { $0.createdAt > $1.createdAt }
   }
   
   var body: some View {
@@ -25,8 +31,8 @@ struct PracticesList: View {
       MPList(collection: practices) { practice in
         MPRow {
           VStack(spacing: Spacing.small * 0.5) {
-            RowLabel(self.label(for: practice))
-            RowLabel(self.formatDate(practice)).font(Fonts.small)
+            self.label(for: practice)
+            RowLabel(self.formatDate(practice)).font(Fonts.small.weight(.light))
           }
           self.icon(for: practice)
         }
@@ -43,25 +49,23 @@ struct PracticesList: View {
     }
   }
   
-  private func label(for practice: PracticeType) -> String {
+  private func label(for practice: PracticeType) -> some View {
     switch practice {
     case .song(let songPractice):
-      return songPractice.song?.title ?? "nope"
+      return RowLabel(songPractice.song!.title!)
+    case .scale(let scalePractice):
+      let key = scalePractice.scale!.key
+      let type = scalePractice.scale!.type
+      return RowLabel("\(key.description) \(type.description)")
     }
   }
   
   private func icon(for practice: PracticeType) -> Icon {
-    switch practice {
-    case .song(let songPractice):
-      return PracticeDisplay.with(score: songPractice.score)!.iconImage
-    }
+    PracticeDisplay.with(score: practice.score)!.iconImage
   }
   
   private func formatDate(_ practice: PracticeType) -> String {
-    switch practice {
-    case .song(let songPractice):
-      return RelativeDateFormatter(date: songPractice.createdAt!).format()
-    }
+    RelativeDateFormatter(date: practice.createdAt).format()
   }
 }
 

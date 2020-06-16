@@ -79,7 +79,7 @@ struct Countdown: View {
         .fixedSize(horizontal: true, vertical: false)
       
       Button(action: self.exit) {
-        Text("SKIP").font(Fonts.small.weight(.bold))
+        Text("SKIP").font(Fonts.small)
         Icon(iconName: .arrowRight)
       }
     }

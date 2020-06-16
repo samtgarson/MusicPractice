@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-music-practice/Pods-music-practice-frameworks.sh
+${BUILT_PRODUCTS_DIR}/MusicTheorySwift/MusicTheorySwift.framework
 ${BUILT_PRODUCTS_DIR}/NoveFeatherIcons/NoveFeatherIcons.framework
