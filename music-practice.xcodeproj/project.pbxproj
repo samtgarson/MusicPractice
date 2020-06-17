@@ -49,6 +49,8 @@
 		225A4C4D249420F7009F5E1E /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C4C249420F7009F5E1E /* RelativeDateFormatter.swift */; };
 		225A4C4F2494285D009F5E1E /* ScaleLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C4E2494285D009F5E1E /* ScaleLevels.swift */; };
 		225A4C52249542A4009F5E1E /* TheoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C51249542A4009F5E1E /* TheoryService.swift */; };
+		2260CBAF249A172C00B83F94 /* ScalePracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260CBAE249A172C00B83F94 /* ScalePracticeTests.swift */; };
+		2260CBB1249A18FA00B83F94 /* SongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260CBB0249A18FA00B83F94 /* SongTests.swift */; };
 		226E312E248A3CC000BEEBC4 /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E312D248A3CC000BEEBC4 /* Unwrap.swift */; };
 		227760AB2486852B0094B78E /* StatusBarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227760AA2486852B0094B78E /* StatusBarService.swift */; };
 		2296B9A6248C1E9700C48348 /* PracticeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */; };
@@ -132,6 +134,8 @@
 		225A4C4C249420F7009F5E1E /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
 		225A4C4E2494285D009F5E1E /* ScaleLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleLevels.swift; sourceTree = "<group>"; };
 		225A4C51249542A4009F5E1E /* TheoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryService.swift; sourceTree = "<group>"; };
+		2260CBAE249A172C00B83F94 /* ScalePracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePracticeTests.swift; sourceTree = "<group>"; };
+		2260CBB0249A18FA00B83F94 /* SongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTests.swift; sourceTree = "<group>"; };
 		226E312D248A3CC000BEEBC4 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		227760AA2486852B0094B78E /* StatusBarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarService.swift; sourceTree = "<group>"; };
 		2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDisplay.swift; sourceTree = "<group>"; };
@@ -304,7 +308,8 @@
 		225229B72483FA60006F53F5 /* music-practiceTests */ = {
 			isa = PBXGroup;
 			children = (
-				225229B82483FA60006F53F5 /* SongProgressServiceTests.swift */,
+				2260CBAD249A171900B83F94 /* Models */,
+				2260CBAC249A171100B83F94 /* Services */,
 				225229BA2483FA60006F53F5 /* Info.plist */,
 			);
 			path = "music-practiceTests";
@@ -328,6 +333,23 @@
 				225A4C51249542A4009F5E1E /* TheoryService.swift */,
 			);
 			path = TheoryServices;
+			sourceTree = "<group>";
+		};
+		2260CBAC249A171100B83F94 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				225229B82483FA60006F53F5 /* SongProgressServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2260CBAD249A171900B83F94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2260CBB0249A18FA00B83F94 /* SongTests.swift */,
+				2260CBAE249A172C00B83F94 /* ScalePracticeTests.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		226E312F248AA31500BEEBC4 /* Utilities */ = {
@@ -691,6 +713,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2260CBAF249A172C00B83F94 /* ScalePracticeTests.swift in Sources */,
+				2260CBB1249A18FA00B83F94 /* SongTests.swift in Sources */,
 				225229B92483FA60006F53F5 /* SongProgressServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -891,7 +915,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/music-practice.app/music-practice";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Music Practice.app/Music Practice";
 			};
 			name = Debug;
 		};
@@ -913,7 +937,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/music-practice.app/music-practice";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Music Practice.app/Music Practice";
 			};
 			name = Release;
 		};

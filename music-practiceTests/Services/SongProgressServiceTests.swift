@@ -7,13 +7,13 @@
 //
 
 import XCTest
-@testable import music_practice
+@testable import Music_Practice
 
 class SongScoreServiceTests: XCTestCase {
   
   func testScoreWithNoPractices() throws {
     let song = SongService().create(title: "Test song")!
-    let result = SongProgressService(song).score
+    let result = PracticePerformanceService(song.practiceArray).averageScore
     
     XCTAssertEqual(result, 1.0)
   }
@@ -24,13 +24,13 @@ class SongScoreServiceTests: XCTestCase {
       _ = createPractice(song, score)
     }
     
-    let svc = SongProgressService(song)
+    let svc = PracticePerformanceService(song.practiceArray)
     
-    XCTAssert(compareDoubles(svc.score, 0.249999), "\(svc.score) not equal")
+    XCTAssert(compareDoubles(svc.averageScore, 0.249999), "\(svc.averageScore) not equal")
     XCTAssertEqual(svc.performance, Performance.Bad)
   }
   
-  func testStaleness() throws {
+  func testAge() throws {
     let tests = [
       947: 0.9983019121,
       106479: 0.825896691,
@@ -38,12 +38,12 @@ class SongScoreServiceTests: XCTestCase {
       864185: 0.2074471386
     ]
     let song = SongService().create(title: "Test song")!
-    let svc = SongProgressService(song)
+    let svc = PracticePerformanceService(song.practiceArray)
     
     for (secs, expected) in tests {
       let practice = createPractice(song, 0, createdAt: Date(timeIntervalSinceNow: Double(secs)))
       
-      let result = svc.staleness(practice)
+      let result = svc.practiceAge(practice)
       XCTAssert(compareDoubles(result, expected))
     }
   }

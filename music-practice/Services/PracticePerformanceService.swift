@@ -67,23 +67,24 @@ class PracticePerformanceService {
     
     let scores = practices.enumerated()
       .map { (index, practice) in
-        (value: practiceDistance(practice, practices[index - 1]), weight: practiceAge(practice))
+        (
+          value: practiceDistance(practice.createdAt!, index == 0 ? Date() : practices[index - 1].createdAt!),
+          weight: practiceAge(practice)
+        )
       }
     
     self._frequency = weightedAverage(scores)
     return self._frequency!
   }
   
-  private func practiceDistance(_ current: PracticeEntityProtocol, _ previous: PracticeEntityProtocol?) -> Double {
-    let currentDate = current.createdAt!
-    let previousDate = previous?.createdAt! ?? Date()
+  internal func practiceDistance(_ currentDate: Date, _ previousDate: Date) -> Double {
     let diff = Double(abs(currentDate.timeIntervalSince(previousDate)))
     let normalised = 1 - (diff / PracticePerformanceService.maxSeconds)
     
     return normalised
   }
   
-  private func practiceAge(_ practice: PracticeEntityProtocol) -> Double {
+  internal func practiceAge(_ practice: PracticeEntityProtocol) -> Double {
     let minutesSincePractce = Double(practice.createdAt!.timeIntervalSinceNow)
     let normalised = 1 - (minutesSincePractce/PracticePerformanceService.maxSeconds)
     
