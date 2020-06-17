@@ -11,16 +11,30 @@ import Foundation
 let a: Double = 100
 
 class PracticePerformanceService {
-  static let maxDays: Double = 30
+  static let maxSeconds: Double = 30 * 24 * 60 * 60
   var practices: [PracticeEntityProtocol]
-  private var memo: Double?
+  
+  private var _score: Double?
+  private var _frequency: Double?
   
   init(_ practices: [PracticeEntityProtocol]) {
     self.practices = practices
+      .filter(filterRecentPractices)
+      .sorted { $0.createdAt!.compare($1.createdAt!) == .orderedDescending }
   }
   
+  /// A combination of average score and frequency, which
+  /// can be used to prioritise the next resource to practice
+  var priority: Double {
+    weightedAverage([
+      (value: averageScore, weight: 0.5),
+      (value: frequency, weight: 1)
+    ])
+  }
+  
+  /// A representation of the average score using RAG rating
   var performance: Performance {
-    switch score {
+    switch averageScore {
     case 0..<0.3:
       return .Bad
     case 0.3..<0.6:
@@ -32,46 +46,64 @@ class PracticePerformanceService {
     }
   }
   
-  var score: Double {
-    if let memo = self.memo { return memo }
+  /// A weighted average of recent scorings for this resource
+  var averageScore: Double {
+    if let memo = self._score { return memo }
     
     guard practices.count > 0 else { return 1 }
     
     let scores = practices
-      .filter(filterPractices)
-      .map {
-        PracticeWeight(value: normaliseScore($0.score), weight: staleness($0))
+      .map { (value: normaliseScore($0.score), weight: practiceAge($0)) }
+    
+    self._score = weightedAverage(scores)
+    return self._score!
+  }
+  
+  /// A representation of how frequently this resource has been practiced
+  var frequency: Double {
+    if let memo = self._frequency { return memo }
+    
+    guard practices.count > 0 else { return 1 }
+    
+    let scores = practices.enumerated()
+      .map { (index, practice) in
+        (value: practiceDistance(practice, practices[index - 1]), weight: practiceAge(practice))
       }
     
-    self.memo = weightedAverage(scores)
-    return self.memo!
+    self._frequency = weightedAverage(scores)
+    return self._frequency!
   }
   
-  func staleness(_ practice: PracticeEntityProtocol) -> Double {
-    guard let createdAt = practice.createdAt else { return 1 }
+  private func practiceDistance(_ current: PracticeEntityProtocol, _ previous: PracticeEntityProtocol?) -> Double {
+    let currentDate = current.createdAt!
+    let previousDate = previous?.createdAt! ?? Date()
+    let diff = Double(abs(currentDate.timeIntervalSince(previousDate)))
+    let normalised = 1 - (diff / PracticePerformanceService.maxSeconds)
     
-    let sincePractice = createdAt.timeIntervalSinceNow
-    let daysSincePractce = Double(sincePractice) / 60 / 60 / 24
-    let normalised = 1 - (daysSincePractce/PracticePerformanceService.maxDays)
+    return normalised
+  }
+  
+  private func practiceAge(_ practice: PracticeEntityProtocol) -> Double {
+    let minutesSincePractce = Double(practice.createdAt!.timeIntervalSinceNow)
+    let normalised = 1 - (minutesSincePractce/PracticePerformanceService.maxSeconds)
     
+    return adjust(normalised)
+  }
+  
+  private func adjust(_ val: Double) -> Double {
     // Exponential backoff
-    return (pow(a, normalised) - 1) / (a - 1)
-  }
-  
-  private func filterPractices(_ practice: PracticeEntityProtocol) -> Bool {
-    guard let createdAt = practice.createdAt else { return false }
-    
-    let sincePractice = createdAt.timeIntervalSinceNow
-    let daysSincePractce = Double(sincePractice) / 60 / 60 / 24
-    return daysSincePractce <= PracticePerformanceService.maxDays
+    (pow(a, val) - 1) / (a - 1)
   }
   
   private func normaliseScore(_ score: Int16) -> Double {
     (Double(score) / 2) + 0.5
   }
+}
+
+private func filterRecentPractices(_ practice: PracticeEntityProtocol) -> Bool {
+  guard let createdAt = practice.createdAt else { return false }
   
-  struct PracticeWeight: WeightAndValue {
-    var value: Double
-    var weight: Double
-  }
+  let sincePractice = createdAt.timeIntervalSinceNow
+  let daysSincePractce = Double(sincePractice)
+  return daysSincePractce <= PracticePerformanceService.maxSeconds
 }

@@ -8,12 +8,9 @@
 
 import Foundation
 
-protocol WeightAndValue {
-  var value: Double { get set }
-  var weight: Double { get set }
-}
+typealias weightedValue = (value: Double, weight: Double)
 
-func weightedAverage<T>(_ values: [T]) -> Double where T: WeightAndValue {
+func weightedAverage(_ values: [weightedValue]) -> Double {
   precondition(values.count > 0)
   
   let totalWeight = values.reduce(0.0) { $0 + $1.weight }

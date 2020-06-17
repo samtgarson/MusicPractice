@@ -12,7 +12,7 @@ struct HomeScreen: View {
   var body: some View {
     Header(title: "Welcome!", description: "What shall we practice today?", performance: .Good) {
       SectionTitle(text: "Next Songs")
-      SongsList(showAddSong: .WhenEmpty, filter: .Active, limit: 2)
+      SongsList(showAddSong: .WhenEmpty, filter: .Active, sort: .Performance, limit: 2)
     }
   }
 }

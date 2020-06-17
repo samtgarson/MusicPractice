@@ -66,12 +66,13 @@ struct SongsList: View {
     if let limit = limit {
       songs = Array(songs.prefix(limit))
     }
-// TODO: Allow sorting by performance
-//    if sort == .Performance {
-//      songs = songs.sorted(by: {
-//
-//      })
-//    }
+
+    if sort == .Performance {
+      songs = songs.sorted(by: {
+        PracticePerformanceService($0.practiceArray).priority < PracticePerformanceService($1.practiceArray).priority
+      })
+    }
+    
     return songs
   }
   
@@ -109,9 +110,16 @@ struct SongsList_Previews: PreviewProvider {
   }
   
   struct PreviewWrapper: View {
+    @State(initialValue: false) var sortByPerformance: Bool
+    
     var body: some View {
       Seeder {
-        PageView { SongsList(showAddSong: .Always, limit: 3) }
+        PageView {
+          Toggle("Sort by performance?".uppercased(), isOn: $sortByPerformance)
+            .font(Fonts.small)
+            .padding(.bottom, 30)
+          SongsList(showAddSong: .Always, sort: sortByPerformance ? .Performance : .CreatedAt, limit: 3)
+        }
         .withDefaultStyles()
       }
     }
