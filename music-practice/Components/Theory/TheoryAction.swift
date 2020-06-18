@@ -10,20 +10,24 @@ import SwiftUI
 import MusicTheorySwift
 
 struct TheoryAction: View {
-  var item: TheoryType
+  var item: TheoryItem
+  var label: String?
   
-  init(_ item: TheoryType) {
+  init(_ item: TheoryItem, label: String? = nil) {
     self.item = item
+    if let label = label { self.label = label }
   }
   
   var body: some View {
     MPRow {
-      RowLabel(label)
+      RowLabel(label ?? defaultLabel)
       TheoryLabel(item)
     }
+    .padding(.bottom, Spacing.small)
+    .asRowWrapper()
   }
   
-  private var label: String {
+  private var defaultLabel: String {
     switch item {
     case .scale:
       return "Scale"
@@ -35,7 +39,8 @@ struct TheoryAction_Previews: PreviewProvider {
   static var previews: some View {
     let scale = Scale(type: .minor, key: Key(type: .g, accidental: .sharp))
     return PageView {
-      TheoryAction(TheoryType.scale(scale)).asRowWrapper()
+      TheoryAction(TheoryItem.scale(scale))
+      TheoryAction(TheoryItem.scale(scale), label: "Next")
     }
   }
 }

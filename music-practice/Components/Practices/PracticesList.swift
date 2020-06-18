@@ -15,8 +15,8 @@ struct PracticesList: View {
   var scalePractices: FetchRequest<ScalePractice>
   
   init() {
-    self.songPractices = PracticeService.songPractices()
-    self.scalePractices = PracticeService.scalePractices()
+    self.songPractices = RequestFactory.call(SongPractice.self)
+    self.scalePractices = RequestFactory.call(ScalePractice.self)
   }
 
   var practices: [PracticeType] {

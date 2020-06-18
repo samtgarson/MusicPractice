@@ -10,14 +10,11 @@ import CoreData
 import SwiftUI
 
 public class SongService: BaseService {  
-  static func all(sort: [NSSortDescriptor]? = defaultSort, limit: Int? = nil, _ fn: ((inout NSFetchRequest<Song>) -> Void)? = nil) -> FetchRequest<Song> {
-    var request: NSFetchRequest<Song> = Song.fetchRequest()
-    request.sortDescriptors = sort
-    if let fn = fn { fn(&request) }
-    if let limit = limit { request.fetchLimit = limit }
-    return FetchRequest(fetchRequest: request)
-  }
   
+  static func all(limit: Int? = nil, _ fn: ((inout NSFetchRequest<Song>) -> Void)? = nil) -> FetchRequest<Song> {
+    RequestFactory.call(Song.self, limit: limit, fn: fn)
+  }
+
   static func active(limit: Int? = nil) -> FetchRequest<Song> {
     all(limit: limit) { req in
       req.predicate = NSPredicate(format: "archivedAt == nil")

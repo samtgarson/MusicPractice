@@ -51,11 +51,10 @@ struct Seeder<Content : View>: View {
   
   func seedAllEntities() {
     for i in 1...5 {
-      let scale = TheoryService.scaleLevels.randomElement()!.first!
-      _ = PracticeService().createScalePractice(scale, Int16.random(in: -1...1))
+      let item = TheoryService.scaleLevels.randomElement()!.first!
+      _ = PracticeService().createTheoryPractice(item, Int16.random(in: -1...1))
       
       let song = SongService().create(title: "Song \(i)")
-      
       if i < 3 {
         _ = PracticeService().createSongPractice(song!, Int16.random(in: -1...1))
       }

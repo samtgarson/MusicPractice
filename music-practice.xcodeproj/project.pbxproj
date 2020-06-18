@@ -52,6 +52,7 @@
 		2260CBAF249A172C00B83F94 /* ScalePracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260CBAE249A172C00B83F94 /* ScalePracticeTests.swift */; };
 		2260CBB1249A18FA00B83F94 /* SongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260CBB0249A18FA00B83F94 /* SongTests.swift */; };
 		2260CBB4249A2E1D00B83F94 /* TheoryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260CBB3249A2E1D00B83F94 /* TheoryAction.swift */; };
+		2260CBB6249C109700B83F94 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260CBB5249C109700B83F94 /* RequestFactory.swift */; };
 		226E312E248A3CC000BEEBC4 /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E312D248A3CC000BEEBC4 /* Unwrap.swift */; };
 		227760AB2486852B0094B78E /* StatusBarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227760AA2486852B0094B78E /* StatusBarService.swift */; };
 		2296B9A6248C1E9700C48348 /* PracticeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */; };
@@ -138,6 +139,7 @@
 		2260CBAE249A172C00B83F94 /* ScalePracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePracticeTests.swift; sourceTree = "<group>"; };
 		2260CBB0249A18FA00B83F94 /* SongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTests.swift; sourceTree = "<group>"; };
 		2260CBB3249A2E1D00B83F94 /* TheoryAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryAction.swift; sourceTree = "<group>"; };
+		2260CBB5249C109700B83F94 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		226E312D248A3CC000BEEBC4 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		227760AA2486852B0094B78E /* StatusBarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarService.swift; sourceTree = "<group>"; };
 		2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDisplay.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				220E651A2485736500B74DE9 /* BaseService.swift */,
 				220E65152485625000B74DE9 /* PracticeService.swift */,
 				22139826248BC19A00B480AE /* SongService.swift */,
+				2260CBB5249C109700B83F94 /* RequestFactory.swift */,
 			);
 			path = DataServices;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				22A5FD5424881030009E1161 /* MPButton.swift in Sources */,
 				2297628F2490DDD400B3FA33 /* PerformanceColor.swift in Sources */,
 				226E312E248A3CC000BEEBC4 /* Unwrap.swift in Sources */,
+				2260CBB6249C109700B83F94 /* RequestFactory.swift in Sources */,
 				225229A12483FA5E006F53F5 /* SceneDelegate.swift in Sources */,
 				220E6514248561E900B74DE9 /* TheoryScreen.swift in Sources */,
 				225A4C4F2494285D009F5E1E /* ScaleLevels.swift in Sources */,

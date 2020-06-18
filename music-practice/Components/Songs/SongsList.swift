@@ -69,7 +69,7 @@ struct SongsList: View {
 
     if sort == .Performance {
       songs = songs.sorted(by: {
-        PracticePerformanceService($0.practiceArray).priority < PracticePerformanceService($1.practiceArray).priority
+        PracticePerformanceService($0.practiceArray).priority > PracticePerformanceService($1.practiceArray).priority
       })
     }
     

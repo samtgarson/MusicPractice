@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-protocol BaseEntityProtocol: Identifiable {
+protocol BaseEntityProtocol: Identifiable, NSManagedObject {
   init(context: NSManagedObjectContext)
   var id: UUID? { get set }
   var createdAt: Date? { get set }

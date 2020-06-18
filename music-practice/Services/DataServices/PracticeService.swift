@@ -34,27 +34,17 @@ public enum PracticeType: Hashable {
 }
 
 public class PracticeService: BaseService {  
-  static func songPractices(sort: [NSSortDescriptor]? = defaultSort) -> FetchRequest<SongPractice> {
-    let request: NSFetchRequest<SongPractice> = SongPractice.fetchRequest()
-    request.sortDescriptors = sort
-    return FetchRequest(fetchRequest: request)
-  }
-
-  static func scalePractices(sort: [NSSortDescriptor]? = defaultSort) -> FetchRequest<ScalePractice> {
-    let request: NSFetchRequest<ScalePractice> = ScalePractice.fetchRequest()
-    request.sortDescriptors = sort
-    return FetchRequest(fetchRequest: request)
-  }
-
-  func createScalePractice(_ scale: Scale, _ score: Int16) -> ScalePractice? {
+  func createTheoryPractice(_ item: TheoryItem, _ score: Int16) -> PracticeEntityProtocol? {
     guard let context = managedContext else { return nil }
     
-    let newPractice = instantiate(ScalePractice.self, context)
-    newPractice.scale = scale
-    newPractice.score = score
-    save()
-    
-    return newPractice
+    switch item {
+    case .scale(let scale):
+      let newPractice = instantiate(ScalePractice.self, context)
+      newPractice.scale = scale
+      newPractice.score = score
+      save()
+      return newPractice
+    }
   }
   
   func createSongPractice(_ song: Song, _ score: Int16) -> SongPractice? {
