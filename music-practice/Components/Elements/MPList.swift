@@ -22,8 +22,8 @@ struct MPList<T: RandomAccessCollection, R: View>: View where T.Element: Hashabl
   var body: some View {
     VStack(spacing: Spacing.tiny) {
       ForEach(collection, id: \.self) { item in
-        self.render(item)
-      }.padding(.horizontal, -Spacing.small)
+        self.render(item).asRowWrapper()
+      }
     }
   }
   
@@ -32,13 +32,25 @@ struct MPList<T: RandomAccessCollection, R: View>: View where T.Element: Hashabl
       body
       footer()
         .opacity(Opacity.VeryFaded)
-        .padding(.horizontal, -Spacing.small)
+        .asRowWrapper()
     }
   }
 }
 
 struct TestRecord: Hashable {
   var name: String
+}
+
+struct RowWrapper: ViewModifier {
+  func body(content: Content) -> some View {
+    content.padding(.horizontal, -Spacing.small)
+  }
+}
+
+extension View {
+  func asRowWrapper() -> some View {
+    self.modifier(RowWrapper())
+  }
 }
 
 struct MPList_Previews: PreviewProvider {

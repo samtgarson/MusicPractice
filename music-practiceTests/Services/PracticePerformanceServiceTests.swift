@@ -9,7 +9,7 @@
 import XCTest
 @testable import Music_Practice
 
-class SongScoreServiceTests: XCTestCase {
+class PracticePerformanceServiceTests: XCTestCase {
   
   func testScoreWithNoPractices() throws {
     let song = SongService().create(title: "Test song")!
@@ -46,6 +46,26 @@ class SongScoreServiceTests: XCTestCase {
       let result = svc.practiceAge(practice)
       XCTAssert(compareDoubles(result, expected))
     }
+  }
+  
+  func testPriority() throws {
+    let song1 = SongService().create(title: "song1")!
+    let song2 = SongService().create(title: "song2")!
+    
+    _ = createPractice(song1, 1, createdAt: Date().advanced(by: -10 * 24 * 3600))
+    _ = createPractice(song2, -1, createdAt: Date().advanced(by: -10 * 24 * 3600))
+    
+    // when frequency is equal, priority should go to lowest avg score
+    XCTAssert(PracticePerformanceService(song1.practiceArray).priority < PracticePerformanceService(song2.practiceArray).priority)
+    
+    _ = createPractice(song2, -1, createdAt: Date().advanced(by: -1 * 24 * 3600))
+
+//     even when avg score is lower, recency should override
+    XCTAssert(PracticePerformanceService(song1.practiceArray).priority > PracticePerformanceService(song2.practiceArray).priority)
+    
+    _ = createPractice(song1, 1, createdAt: Date().advanced(by: -0.5 * 24 * 3600))
+    
+    XCTAssert(PracticePerformanceService(song1.practiceArray).priority < PracticePerformanceService(song2.practiceArray).priority)
   }
   
   private func createPractice(_ song: Song, _ score: Int16, createdAt: Date = Date()) -> SongPractice {

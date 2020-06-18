@@ -38,7 +38,7 @@ struct ScaleList: View {
   
   private func row(for scale: Scale) -> some View {
     MPRow {
-      ScaleLabel(scale).frame(maxWidth: .infinity, alignment: .leading)
+      TheoryLabel(TheoryType.scale(scale)).frame(maxWidth: .infinity, alignment: .leading)
       ProgressBar(for: performance(for: scale))
     }
   }

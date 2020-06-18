@@ -9,14 +9,23 @@
 import SwiftUI
 import MusicTheorySwift
 
-struct ScaleLabel: View {
-  internal init(_ scale: Scale) {
-    self.scale = scale
+struct TheoryLabel: View {
+  internal init(_ item: TheoryType) {
+    switch item {
+    case .scale(let scale):
+      self.scale = scale
+    }
   }
-  
-  var scale: Scale
-  
+
+  var scale: Scale?
+
   var body: some View {
+    Unwrap(scale) { scale in
+      self.scaleLabel(scale)
+    }
+  }
+
+  private func scaleLabel(_ scale: Scale) -> some View {
     HStack(spacing: 2) {
       Text(scale.key.type.description)
         .font(Fonts.sized(FontSizes.large * 1.2))
@@ -29,7 +38,7 @@ struct ScaleLabel: View {
         .font(Fonts.small)
         .kerning(2)
         .fixedSize()
-    }.frame(maxWidth: .infinity, alignment: .leading)
+    }
   }
 }
 
@@ -41,13 +50,13 @@ struct TheoryLabels_Previews: PreviewProvider {
     return PageView {
       VStack(spacing: Spacing.small) {
         MPRow {
-          ScaleLabel(scale1).frame(maxWidth: .infinity, alignment: .leading)
+          TheoryLabel(TheoryType.scale(scale1)).frame(maxWidth: .infinity, alignment: .leading)
         }
         MPRow {
-          ScaleLabel(scale2).frame(maxWidth: .infinity, alignment: .leading)
+          TheoryLabel(TheoryType.scale(scale2)).frame(maxWidth: .infinity, alignment: .leading)
         }
         MPRow {
-          ScaleLabel(scale3).frame(maxWidth: .infinity, alignment: .leading)
+          TheoryLabel(TheoryType.scale(scale3)).frame(maxWidth: .infinity, alignment: .leading)
         }
       }
     }

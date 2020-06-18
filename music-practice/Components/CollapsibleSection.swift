@@ -34,7 +34,7 @@ struct CollapsibleSection<Content: View>: View {
         .frame(maxHeight: self.expanded ? .infinity : 0, alignment: .top).clipped()
         .opacity(expanded ? 1 : 0)
         .allowsHitTesting(expanded)
-    }.padding(.horizontal, -Spacing.small)
+    }.asRowWrapper()
   }
   
   private func toggle() {

@@ -7,6 +7,11 @@
 //
 
 import Foundation
+import MusicTheorySwift
+
+public enum TheoryType {
+  case scale(Scale)
+}
 
 class TheoryService {
   

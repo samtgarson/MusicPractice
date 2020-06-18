@@ -27,8 +27,9 @@ class PracticePerformanceService {
   /// can be used to prioritise the next resource to practice
   var priority: Double {
     weightedAverage([
-      (value: averageScore, weight: 0.5),
-      (value: frequency, weight: 1)
+      (value: 1 - averageScore, weight: 0.6),
+      (value: 1 - frequency, weight: 0.6),
+      (value: 1 - recency, weight: 1)
     ])
   }
   
@@ -77,6 +78,12 @@ class PracticePerformanceService {
     return self._frequency!
   }
   
+  var recency: Double {
+    guard let practice = practices.first else { return 0 }
+    
+    return practiceAge(practice)
+  }
+  
   internal func practiceDistance(_ currentDate: Date, _ previousDate: Date) -> Double {
     let diff = Double(abs(currentDate.timeIntervalSince(previousDate)))
     let normalised = 1 - (diff / PracticePerformanceService.maxSeconds)
@@ -85,10 +92,7 @@ class PracticePerformanceService {
   }
   
   internal func practiceAge(_ practice: PracticeEntityProtocol) -> Double {
-    let minutesSincePractce = Double(practice.createdAt!.timeIntervalSinceNow)
-    let normalised = 1 - (minutesSincePractce/PracticePerformanceService.maxSeconds)
-    
-    return adjust(normalised)
+    adjust(practiceDistance(practice.createdAt!, Date()))
   }
   
   private func adjust(_ val: Double) -> Double {

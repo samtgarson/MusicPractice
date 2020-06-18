@@ -11,7 +11,9 @@ import SwiftUI
 struct TheoryScreen: View {
   var body: some View {
     PageView {
-      Text("Theory Screen")
+      PageTitle("Songs")
+      SectionTitle(text: "Scales")
+      
     }
   }
 }
