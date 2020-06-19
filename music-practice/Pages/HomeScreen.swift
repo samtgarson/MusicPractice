@@ -13,6 +13,11 @@ struct HomeScreen: View {
     Header(title: "Welcome!", description: "What shall we practice today?", performance: .Good) {
       SectionTitle(text: "Next Songs")
       SongsList(showAddSong: .WhenEmpty, filter: .Active, sort: .Performance, limit: 2)
+      
+      SectionTitle(text: "Next Theory")
+        .padding(.top, Spacing.medium)
+        .padding(.bottom, Spacing.small)
+      TheoryAction(TheoryService(.Scale).next)
     }
   }
 }

@@ -9,11 +9,13 @@
 import SwiftUI
 import MusicTheorySwift
 
-struct ScaleList: View {
-  private var allPractices: FetchedResults<ScalePractice>
+struct TheoryList: View {
+  var type: TheoryType
+  private var scalePractices: FetchedResults<ScalePractice>
   
-  init() {
-    self.allPractices = PracticeService.scalePractices().wrappedValue
+  init(type: TheoryType) {
+    self.type = type
+    self.scalePractices = RequestFactory.call(ScalePractice.self).wrappedValue
   }
   
   var body: some View {
@@ -32,20 +34,23 @@ struct ScaleList: View {
       .frame(maxWidth: .infinity, alignment: .leading)
   }
   
-  private func level(for index: Int) -> [Scale] {
+  private func level(for index: Int) -> [TheoryItem] {
     TheoryService.scaleLevels[index]
   }
   
-  private func row(for scale: Scale) -> some View {
+  private func row(for item: TheoryItem) -> some View {
     MPRow {
-      TheoryLabel(TheoryType.scale(scale)).frame(maxWidth: .infinity, alignment: .leading)
-      ProgressBar(for: performance(for: scale))
+      TheoryLabel(item).frame(maxWidth: .infinity, alignment: .leading)
+      ProgressBar(for: performance(for: item))
     }
   }
   
-  private func performance(for scale: Scale) -> Performance {
-    let practices = allPractices.filter { $0.scale == scale }
-    return PracticePerformanceService(practices).performance
+  private func performance(for item: TheoryItem) -> Performance {
+    switch item {
+    case .scale(let scale):
+      let practices = scalePractices.filter { $0.scale == scale }
+      return PracticePerformanceService(practices).performance
+    }
   }
   
   private let levelCount = TheoryService.scaleLevels.count
@@ -55,7 +60,7 @@ struct ScaleList_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
       PageView {
-        ScaleList()
+        TheoryList(type: .Scale)
       }
     }
   }

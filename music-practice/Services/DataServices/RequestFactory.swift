@@ -13,6 +13,14 @@ import SwiftUI
 class RequestFactory {
   static let defaultSort = [NSSortDescriptor(key: "createdAt", ascending: true)]
   
+  /// Creates a fetch request for the given entity
+  /// - Parameters:
+  ///   - Model: The entity to fetch
+  ///   - sort: A sort descriptor, defaults to createdAt
+  ///   - limit: Fetch limit, defaults to 0 (i.e. fetch everything)
+  ///   - fn: A closure which receives the created NSFetchRequest and can modify it (e.g. to add predicates, properties to group by, etc)
+  /// - Returns: A FetchRequest which can be unwrapped to access the fetched resources
+  
   static func call<T>(
     _ Model: T.Type,
     sort: [NSSortDescriptor]? = defaultSort,

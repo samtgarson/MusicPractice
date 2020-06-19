@@ -9,9 +9,9 @@
 import Foundation
 import MusicTheorySwift
 
-func createScale ( type: ScaleType, key keyType: Key.KeyType, accidental: Accidental = .natural) -> Scale {
+private func createScale ( type: ScaleType, key keyType: Key.KeyType, accidental: Accidental = .natural) -> TheoryItem {
   let key = Key(type: keyType, accidental: accidental)
-  return Scale(type: type, key: key)
+  return TheoryItem.scale(Scale(type: type, key: key))
 }
 
 extension Scale: Hashable {
@@ -21,7 +21,7 @@ extension Scale: Hashable {
 }
 
 extension TheoryService {
-  static let scaleLevels: [[Scale]] = [
+  static let scaleLevels: [[TheoryItem]] = [
     [createScale(type: .major, key: .c)],
     [
       createScale(type: .major, key: .g),
@@ -31,12 +31,6 @@ extension TheoryService {
       createScale(type: .major, key: .d),
       createScale(type: .major, key: .b, accidental: .flat),
       createScale(type: .minor, key: .a)
-    ],
-    [
-      createScale(type: .major, key: .a),
-      createScale(type: .major, key: .e, accidental: .flat),
-      createScale(type: .minor, key: .d),
-      createScale(type: .minor, key: .e)
     ],
     [
       createScale(type: .major, key: .a),

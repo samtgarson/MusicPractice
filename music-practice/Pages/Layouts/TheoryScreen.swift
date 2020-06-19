@@ -11,8 +11,10 @@ import SwiftUI
 struct TheoryScreen: View {
   var body: some View {
     PageView {
-      PageTitle("Songs")
+      PageTitle("Theory")
       SectionTitle(text: "Scales")
+        .padding(.bottom, Spacing.small)
+      TheoryAction(TheoryService(.Scale).next)
       
     }
   }
