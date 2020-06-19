@@ -9,19 +9,13 @@
 import Foundation
 import MusicTheorySwift
 
-private func createScale ( type: ScaleType, key keyType: Key.KeyType, accidental: Accidental = .natural) -> TheoryItem {
+private func createScale ( type: ScaleType, key keyType: Key.KeyType, accidental: Accidental = .natural) -> Practiceable {
   let key = Key(type: keyType, accidental: accidental)
-  return TheoryItem.scale(Scale(type: type, key: key))
-}
-
-extension Scale: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(self.description)
-  }
+  return Practiceable.scale(Scale(type: type, key: key))
 }
 
 extension TheoryService {
-  static let scaleLevels: [[TheoryItem]] = [
+  static let scaleLevels: [[Practiceable]] = [
     [createScale(type: .major, key: .c)],
     [
       createScale(type: .major, key: .g),

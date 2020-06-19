@@ -54,9 +54,7 @@ struct PracticesList: View {
     case .song(let songPractice):
       return RowLabel(songPractice.song!.title!)
     case .scale(let scalePractice):
-      let key = scalePractice.scale!.key
-      let type = scalePractice.scale!.type
-      return RowLabel("\(key.description) \(type.description)")
+      return RowLabel(scalePractice.scale!.shortDescription)
     }
   }
   

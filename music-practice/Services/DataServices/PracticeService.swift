@@ -33,8 +33,13 @@ public enum PracticeType: Hashable {
   }
 }
 
+public enum Practiceable: Hashable {
+  case song(Song)
+  case scale(Scale)
+}
+
 public class PracticeService: BaseService {  
-  func createTheoryPractice(_ item: TheoryItem, _ score: Int16) -> PracticeEntityProtocol? {
+  func createPractice(_ item: Practiceable, _ score: Int16) -> PracticeEntityProtocol? {
     guard let context = managedContext else { return nil }
     
     switch item {
@@ -44,17 +49,12 @@ public class PracticeService: BaseService {
       newPractice.score = score
       save()
       return newPractice
+    case .song(let song):
+      let newPractice = instantiate(SongPractice.self, context)
+      newPractice.song = song
+      newPractice.score = score
+      save()
+      return newPractice
     }
-  }
-  
-  func createSongPractice(_ song: Song, _ score: Int16) -> SongPractice? {
-    guard let context = managedContext else { return nil }
-    
-    let newPractice = instantiate(SongPractice.self, context)
-    newPractice.song = song
-    newPractice.score = score
-    save()
-    
-    return newPractice
   }
 }

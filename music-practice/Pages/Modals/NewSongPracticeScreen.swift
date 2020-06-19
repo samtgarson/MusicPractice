@@ -9,8 +9,8 @@
 import SwiftUI
 import NoveFeatherIcons
 
-struct NewSongPracticeScreen: View {
-  var song: Song
+struct NewPracticeScreen: View {
+  var item: Practiceable
   var hide: () -> Void
   
   @State(initialValue: false) var timerFinished: Bool
@@ -26,11 +26,11 @@ struct NewSongPracticeScreen: View {
   }
   
   private var practiceTimer: some View {
-    PracticeTimerScreen(subject: song.title!, done: { self.timerFinished.toggle() })
+    PracticeTimerScreen(subject: subject, done: { self.timerFinished.toggle() })
   }
   
   private var newSongScreen: some View {
-    Header(title: "You practiced \(song.title!)", description: "Nice work! Practice makes perfect.\n\nHow did it go?") {
+    Header(title: "You practiced \(subject)", description: "Nice work! Practice makes perfect.\n\nHow did it go?") {
       MPList(collection: PracticeDisplay.items) { display in
         self.practiceOption(for: display)
       }.withFooter {
@@ -46,7 +46,14 @@ struct NewSongPracticeScreen: View {
     }
   }
   
-  
+  var subject: String {
+    switch item {
+    case .scale(let scale):
+      return scale.shortDescription
+    case .song(let song):
+      return song.title!
+    }
+  }
   
   func practiceOption(for display: PracticeDisplay) -> some View {
     MPRow(onTap: {
@@ -58,12 +65,12 @@ struct NewSongPracticeScreen: View {
   }
   
   func createPractice(_ score: Int16) {
-    _ = PracticeService().createSongPractice(song, score)
+    _ = PracticeService().createPractice(item, score)
     hide()
   }
 }
 
-struct NewSongPracticeScreen_Previews: PreviewProvider {
+struct NewPracticeScreen_Previews: PreviewProvider {
   static var previews: some View {
     PreviewWrapper()
   }
@@ -82,7 +89,7 @@ struct NewSongPracticeScreen_Previews: PreviewProvider {
           PracticesList()
         }
         .sheet(isPresented: $showScreen) {
-          NewSongPracticeScreen(song: song!, hide: hide)
+          NewPracticeScreen(item: Practiceable.song(song!), hide: hide)
         }
         .withDefaultStyles()
       }

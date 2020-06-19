@@ -34,22 +34,24 @@ struct TheoryList: View {
       .frame(maxWidth: .infinity, alignment: .leading)
   }
   
-  private func level(for index: Int) -> [TheoryItem] {
+  private func level(for index: Int) -> [Practiceable] {
     TheoryService.scaleLevels[index]
   }
   
-  private func row(for item: TheoryItem) -> some View {
+  private func row(for item: Practiceable) -> some View {
     MPRow {
       TheoryLabel(item).frame(maxWidth: .infinity, alignment: .leading)
       ProgressBar(for: performance(for: item))
     }
   }
   
-  private func performance(for item: TheoryItem) -> Performance {
+  private func performance(for item: Practiceable) -> Performance {
     switch item {
     case .scale(let scale):
       let practices = scalePractices.filter { $0.scale == scale }
       return PracticePerformanceService(practices).performance
+    default:
+      return .Good
     }
   }
   

@@ -9,10 +9,6 @@
 import Foundation
 import MusicTheorySwift
 
-public enum TheoryItem: Hashable {
-  case scale(Scale)
-}
-
 public enum TheoryType: String {
   case Scale = "Scale"
 }
@@ -29,25 +25,25 @@ class TheoryService {
     set { UserDefaults.standard.set(newValue, forKey: "\(type)Level") }
   }
   
-  var next: TheoryItem {
+  var next: Practiceable {
     availableItems.sorted {
       PracticePerformanceService(allPractices[$0]!).priority > PracticePerformanceService(allPractices[$1]!).priority
     }.first!
   }
   
-  var availableItems: [TheoryItem] {
+  var availableItems: [Practiceable] {
     items[0...level].flatMap { $0 }
   }
   
-  private var allPractices: [TheoryItem: [PracticeEntityProtocol]] {
+  private var allPractices: [Practiceable: [PracticeEntityProtocol]] {
     switch type {
     case .Scale:
       let practices = Array(RequestFactory.call(ScalePractice.self).wrappedValue)
-      return Dictionary(grouping: practices, by: { TheoryItem.scale(($0 as! ScalePractice).scale!) })
+      return Dictionary(grouping: practices, by: { Practiceable.scale(($0 as! ScalePractice).scale!) })
     }
   }
   
-  private var items: [[TheoryItem]] {
+  private var items: [[Practiceable]] {
     switch type {
     case .Scale:
       return TheoryService.scaleLevels

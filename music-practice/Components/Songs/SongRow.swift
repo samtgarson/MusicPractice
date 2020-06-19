@@ -62,7 +62,7 @@ struct SongRow: View {
   }
   
   private var newPracticeScreen: some View {
-    NewSongPracticeScreen(song: self.song) { self.showNewPractice = false }
+    NewPracticeScreen(item: Practiceable.song(self.song)) { self.showNewPractice = false }
   }
 }
 

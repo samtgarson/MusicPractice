@@ -10,10 +10,12 @@ import SwiftUI
 import MusicTheorySwift
 
 struct TheoryLabel: View {
-  internal init(_ item: TheoryItem) {
+  internal init(_ item: Practiceable) {
     switch item {
     case .scale(let scale):
       self.scale = scale
+    default:
+      break
     }
   }
 
@@ -51,13 +53,13 @@ struct TheoryLabels_Previews: PreviewProvider {
     return PageView {
       VStack(spacing: Spacing.small) {
         MPRow {
-          TheoryLabel(TheoryItem.scale(scale1)).frame(maxWidth: .infinity, alignment: .leading)
+          TheoryLabel(Practiceable.scale(scale1)).frame(maxWidth: .infinity, alignment: .leading)
         }
         MPRow {
-          TheoryLabel(TheoryItem.scale(scale2)).frame(maxWidth: .infinity, alignment: .leading)
+          TheoryLabel(Practiceable.scale(scale2)).frame(maxWidth: .infinity, alignment: .leading)
         }
         MPRow {
-          TheoryLabel(TheoryItem.scale(scale3)).frame(maxWidth: .infinity, alignment: .leading)
+          TheoryLabel(Practiceable.scale(scale3)).frame(maxWidth: .infinity, alignment: .leading)
         }
       }
     }
