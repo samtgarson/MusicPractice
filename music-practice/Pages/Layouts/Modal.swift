@@ -32,7 +32,6 @@ struct ModalView<Content: View>: View {
       .cornerRadius(CornerRadius)
       .frame(maxWidth: 500)
     }
-    .padding(.top, Spacing.medium)
   }
   
   private var lowerHalf: some View {

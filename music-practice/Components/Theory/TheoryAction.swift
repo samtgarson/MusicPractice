@@ -10,25 +10,71 @@ import SwiftUI
 import MusicTheorySwift
 
 struct TheoryAction: View {
-  var item: Practiceable
+  var type: TheoryType
   var label: String?
+  var theoryService: TheoryService
   
-  @State(initialValue: false) var showPracticeScreen: Bool
+  @State(initialValue: .None) var modalContent: ModalContent
   
-  init(_ item: Practiceable, label: String? = nil) {
-    self.item = item
+  enum ModalContent {
+    case NewPractice
+    case Level
+    case None
+  }
+
+  init(_ type: TheoryType, label: String? = nil) {
+    self.type = type
     if let label = label { self.label = label }
+    
+    self.theoryService = TheoryService(type)
+
   }
   
   var body: some View {
-    MPRow(onTap: { self.showPracticeScreen.toggle() }) {
+    MPRow(onTap: { self.modalContent = .NewPractice }) {
       RowLabel(label ?? defaultLabel)
       TheoryLabel(item)
     }
     .padding(.bottom, Spacing.small)
     .asRowWrapper()
-    .sheet(isPresented: $showPracticeScreen) {
-      NewPracticeScreen(item: self.item) { self.showPracticeScreen.toggle() }
+    .sheet(isPresented: showModal) {
+      Group {
+        if self.modalContent == .Level { self.levelModal }
+        if self.modalContent == .NewPractice { self.newPracticeModal }
+      }
+    }
+  }
+  
+  var showModal: Binding<Bool> {
+    Binding<Bool>(
+      get: { self.modalContent != .None },
+      set: { self.modalContent = $0 ? .NewPractice : .None }
+    )
+  }
+  
+  private var item: Practiceable {
+    self.theoryService.next
+  }
+  
+  private mutating func refreshNextItem () {
+    self.theoryService = TheoryService(self.type)
+  }
+  
+  private var levelModal: some View {
+    LevelUpScreen(for: item.type, hide: self.dismissModal)
+  }
+  
+  private func dismissModal() {
+    self.modalContent = .None
+  }
+  
+  private var newPracticeModal: some View {
+    NewPracticeScreen(item: self.item) {
+      self.dismissModal()
+      
+      if self.theoryService.levelIfPossible() {
+        self.modalContent = .Level
+      }
     }
   }
   
@@ -37,17 +83,16 @@ struct TheoryAction: View {
     case .scale:
       return "Scale"
     default:
-      return ""
+      return "Next"
     }
   }
 }
 
 struct TheoryAction_Previews: PreviewProvider {
   static var previews: some View {
-    let scale = Scale(type: .minor, key: Key(type: .g, accidental: .sharp))
     return PageView {
-      TheoryAction(Practiceable.scale(scale))
-      TheoryAction(Practiceable.scale(scale), label: "Next")
+      TheoryAction(.Scale)
+      TheoryAction(.Scale, label: "Next")
     }
   }
 }

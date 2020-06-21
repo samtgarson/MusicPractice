@@ -17,7 +17,7 @@ struct HomeScreen: View {
       SectionTitle(text: "Next Theory")
         .padding(.top, Spacing.medium)
         .padding(.bottom, Spacing.small)
-      TheoryAction(TheoryService(.Scale).next)
+      TheoryAction(.Scale)
     }
   }
 }

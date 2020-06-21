@@ -11,7 +11,7 @@ typealias FormModel = Dictionary<String, String>
 
 class FormService: ObservableObject {
   @Published var submitted = false
-  @Published var model: FormModel = Dictionary()
+  @Published var model: FormModel = FormModel()
   @Published var valid: Bool = true
   
   func get(_ key: String) -> String? {

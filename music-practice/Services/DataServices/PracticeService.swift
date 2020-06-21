@@ -36,6 +36,22 @@ public enum PracticeType: Hashable {
 public enum Practiceable: Hashable {
   case song(Song)
   case scale(Scale)
+  
+  var type: TheoryType {
+    switch self {
+    default:
+      return TheoryType.Scale
+    }
+  }
+  
+  var title: String {
+    switch self {
+    case .scale(let scale):
+      return scale.shortDescription
+    case .song(let song):
+      return song.title!
+    }
+  }
 }
 
 public class PracticeService: BaseService {  

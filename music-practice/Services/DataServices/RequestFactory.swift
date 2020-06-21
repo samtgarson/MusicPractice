@@ -21,18 +21,26 @@ class RequestFactory {
   ///   - fn: A closure which receives the created NSFetchRequest and can modify it (e.g. to add predicates, properties to group by, etc)
   /// - Returns: A FetchRequest which can be unwrapped to access the fetched resources
   
+  static func raw<T>(
+    _ Model: T.Type,
+    sort: [NSSortDescriptor]? = defaultSort,
+    limit: Int? = nil,
+    _ fn: ((inout NSFetchRequest<T>) -> Void)? = nil
+  ) -> NSFetchRequest<T> where T: BaseEntityProtocol {
+    
+    var request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: Model))
+    request.sortDescriptors = sort
+    if let limit = limit { request.fetchLimit = limit }
+    if let fn = fn { fn(&request) }
+    return request
+  }
+  
   static func call<T>(
     _ Model: T.Type,
     sort: [NSSortDescriptor]? = defaultSort,
     limit: Int? = nil,
     fn: ((inout NSFetchRequest<T>) -> Void)? = nil
   ) -> FetchRequest<T> where T: BaseEntityProtocol {
-    
-    var request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: Model))
-    request.sortDescriptors = sort
-    if let limit = limit { request.fetchLimit = limit }
-    if let fn = fn { fn(&request) }
-    return FetchRequest(fetchRequest: request)
-    
+    return FetchRequest(fetchRequest: raw(Model, sort: sort, limit: limit, fn))
   }
 }

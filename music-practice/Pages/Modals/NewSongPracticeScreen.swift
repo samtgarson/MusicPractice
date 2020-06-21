@@ -26,11 +26,11 @@ struct NewPracticeScreen: View {
   }
   
   private var practiceTimer: some View {
-    PracticeTimerScreen(subject: subject, done: { self.timerFinished.toggle() })
+    PracticeTimerScreen(subject: item.title, done: { self.timerFinished.toggle() })
   }
   
   private var newSongScreen: some View {
-    Header(title: "You practiced \(subject)", description: "Nice work! Practice makes perfect.\n\nHow did it go?") {
+    Header(title: "You practiced \(item.title)", description: "Nice work! Practice makes perfect.\n\nHow did it go?") {
       MPList(collection: PracticeDisplay.items) { display in
         self.practiceOption(for: display)
       }.withFooter {
@@ -43,15 +43,6 @@ struct NewPracticeScreen: View {
     MPRow(onTap: hide) {
       RowLabel("Never mind")
       Icon(iconName: .x)
-    }
-  }
-  
-  var subject: String {
-    switch item {
-    case .scale(let scale):
-      return scale.shortDescription
-    case .song(let song):
-      return song.title!
     }
   }
   

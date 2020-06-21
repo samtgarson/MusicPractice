@@ -9,11 +9,14 @@
 import Foundation
 import MusicTheorySwift
 
+let MIN_PRACTICE_COUNT = 3
+
 public enum TheoryType: String {
   case Scale = "Scale"
 }
 
-class TheoryService {
+class TheoryService: BaseService {
+  
   internal init(_ type: TheoryType) {
     self.type = type
   }
@@ -27,23 +30,53 @@ class TheoryService {
   
   var next: Practiceable {
     availableItems.sorted {
-      PracticePerformanceService(allPractices[$0]!).priority > PracticePerformanceService(allPractices[$1]!).priority
+      PracticePerformanceService(allPractices[$0] ?? []).priority
+        > PracticePerformanceService(allPractices[$1] ?? []).priority
     }.first!
   }
   
-  var availableItems: [Practiceable] {
-    items[0...level].flatMap { $0 }
+  var currentLevel: [Practiceable] {
+    levels[level]
   }
   
-  private var allPractices: [Practiceable: [PracticeEntityProtocol]] {
-    switch type {
-    case .Scale:
-      let practices = Array(RequestFactory.call(ScalePractice.self).wrappedValue)
-      return Dictionary(grouping: practices, by: { Practiceable.scale(($0 as! ScalePractice).scale!) })
+  var availableItems: [Practiceable] {
+    levels[0...level].flatMap { $0 }
+  }
+  
+  func levelIfPossible() -> Bool {
+    guard canLevelUp else { return false }
+    
+    level += 1
+    return true
+  }
+  
+  private var canLevelUp: Bool {
+    guard level < levels.count else { return false }
+    
+    return currentLevel.reduce(false) { canLevel, item in
+      let practices = allPractices[item] ?? []
+      guard practices.count >= MIN_PRACTICE_COUNT else { return false }
+      
+      return PracticePerformanceService(practices).performance == .Good
     }
   }
   
-  private var items: [[Practiceable]] {
+  private var allPractices: [Practiceable: [PracticeEntityProtocol]] {
+    guard let context = managedContext else { return .init() }
+    
+    do {
+      switch type {
+      case .Scale:
+        let practices = try context.fetch(RequestFactory.raw(ScalePractice.self))
+        return Dictionary(grouping: practices, by: { Practiceable.scale(($0).scale!) })
+      }
+    } catch {
+      print("Could not fetch practices")
+      return .init()
+    }
+  }
+  
+  private var levels: [[Practiceable]] {
     switch type {
     case .Scale:
       return TheoryService.scaleLevels

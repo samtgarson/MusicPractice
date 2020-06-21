@@ -14,7 +14,7 @@ struct TheoryScreen: View {
       PageTitle("Theory")
       SectionTitle(text: "Scales")
         .padding(.bottom, Spacing.small)
-      TheoryAction(TheoryService(.Scale).next)
+      TheoryAction(.Scale)
       
     }
   }
