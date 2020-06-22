@@ -62,19 +62,7 @@ struct Seeder<Content : View>: View {
   }
   
   func clearAllEntities() {
-    _ = clearAll(SongPractice.self)
-    _ = clearAll(Song.self)
-  }
-  
-  func clearAll<T: NSManagedObject>(_ Entity: T.Type) {
-    let entityName = String(describing: Entity.self)
-    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
-    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-    do {
-      try context.executeAndMergeChanges(using: deleteRequest)
-    } catch {
-      print("Could not save: \(error).")
-    }
+    RequestFactory.destroyEverything()
   }
 }
 #endif

@@ -9,15 +9,8 @@
 import SwiftUI
 import NoveFeatherIcons
 
-enum NavRoute: String {
-  case Home
-  case Theory
-  case Songs
-  case Settings
-}
-
 struct Main: View {
-  @State var selected: NavRoute = .Home
+  @ObservedObject var state = MainNav()
   
   init() {
     UITabBar.appearance().isTranslucent = false
@@ -26,19 +19,19 @@ struct Main: View {
   var body: some View {
     VStack(spacing: 0) {
       self.currentView
+        .environmentObject(state)
       HStack {
         self.tabItem(NavRoute.Home, .home)
         self.tabItem(NavRoute.Theory, .bookOpen)
         self.tabItem(NavRoute.Songs, .music)
         self.tabItem(NavRoute.Settings, .settings)
       }
-      .padding(.bottom, Spacing.small)
       .background(Color.white.edgesIgnoringSafeArea(.bottom))
     }
   }
   
   private var currentView: some View {
-    switch selected {
+    switch state.selected {
     case .Home:
       return AnyView(HomeScreen())
     case .Theory:
@@ -53,12 +46,11 @@ struct Main: View {
   private func tabItem (_ route: NavRoute, _ icon: Feather.IconName) -> some View {
     Image(uiImage: Feather.getIcon(icon)!)
       .foregroundColor(Colors.primary)
-      .opacity(selected == route ? 1 : 0.3)
+      .opacity(state.selected == route ? 1 : 0.3)
       .animation(Animation.easeInOut(duration: 0.15))
-      .padding(0)
       .frame(maxWidth: .infinity, maxHeight: 60)
       .onTapGesture {
-        self.selected = route
+        self.state.go(to: route)
       }
     
     

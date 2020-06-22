@@ -13,16 +13,19 @@ enum SettingsItems: String, CaseIterable {
 }
 
 struct SettingsScreen: View {
+  @State(initialValue: false) var showConfirmReset: Bool
+  @EnvironmentObject var mainNav: MainNav
+  
   var body: some View {
     PageView {
       PageTitle("Account")
       MPList(collection: SettingsItems.allCases) { i in
         self.item(i)
-      }
+      }.withFooter { self.resetRow }
     }
   }
   
-  func item(_ item: SettingsItems) -> some View {
+  private func item(_ item: SettingsItems) -> some View {
     MPRow {
       NavigationLink(destination: screen(for: item)) {
         RowLabel(item.rawValue)
@@ -31,11 +34,35 @@ struct SettingsScreen: View {
     }
   }
 
-  func screen(for item: SettingsItems) -> some View {
+  private func screen(for item: SettingsItems) -> some View {
     switch item {
     case .PracticeLog:
       return PracticeLog()
     }
+  }
+  
+  private var resetRow: some View {
+    MPRow(onTap: { self.showConfirmReset = true }) {
+      RowLabel("Factory reset")
+      Icon(iconName: .trash2, color: Colors.error)
+    }
+    .actionSheet(isPresented: $showConfirmReset) { resetSheet }
+  }
+  
+  private var resetSheet: ActionSheet {
+    ActionSheet(
+      title: Text("Are you sure you want to factory reset?"),
+      message: Text("You'll lose all of your songs and practices."),
+      buttons: [
+        .destructive(Text("Yes, reset everything")) { self.reset() },
+        .cancel(Text("Never mind"))
+      ]
+    )
+  }
+  
+  private func reset () {
+    RequestFactory.destroyEverything()
+    mainNav.go(to: .Home)
   }
 }
 
@@ -44,6 +71,7 @@ struct SettingsScreen_Previews: PreviewProvider {
     NavigationWrapper {
       Seeder {
         SettingsScreen()
+          .environmentObject(MainNav())
       }
     }
   }

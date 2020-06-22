@@ -43,4 +43,31 @@ class RequestFactory {
   ) -> FetchRequest<T> where T: BaseEntityProtocol {
     return FetchRequest(fetchRequest: raw(Model, sort: sort, limit: limit, fn))
   }
+  
+  static func destroyEverything() {
+    _ = RequestFactory().destroyAll(SongPractice.self)
+    _ = RequestFactory().destroyAll(ScalePractice.self)
+    _ = RequestFactory().destroyAll(Song.self)
+  }
+  
+  var managedContext: NSManagedObjectContext?
+  
+  init() {
+    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+      managedContext = appDelegate.persistentContainer.viewContext
+    }
+  }
+  
+  func destroyAll<T: NSManagedObject>(_ Entity: T.Type) {
+    guard let context = managedContext else { return }
+    
+    let entityName = String(describing: Entity.self)
+    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    do {
+      try context.executeAndMergeChanges(using: deleteRequest)
+    } catch {
+      print("Could not save: \(error).")
+    }
+  }
 }
