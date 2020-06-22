@@ -22,6 +22,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>notes-custom.ttf</string>
 		<string>Inter-Light.otf</string>
 		<string>Inter-LightItalic.otf</string>
 		<string>Inter-SemiBold.otf</string>

@@ -30,8 +30,8 @@ class TheoryService: BaseService {
   
   var next: Practiceable {
     availableItems.sorted {
-      PracticePerformanceService(allPractices[$0] ?? []).priority
-        > PracticePerformanceService(allPractices[$1] ?? []).priority
+      PracticePerformanceService(allPractices[$0, default: []]).priority
+        > PracticePerformanceService(allPractices[$1, default: []]).priority
     }.first!
   }
   

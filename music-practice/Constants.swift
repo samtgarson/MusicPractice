@@ -39,12 +39,14 @@ struct FontSizes {
   static let body: CGFloat = 22.0
   static let small: CGFloat = body * 0.55
   static let large: CGFloat = body * 1.5
+  static let huge: CGFloat = body * 2.5
 }
 
 struct Fonts {
   static let body = Font.custom("Inter-Light", size: FontSizes.body)
   static let small = Font.custom("Inter-Light", size: FontSizes.small).weight(.medium)
   static let large = Font.custom("Inter-Light", size: FontSizes.large)
+  static let notes = Font.custom("MusiQwik", size: FontSizes.huge)
   
   static func sized(_ size: CGFloat) -> Font {
     Font.custom("Inter-Light", size: size)

@@ -18,6 +18,7 @@ struct TheoryAction: View {
   
   enum ModalContent {
     case NewPractice
+    case Demo
     case Level
     case None
   }
@@ -31,7 +32,7 @@ struct TheoryAction: View {
   }
   
   var body: some View {
-    MPRow(onTap: { self.modalContent = .NewPractice }) {
+    MPRow(onTap: { self.modalContent = .Demo }) {
       RowLabel(label ?? defaultLabel)
       TheoryLabel(item)
     }
@@ -40,6 +41,7 @@ struct TheoryAction: View {
     .sheet(isPresented: showModal) {
       Group {
         if self.modalContent == .Level { self.levelModal }
+        if self.modalContent == .Demo { self.demoModal }
         if self.modalContent == .NewPractice { self.newPracticeModal }
       }
     }
@@ -58,6 +60,10 @@ struct TheoryAction: View {
   
   private mutating func refreshNextItem () {
     self.theoryService = TheoryService(self.type)
+  }
+  
+  private var demoModal: some View {
+    TheoryDemoScreen(item, done: { self.modalContent = .NewPractice })
   }
   
   private var levelModal: some View {

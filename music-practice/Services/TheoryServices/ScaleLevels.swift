@@ -15,8 +15,11 @@ private func createScale ( type: ScaleType, key keyType: Key.KeyType, accidental
 }
 
 extension TheoryService {
+
   static let scaleLevels: [[Practiceable]] = [
-    [createScale(type: .major, key: .c)],
+    [
+      createScale(type: .major, key: .c)
+    ],
     [
       createScale(type: .major, key: .g),
       createScale(type: .major, key: .f)
@@ -50,7 +53,7 @@ extension TheoryService {
       createScale(type: .minor, key: .c, accidental: .sharp)
     ],
     [
-      createScale(type: .minor, key: .a, accidental: .flat),
+      createScale(type: .minor, key: .g, accidental: .sharp),
       createScale(type: .minor, key: .e, accidental: .flat),
       createScale(type: .minor, key: .b, accidental: .flat)
     ]
