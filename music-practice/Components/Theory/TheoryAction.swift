@@ -36,7 +36,6 @@ struct TheoryAction: View {
       RowLabel(label ?? defaultLabel)
       TheoryLabel(item)
     }
-    .padding(.bottom, Spacing.small)
     .asRowWrapper()
     .sheet(isPresented: showModal) {
       Group {

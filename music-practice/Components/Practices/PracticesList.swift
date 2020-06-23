@@ -11,18 +11,13 @@ import NoveFeatherIcons
 
 struct PracticesList: View {
   @State(initialValue: false) var showScreen
-  var songPractices: FetchRequest<SongPractice>
-  var scalePractices: FetchRequest<ScalePractice>
-  
-  init() {
-    self.songPractices = RequestFactory.call(SongPractice.self)
-    self.scalePractices = RequestFactory.call(ScalePractice.self)
-  }
+  @FetchRequest(fetchRequest: RequestFactory.raw(SongPractice.self)) var songPractices: FetchedResults<SongPractice>
+  @FetchRequest(fetchRequest: RequestFactory.raw(ScalePractice.self)) var scalePractices: FetchedResults<ScalePractice>
 
   var practices: [PracticeType] {
     var practices = [PracticeType]()
-    practices += songPractices.wrappedValue.map { p in PracticeType.song(p) }
-    practices += scalePractices.wrappedValue.map { p in PracticeType.scale(p) }
+    practices += songPractices.map { p in PracticeType.song(p) }
+    practices += scalePractices.map { p in PracticeType.scale(p) }
     return practices.sorted { $0.createdAt > $1.createdAt }
   }
   

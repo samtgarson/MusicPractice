@@ -15,10 +15,8 @@ struct PracticeLog: View {
         PageTitle("Practice Log", showBack: true, onBack: back)
       }
       PracticesList()
-    }
-    .navigationBarTitle("")
-    .navigationBarHidden(true)
-    .navigationBarBackButtonHidden(true)
+    }.asChildScreen
+    
   }
   
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>

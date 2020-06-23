@@ -14,8 +14,7 @@ struct SongsScreen: View {
       PageTitle("Songs")
       SectionTitle(text: "Active Songs")
       SongsList(showAddSong: .Always, filter: .Active)
-      
-      Spacer().frame(height: Spacing.medium)
+        .padding(.bottom, Spacing.small)
       
       CollapsibleSection(title: "Archived Songs") {
         SongsList(showAddSong: .Never, filter: .Archived)

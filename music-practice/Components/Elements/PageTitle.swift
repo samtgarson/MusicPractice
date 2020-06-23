@@ -20,19 +20,18 @@ struct PageTitle: View {
   }
   
   var body: some View {
-//    Sticky { _ in
-    HStack {
+    HStack(spacing: 0) {
       if self.showBack { self.backButton }
       Text(self.content)
         .font(Fonts.large)
     }
-      //    }
-      .padding(.bottom, Spacing.medium)
+    .padding(.bottom, Spacing.small)
   }
   
   private var backButton: some View {
     Icon(iconName: .arrowLeft)
       .onTapGesture(perform: onBack)
+      .padding(.trailing, Spacing.small)
   }
 }
 

@@ -35,6 +35,8 @@
 		222D80D3248418660086A37A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80D2248418660086A37A /* Page.swift */; };
 		222D80D624842B190086A37A /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D80D524842B190086A37A /* Main.swift */; };
 		22336780248C0964008563FF /* PracticesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233677F248C0964008563FF /* PracticesList.swift */; };
+		2241B78724A2652F00817C80 /* TheorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B78624A2652F00817C80 /* TheorySummary.swift */; };
+		2241B78924A2A50800817C80 /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B78824A2A50800817C80 /* ResizeImage.swift */; };
 		224AB1BE249CEDC300AE3BB5 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224AB1BD249CEDC300AE3BB5 /* Scale.swift */; };
 		224AB1C0249E7C4C00AE3BB5 /* LevelUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224AB1BF249E7C4C00AE3BB5 /* LevelUpScreen.swift */; };
 		2252299F2483FA5E006F53F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252299E2483FA5E006F53F5 /* AppDelegate.swift */; };
@@ -79,7 +81,7 @@
 		22AF152F248D30BC004BD7E1 /* WithDragAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF152E248D30BC004BD7E1 /* WithDragAction.swift */; };
 		22D936EC248D50CD006060D5 /* SongRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D936EB248D50CD006060D5 /* SongRow.swift */; };
 		22DDC18F248BE21C00721D9B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DDC18E248BE21C00721D9B /* Icon.swift */; };
-		22EE5AA724963A5900D591D7 /* ScaleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE5AA624963A5900D591D7 /* ScaleList.swift */; };
+		22EE5AA724963A5900D591D7 /* TheoryProgressScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE5AA624963A5900D591D7 /* TheoryProgressScreen.swift */; };
 		22EE5AA92496427800D591D7 /* TheoryLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE5AA82496427800D591D7 /* TheoryLabels.swift */; };
 		22EE5AAB24965B2500D591D7 /* ScalePractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE5AAA24965B2500D591D7 /* ScalePractice.swift */; };
 		22FDC2E924A006380026E78E /* ScaleDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FDC2E824A006380026E78E /* ScaleDemo.swift */; };
@@ -127,6 +129,8 @@
 		222D80D524842B190086A37A /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		2233677F248C0964008563FF /* PracticesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticesList.swift; sourceTree = "<group>"; };
 		2241B78524A2128100817C80 /* Music Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Practice.entitlements"; sourceTree = "<group>"; };
+		2241B78624A2652F00817C80 /* TheorySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheorySummary.swift; sourceTree = "<group>"; };
+		2241B78824A2A50800817C80 /* ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImage.swift; sourceTree = "<group>"; };
 		224AB1BD249CEDC300AE3BB5 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		224AB1BF249E7C4C00AE3BB5 /* LevelUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpScreen.swift; sourceTree = "<group>"; };
 		2252299B2483FA5E006F53F5 /* Music Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +179,7 @@
 		22AF152E248D30BC004BD7E1 /* WithDragAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDragAction.swift; sourceTree = "<group>"; };
 		22D936EB248D50CD006060D5 /* SongRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRow.swift; sourceTree = "<group>"; };
 		22DDC18E248BE21C00721D9B /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
-		22EE5AA624963A5900D591D7 /* ScaleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleList.swift; sourceTree = "<group>"; };
+		22EE5AA624963A5900D591D7 /* TheoryProgressScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryProgressScreen.swift; sourceTree = "<group>"; };
 		22EE5AA82496427800D591D7 /* TheoryLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryLabels.swift; sourceTree = "<group>"; };
 		22EE5AAA24965B2500D591D7 /* ScalePractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePractice.swift; sourceTree = "<group>"; };
 		22FDC2E824A006380026E78E /* ScaleDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleDemo.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				220E650724854A5900B74DE9 /* Layouts */,
 				2260CBB2249A2DD400B83F94 /* Modals */,
 				221951162492443A00D9C1F4 /* PracticeTimer.swift */,
+				22EE5AA624963A5900D591D7 /* TheoryProgressScreen.swift */,
 				220E6513248561E900B74DE9 /* TheoryScreen.swift */,
 				222D80C9248403E80086A37A /* SettingsScreen.swift */,
 				2296B9AA248C4D3500C48348 /* SongsScreen.swift */,
@@ -425,6 +430,7 @@
 				225A4C4C249420F7009F5E1E /* RelativeDateFormatter.swift */,
 				22846A3E24A0EB4F00E00705 /* NotationHelper.swift */,
 				22846A4224A121A800E00705 /* MainNav.swift */,
+				2241B78824A2A50800817C80 /* ResizeImage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -472,10 +478,10 @@
 		22EE5AA5249635DB00D591D7 /* Theory */ = {
 			isa = PBXGroup;
 			children = (
-				22EE5AA624963A5900D591D7 /* ScaleList.swift */,
 				22EE5AA82496427800D591D7 /* TheoryLabels.swift */,
 				2260CBB3249A2E1D00B83F94 /* TheoryAction.swift */,
 				22FDC2E824A006380026E78E /* ScaleDemo.swift */,
+				2241B78624A2652F00817C80 /* TheorySummary.swift */,
 			);
 			path = Theory;
 			sourceTree = "<group>";
@@ -708,7 +714,7 @@
 				22846A4124A0FB5B00E00705 /* TheoryDemoScreen.swift in Sources */,
 				22846A3F24A0EB4F00E00705 /* NotationHelper.swift in Sources */,
 				22A5FD5624883C92009E1161 /* FormService.swift in Sources */,
-				22EE5AA724963A5900D591D7 /* ScaleList.swift in Sources */,
+				22EE5AA724963A5900D591D7 /* TheoryProgressScreen.swift in Sources */,
 				2297629124910BD700B3FA33 /* CollapsibleSection.swift in Sources */,
 				22846A4324A121A800E00705 /* MainNav.swift in Sources */,
 				22AF152F248D30BC004BD7E1 /* WithDragAction.swift in Sources */,
@@ -727,11 +733,13 @@
 				225404B5248BF56700584835 /* SongPractice.swift in Sources */,
 				22DDC18F248BE21C00721D9B /* Icon.swift in Sources */,
 				221CDD822486BAB9008B10D6 /* MPRow.swift in Sources */,
+				2241B78924A2A50800817C80 /* ResizeImage.swift in Sources */,
 				221CDD842486CBD0008B10D6 /* MPList.swift in Sources */,
 				2213981E248AE46F00B480AE /* PageTitle.swift in Sources */,
 				225229A62483FA5E006F53F5 /* ContentView.swift in Sources */,
 				22A5FD5424881030009E1161 /* MPButton.swift in Sources */,
 				2297628F2490DDD400B3FA33 /* PerformanceColor.swift in Sources */,
+				2241B78724A2652F00817C80 /* TheorySummary.swift in Sources */,
 				226E312E248A3CC000BEEBC4 /* Unwrap.swift in Sources */,
 				2260CBB6249C109700B83F94 /* RequestFactory.swift in Sources */,
 				225229A12483FA5E006F53F5 /* SceneDelegate.swift in Sources */,

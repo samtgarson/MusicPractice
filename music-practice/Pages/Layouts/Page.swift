@@ -17,13 +17,20 @@ struct PageView<Content: View>: View {
   
   var body: some View {
     ScrollView {
-      VStack {
+      VStack(spacing: Spacing.small) {
         self.content
           .frame(maxWidth: .infinity, alignment: .leading)
       }
       .padding(Spacing.medium)
     }
     .withDefaultStyles()
+  }
+  
+  var asChildScreen: some View {
+    body
+      .navigationBarTitle("")
+      .navigationBarHidden(true)
+      .navigationBarBackButtonHidden(true)
   }
 }
 

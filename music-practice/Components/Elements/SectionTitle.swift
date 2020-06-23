@@ -14,7 +14,7 @@ struct SectionTitle: View {
   var body: some View {
     Text(text.uppercased())
       .font(Fonts.small)
-      .kerning(2)
+      .kerning(WideKerning)
       .fixedSize(horizontal: true, vertical: false)
       .opacity(Opacity.Faded)
   }

@@ -48,16 +48,11 @@ struct Header<Content: View>: View {
   }
   
   var bgColor: Color {
-    switch performance {
-    case .Good:
-      return Colors.success
-    case .Meh:
-      return Colors.warning
-    case .Bad:
-      return Colors.error
-    default:
-      return Color.white
+    if let performance = performance {
+      return Colors.forPerformance(performance)
     }
+    
+    return Color.white
   }
 }
 

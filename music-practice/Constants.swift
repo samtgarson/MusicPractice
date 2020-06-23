@@ -14,6 +14,32 @@ struct Colors {
   static let success = Color("Success")
   static let warning = Color("Warning")
   static let error = Color("Error")
+  
+  static func forPerformance(_ performance: Performance) -> Color {
+    switch performance {
+    case .Good:
+      return Colors.success
+    case .Meh:
+      return Colors.warning
+    case .Bad:
+      return Colors.error
+    }
+  }
+  
+  static func ui(_ color: Color) -> UIColor {
+    switch color {
+    case Color("Background"):
+      return UIColor(named: "Backround")!
+    case Color("Success"):
+      return UIColor(named: "Success")!
+    case Color("Warning"):
+      return UIColor(named: "Warning")!
+    case Color("Error"):
+      return UIColor(named: "Error")!
+    default:
+      return UIColor(named: "Primary")!
+    }
+  }
 }
 
 struct Spacing {
@@ -23,6 +49,8 @@ struct Spacing {
 }
 
 let CornerRadius: CGFloat = 5.0
+
+let WideKerning: CGFloat = 1.5
 
 enum Performance {
   case Good

@@ -38,7 +38,7 @@ struct TheoryLabel: View {
       }
       Text(scale.type.description.uppercased())
         .font(Fonts.small)
-        .kerning(2)
+        .kerning(WideKerning)
         .fixedSize()
         .padding(.leading, Spacing.small)
     }
