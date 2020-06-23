@@ -27,6 +27,16 @@ public class BaseService {
     return newInstance
   }
   
+  func fetch<T>(_ request: NSFetchRequest<T>) -> [T] {
+    guard let context = managedContext else { return [] }
+    
+    if let result = try? context.fetch(request) {
+      return result
+    }
+    
+    return []
+  }
+  
   func save () {
     guard let context = managedContext else { return }
     

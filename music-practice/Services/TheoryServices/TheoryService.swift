@@ -62,17 +62,10 @@ class TheoryService: BaseService {
   }
   
   private var allPractices: [Practiceable: [PracticeEntityProtocol]] {
-    guard let context = managedContext else { return .init() }
-    
-    do {
-      switch type {
-      case .Scale:
-        let practices = try context.fetch(RequestFactory.raw(ScalePractice.self))
-        return Dictionary(grouping: practices, by: { Practiceable.scale(($0).scale!) })
-      }
-    } catch {
-      print("Could not fetch practices")
-      return .init()
+    switch type {
+    case .Scale:
+      let practices = fetch(RequestFactory.raw(ScalePractice.self))
+      return Dictionary(grouping: practices, by: { Practiceable.scale(($0).scale!) })
     }
   }
   

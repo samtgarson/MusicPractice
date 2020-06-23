@@ -61,6 +61,7 @@
 		22846A3F24A0EB4F00E00705 /* NotationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22846A3E24A0EB4F00E00705 /* NotationHelper.swift */; };
 		22846A4124A0FB5B00E00705 /* TheoryDemoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22846A4024A0FB5A00E00705 /* TheoryDemoScreen.swift */; };
 		22846A4324A121A800E00705 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22846A4224A121A800E00705 /* MainNav.swift */; };
+		22846A4524A14BB000E00705 /* GeneralPerformanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22846A4424A14BB000E00705 /* GeneralPerformanceService.swift */; };
 		2296B9A6248C1E9700C48348 /* PracticeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */; };
 		2296B9A9248C4CE800C48348 /* PracticeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9A8248C4CE800C48348 /* PracticeLog.swift */; };
 		2296B9AB248C4D3500C48348 /* SongsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296B9AA248C4D3500C48348 /* SongsScreen.swift */; };
@@ -155,6 +156,7 @@
 		22846A3E24A0EB4F00E00705 /* NotationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotationHelper.swift; sourceTree = "<group>"; };
 		22846A4024A0FB5A00E00705 /* TheoryDemoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryDemoScreen.swift; sourceTree = "<group>"; };
 		22846A4224A121A800E00705 /* MainNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
+		22846A4424A14BB000E00705 /* GeneralPerformanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPerformanceService.swift; sourceTree = "<group>"; };
 		2296B9A5248C1E9700C48348 /* PracticeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDisplay.swift; sourceTree = "<group>"; };
 		2296B9A8248C4CE800C48348 /* PracticeLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeLog.swift; sourceTree = "<group>"; };
 		2296B9AA248C4D3500C48348 /* SongsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsScreen.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				227760AA2486852B0094B78E /* StatusBarService.swift */,
 				22976287248FEC3C00B3FA33 /* PracticePerformanceService.swift */,
 				225A4C4A2493E1A8009F5E1E /* NotificationService.swift */,
+				22846A4424A14BB000E00705 /* GeneralPerformanceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				22EE5AAB24965B2500D591D7 /* ScalePractice.swift in Sources */,
 				22139820248AE51100B480AE /* Sticky.swift in Sources */,
 				2296B9AB248C4D3500C48348 /* SongsScreen.swift in Sources */,
+				22846A4524A14BB000E00705 /* GeneralPerformanceService.swift in Sources */,
 				22846A4124A0FB5B00E00705 /* TheoryDemoScreen.swift in Sources */,
 				22846A3F24A0EB4F00E00705 /* NotationHelper.swift in Sources */,
 				22A5FD5624883C92009E1161 /* FormService.swift in Sources */,

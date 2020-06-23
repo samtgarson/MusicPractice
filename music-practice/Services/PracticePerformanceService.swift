@@ -8,14 +8,34 @@
 
 import Foundation
 
-let a: Double = 100
-
+/// The service responsible for calculating the performance
+/// given a set of practices using a number of factors.
 class PracticePerformanceService {
   static let maxSeconds: Double = 30 * 24 * 60 * 60
+  
+  /// Converts generic metric to a Performance enum
+  /// - Parameter metric: Double between 0 and 1
+  /// - Returns: Performance enum
+  static func metricToPerformance(_ metric: Double) -> Performance {
+    switch metric {
+    case 0..<0.3:
+      return .Bad
+    case 0.3..<0.6:
+      return .Meh
+    case 0.6...1:
+      return .Good
+    default:
+      return .Good
+    }
+  }
+  
   var practices: [PracticeEntityProtocol]
   
   private var _score: Double?
   private var _frequency: Double?
+  
+  /// Constant which defines the steepness of exponential adjustment
+  private let a: Double = 100
   
   init(_ practices: [PracticeEntityProtocol]) {
     self.practices = practices
@@ -26,25 +46,16 @@ class PracticePerformanceService {
   /// A combination of average score and frequency, which
   /// can be used to prioritise the next resource to practice
   var priority: Double {
-    weightedAverage([
-      (value: 1 - averageScore, weight: 0.6),
-      (value: 1 - frequency, weight: 0.6),
-      (value: 1 - recency, weight: 1)
+    1 - weightedAverage([
+      (value: averageScore, weight: 0.6),
+      (value: frequency, weight: 0.6),
+      (value: recency, weight: 1)
     ])
   }
   
   /// A representation of the average score using RAG rating
   var performance: Performance {
-    switch averageScore {
-    case 0..<0.3:
-      return .Bad
-    case 0.3..<0.6:
-      return .Meh
-    case 0.6...1:
-      return .Good
-    default:
-      return .Good
-    }
+    Self.metricToPerformance(averageScore)
   }
   
   /// A weighted average of recent scorings for this resource
@@ -78,6 +89,7 @@ class PracticePerformanceService {
     return self._frequency!
   }
   
+  /// How long ago the most recent practice was, adjusted for staleness
   var recency: Double {
     guard let practice = practices.first else { return 0 }
     
