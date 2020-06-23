@@ -103,7 +103,7 @@
 		220E650B248551C700B74DE9 /* Inter-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf"; sourceTree = "<group>"; };
 		220E650C248551C700B74DE9 /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf"; sourceTree = "<group>"; };
 		220E650D248551C700B74DE9 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
-		220E6513248561E900B74DE9 /* TheoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TheoryScreen.swift; path = Layouts/TheoryScreen.swift; sourceTree = "<group>"; };
+		220E6513248561E900B74DE9 /* TheoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheoryScreen.swift; sourceTree = "<group>"; };
 		220E65152485625000B74DE9 /* PracticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeService.swift; sourceTree = "<group>"; };
 		220E651A2485736500B74DE9 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		2212C6162485A45900D6B86C /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -126,6 +126,7 @@
 		222D80D2248418660086A37A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		222D80D524842B190086A37A /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		2233677F248C0964008563FF /* PracticesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticesList.swift; sourceTree = "<group>"; };
+		2241B78524A2128100817C80 /* Music Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Practice.entitlements"; sourceTree = "<group>"; };
 		224AB1BD249CEDC300AE3BB5 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		224AB1BF249E7C4C00AE3BB5 /* LevelUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpScreen.swift; sourceTree = "<group>"; };
 		2252299B2483FA5E006F53F5 /* Music Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,17 +299,18 @@
 		2252299D2483FA5E006F53F5 /* music-practice */ = {
 			isa = PBXGroup;
 			children = (
+				2241B78524A2128100817C80 /* Music Practice.entitlements */,
 				229762892490C7FB00B3FA33 /* Helpers */,
 				225404AD248BF4CD00584835 /* Models */,
 				222D80D424842AF30086A37A /* Components */,
 				222D80CB248416040086A37A /* Services */,
 				222D80C4248403330086A37A /* Pages */,
+				220E6512248551CE00B74DE9 /* Fonts */,
 				222D80CE2484162F0086A37A /* Constants.swift */,
 				2252299E2483FA5E006F53F5 /* AppDelegate.swift */,
 				225229A02483FA5E006F53F5 /* SceneDelegate.swift */,
 				225229A52483FA5E006F53F5 /* ContentView.swift */,
 				225229A72483FA60006F53F5 /* Assets.xcassets */,
-				220E6512248551CE00B74DE9 /* Fonts */,
 				225229AC2483FA60006F53F5 /* LaunchScreen.storyboard */,
 				225229AF2483FA60006F53F5 /* Info.plist */,
 				22139823248BB78400B480AE /* music_practice.xcdatamodeld */,
@@ -908,6 +910,7 @@
 			baseConfigurationReference = 8311AD3522597701DC40D720 /* Pods-music-practice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "music-practice/Music Practice.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"music-practice/Preview Content\"";
 				DEVELOPMENT_TEAM = SZR99J9ZFT;
@@ -919,8 +922,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samgarson.music-practice";
 				PRODUCT_NAME = "Music Practice";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -929,6 +933,7 @@
 			baseConfigurationReference = 505DCCC5D1BBE8F0D54F5221 /* Pods-music-practice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "music-practice/Music Practice.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"music-practice/Preview Content\"";
 				DEVELOPMENT_TEAM = SZR99J9ZFT;
@@ -940,8 +945,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samgarson.music-practice";
 				PRODUCT_NAME = "Music Practice";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
