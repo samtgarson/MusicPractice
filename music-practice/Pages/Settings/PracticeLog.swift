@@ -10,19 +10,9 @@ import SwiftUI
 
 struct PracticeLog: View {  
   var body: some View {
-    PageView {
-      HStack {
-        PageTitle("Practice Log", showBack: true, onBack: back)
-      }
+    ChildView(title: "Practice Log") {
       PracticesList()
-    }.asChildScreen
-    
-  }
-  
-  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-  
-  private func back() {
-    self.presentationMode.wrappedValue.dismiss()
+    }
   }
 }
 

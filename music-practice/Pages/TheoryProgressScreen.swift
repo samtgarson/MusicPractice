@@ -13,15 +13,13 @@ struct TheoryProgressScreen: View {
   var type: TheoryType
   
   @FetchRequest(fetchRequest: RequestFactory.raw(ScalePractice.self)) var scalePractices: FetchedResults<ScalePractice>
-  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   init(type: TheoryType) {
     self.type = type
   }
   
   var body: some View {
-    PageView {
-      PageTitle("\(type)s", showBack: true, onBack: back)
+    ChildView(title: "\(type)s") {
       ForEach(0..<levelCount) { level in
         Group {
           self.title(for: level)
@@ -30,17 +28,14 @@ struct TheoryProgressScreen: View {
           }
         }.opacity(self.locked(level) ? Opacity.VeryFaded : 1)
       }
-    }.asChildScreen
+    }
   }
   
   private func title(for level: Int) -> some View {
-    HStack(alignment: .center) {
-      SectionTitle(text: "Level \(level + 1)")
-      if self.locked(level) {
-        Spacer()
-        Icon(iconName: .lock, scale: 0.75)
-      }
-    }
+    SectionTitle(
+      text: "Level \(level + 1)",
+      icon: self.locked(level) ? Icon(iconName: .lock, scale: .small) : nil
+    )
     .padding(.top, Spacing.small)
     .padding(.bottom, Spacing.tiny)
     .frame(maxWidth: .infinity, alignment: .leading)
@@ -76,10 +71,6 @@ struct TheoryProgressScreen: View {
   }
   
   private let levelCount = TheoryService.scaleLevels.count
-  
-  private func back() {
-    self.presentationMode.wrappedValue.dismiss()
-  }
 }
 
 struct TheoryProgressScreen_Previews: PreviewProvider {

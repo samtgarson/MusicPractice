@@ -128,6 +128,7 @@ struct Countdown: View {
   }
   
   private func scheduleNotification(in seconds: Double) {
+    guard NotificationSettings().practiceTimer else { return }
     NotificationService().schedule(in: seconds, title: "⏲ Time's up!", body: "Report back to let me know how your practice went.")
   }
   

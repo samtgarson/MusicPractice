@@ -8,20 +8,31 @@
 
 import SwiftUI
 
-enum SettingsItems: String, CaseIterable {
-  case PracticeLog = "Practice log"
-}
 
 struct SettingsScreen: View {
   @State(initialValue: false) var showConfirmReset: Bool
   @EnvironmentObject var mainNav: MainNav
+
+  private enum SettingsItems: String, CaseIterable {
+    case PracticeLog = "Practice log"
+    case Notifications = "Notification Settings"
+  }
   
   var body: some View {
     PageView {
-      PageTitle("Account")
+      PageTitle("Settings")
       MPList(collection: SettingsItems.allCases) { i in
         self.item(i)
-      }.withFooter { self.resetRow }
+      }
+      
+      SectionTitle(text: "About")
+        .padding(.top, Spacing.medium)
+      aboutRows
+      
+      SectionTitle(text: "Danger Zone", icon: Icon(iconName: .alertOctagon, scale: .small))
+        .padding(.top, Spacing.medium)
+      resetRow.asRowWrapper()
+      
     }
   }
   
@@ -37,8 +48,31 @@ struct SettingsScreen: View {
   private func screen(for item: SettingsItems) -> some View {
     switch item {
     case .PracticeLog:
-      return PracticeLog()
+      return AnyView(PracticeLog())
+    case .Notifications:
+      return AnyView(NotificationSettingsScreen())
     }
+  }
+  
+  private var aboutRows: some View {
+    VStack(spacing: Spacing.tiny) {
+      MPRow(onTap: { () }) {
+        RowLabel("Built by Sam Garson")
+        Icon(iconName: .heart, scale: .small)
+      }
+      MPRow(onTap: { () }) {
+        RowLabel("Website")
+        Icon(iconName: .globe, scale: .small)
+      }
+      MPRow(onTap: { () }) {
+        RowLabel("Twitter")
+        Icon(iconName: .twitter, scale: .small)
+      }
+      MPRow() {
+        RowLabel("Version")
+        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
+      }
+    }.asRowWrapper()
   }
   
   private var resetRow: some View {

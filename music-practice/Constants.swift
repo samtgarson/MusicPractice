@@ -46,6 +46,7 @@ struct Spacing {
   static let tiny: CGFloat = 6.0
   static let small: CGFloat = 14.0
   static let medium: CGFloat = 32.0
+  static let large: CGFloat = 48.0
 }
 
 let CornerRadius: CGFloat = 5.0

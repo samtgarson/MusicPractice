@@ -9,14 +9,27 @@
 import SwiftUI
 
 struct SectionTitle: View {
+  internal init(text: String, icon: Icon? = nil) {
+    self.text = text
+    self.icon = icon
+  }
+  
   var text: String
+  var icon: Icon?
   
   var body: some View {
-    Text(text.uppercased())
-      .font(Fonts.small)
-      .kerning(WideKerning)
-      .fixedSize(horizontal: true, vertical: false)
-      .opacity(Opacity.Faded)
+    HStack(alignment: .center) {
+      Text(text.uppercased())
+        .font(Fonts.small)
+        .kerning(WideKerning)
+        .fixedSize(horizontal: true, vertical: false)
+        .opacity(Opacity.Faded)
+      
+      Unwrap(icon) { icon in
+        Spacer()
+        icon
+      }
+    }
   }
 }
 
@@ -24,6 +37,7 @@ struct SectionTitle_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
       SectionTitle(text: "Next Song")
+      SectionTitle(text: "Next Song", icon: Icon(iconName: .lifeBuoy))
     }
   }
 }
