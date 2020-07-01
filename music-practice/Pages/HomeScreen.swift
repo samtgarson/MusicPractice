@@ -12,10 +12,10 @@ import MusicTheorySwift
 struct HomeScreen: View {
   var body: some View {
     Header(title: copy.title, description: copy.description, performance: performance ?? .Good) {
-      SectionTitle(text: "Next Songs")
+      SectionTitle("Next Songs")
       SongsList(showAddSong: .WhenEmpty, filter: .Active, sort: .Performance, limit: 2)
       
-      SectionTitle(text: "Next Theory")
+      SectionTitle("Next Theory")
         .padding(.top, Spacing.medium)
         .padding(.bottom, Spacing.small)
       TheoryAction(.Scale)

@@ -12,7 +12,7 @@ struct TheoryScreen: View {
   var body: some View {
     PageView {
       PageTitle("Theory")
-      SectionTitle(text: "Scales")
+      SectionTitle("Scales")
 
       TheoryAction(.Scale)
       TheorySummary(type: .Scale)

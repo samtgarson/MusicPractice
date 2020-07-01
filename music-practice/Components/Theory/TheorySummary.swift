@@ -78,7 +78,7 @@ struct TheorySummary: View {
 struct TheorySummary_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
-      SectionTitle(text: "Testing")
+      SectionTitle("Testing")
       TheorySummary(type: .Scale)
     }
   }

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SectionTitle: View {
-  internal init(text: String, icon: Icon? = nil) {
+  internal init(_ text: String, icon: Icon? = nil) {
     self.text = text
     self.icon = icon
   }
@@ -36,8 +36,8 @@ struct SectionTitle: View {
 struct SectionTitle_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
-      SectionTitle(text: "Next Song")
-      SectionTitle(text: "Next Song", icon: Icon(iconName: .lifeBuoy))
+      SectionTitle("Next Song")
+      SectionTitle("Next Song", icon: Icon(iconName: .lifeBuoy))
     }
   }
 }

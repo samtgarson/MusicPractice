@@ -12,7 +12,7 @@ struct SongsScreen: View {
   var body: some View {
     PageView {
       PageTitle("Songs")
-      SectionTitle(text: "Active Songs")
+      SectionTitle("Active Songs")
       SongsList(showAddSong: .Always, filter: .Active)
         .padding(.bottom, Spacing.small)
       

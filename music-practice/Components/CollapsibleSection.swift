@@ -21,7 +21,7 @@ struct CollapsibleSection<Content: View>: View {
   var body: some View {
     VStack {
       HStack {
-        Unwrap(self.title) { title in SectionTitle(text: title) }
+        Unwrap(self.title) { title in SectionTitle(title) }
         Spacer()
         Icon(iconName: .chevronUp)
           .rotationEffect(expanded ? Angle(degrees: 180) : Angle.zero)

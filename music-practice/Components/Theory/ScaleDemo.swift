@@ -46,7 +46,7 @@ struct ScaleDemo_Previews: PreviewProvider {
     return PageView {
       ForEach(scales, id: \.self) { scale in
         VStack {
-          Text(scale.shortDescription)
+          SectionTitle(scale.shortDescription)
           ScaleDemo(scale: scale)
         }.asRowWrapper()
       }

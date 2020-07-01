@@ -32,8 +32,7 @@ struct TheoryProgressScreen: View {
   }
   
   private func title(for level: Int) -> some View {
-    SectionTitle(
-      text: "Level \(level + 1)",
+    SectionTitle("Level \(level + 1)",
       icon: self.locked(level) ? Icon(iconName: .lock, scale: .small) : nil
     )
     .padding(.top, Spacing.small)
