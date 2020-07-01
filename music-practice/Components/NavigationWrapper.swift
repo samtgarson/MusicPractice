@@ -22,6 +22,7 @@ struct NavigationWrapper<Content: View>: View {
         .navigationBarHidden(true)
     }
     .background(Colors.background.edgesIgnoringSafeArea(.bottom))
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 

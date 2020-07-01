@@ -11,6 +11,7 @@ import SwiftUI
 
 struct SettingsScreen: View {
   @State(initialValue: false) var showConfirmReset: Bool
+  @State(initialValue: false) var showAboutSheet: Bool
   @EnvironmentObject var mainNav: MainNav
 
   private enum SettingsItems: String, CaseIterable {
@@ -25,11 +26,11 @@ struct SettingsScreen: View {
         self.item(i)
       }
       
-      SectionTitle(text: "About")
+      SectionTitle("About")
         .padding(.top, Spacing.medium)
       aboutRows
       
-      SectionTitle(text: "Danger Zone", icon: Icon(iconName: .alertOctagon, scale: .small))
+      SectionTitle("Danger Zone", icon: Icon(iconName: .alertOctagon, scale: .small))
         .padding(.top, Spacing.medium)
       resetRow.asRowWrapper()
       
@@ -56,22 +57,14 @@ struct SettingsScreen: View {
   
   private var aboutRows: some View {
     VStack(spacing: Spacing.tiny) {
-      MPRow(onTap: { () }) {
+      MPRow(onTap: { self.showAboutSheet = true }) {
         RowLabel("Built by Sam Garson")
         Icon(iconName: .heart, scale: .small)
-      }
-      MPRow(onTap: { () }) {
-        RowLabel("Website")
-        Icon(iconName: .globe, scale: .small)
-      }
-      MPRow(onTap: { () }) {
-        RowLabel("Twitter")
-        Icon(iconName: .twitter, scale: .small)
-      }
+      }.actionSheet(isPresented: $showAboutSheet) { aboutSheet }
       MPRow() {
         RowLabel("Version")
         Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
-      }
+      }.opacity(Opacity.Faded)
     }.asRowWrapper()
   }
   
@@ -81,6 +74,17 @@ struct SettingsScreen: View {
       Icon(iconName: .trash2, color: Colors.error)
     }
     .actionSheet(isPresented: $showConfirmReset) { resetSheet }
+  }
+  
+  private var aboutSheet: ActionSheet {
+    ActionSheet(
+      title: Text("Find me on the internet ❤️"),
+      buttons: [
+        .default(Text("samgarson.com")) { UIApplication.shared.open(URL(string: "https://samgarson.com")!) },
+        .default(Text("@samtgarson")) { UIApplication.shared.open(URL(string: "https://twitter.com/samtgarson")!) },
+        .cancel(Text("Back"))
+      ]
+    )
   }
   
   private var resetSheet: ActionSheet {

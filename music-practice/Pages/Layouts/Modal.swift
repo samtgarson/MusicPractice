@@ -22,7 +22,7 @@ struct ModalView<Content: View>: View {
   }
   
   var body: some View {
-    PageView {
+    PageView(alignment: .center) {
       VStack(spacing: 0) {
         HeaderContent(title: title, description: description)
           .padding(Spacing.medium)
@@ -31,7 +31,7 @@ struct ModalView<Content: View>: View {
       }
       .cornerRadius(CornerRadius)
       .frame(maxWidth: 500)
-    }
+    }.withoutScroll
   }
   
   private var lowerHalf: some View {
