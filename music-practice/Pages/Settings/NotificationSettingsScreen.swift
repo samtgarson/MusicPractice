@@ -15,6 +15,7 @@ struct NotificationSettingsScreen: View {
     ChildView(title: "Notifications") {
       VStack(spacing: Spacing.tiny) {
         toggle(for: $state.practiceTimer, title: "Practice timer", description: "Receive a notification when your practice timer is up")
+        .fixedSize(horizontal: false, vertical: true)
       }.asRowWrapper()
     }
   }

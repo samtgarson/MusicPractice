@@ -20,8 +20,7 @@ struct SectionTitle: View {
   var body: some View {
     HStack(alignment: .center) {
       Text(text.uppercased())
-        .font(Fonts.small)
-        .kerning(WideKerning)
+        .withSmallFont()
         .fixedSize(horizontal: true, vertical: false)
         .opacity(Opacity.Faded)
       

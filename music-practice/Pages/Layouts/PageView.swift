@@ -20,7 +20,7 @@ struct PageView<Content: View>: View {
   var body: some View {
     ScrollView {
       main
-    }
+    }.withDefaultStyles()
   }
   
   private var main: some View {
@@ -29,7 +29,6 @@ struct PageView<Content: View>: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
     }
     .padding(Spacing.medium)
-    .withDefaultStyles()
   }
   
   var withoutScroll: some View {

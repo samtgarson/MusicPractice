@@ -115,9 +115,9 @@ struct SongsList_Previews: PreviewProvider {
     var body: some View {
       Seeder {
         PageView {
-          Toggle("Sort by performance?".uppercased(), isOn: $sortByPerformance)
-            .font(Fonts.small)
-            .padding(.bottom, 30)
+          Toggle(isOn: $sortByPerformance, label: {
+            Text("Sort by performance?".uppercased()).withSmallFont()
+          }).padding(.bottom, 30)
           SongsList(showAddSong: .Always, sort: sortByPerformance ? .Performance : .CreatedAt, limit: 3)
         }
         .withDefaultStyles()

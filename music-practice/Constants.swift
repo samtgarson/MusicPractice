@@ -81,3 +81,11 @@ struct Fonts {
     Font.custom("Inter-Light", size: size)
   }
 }
+
+extension Text {
+  func withSmallFont() -> Text {
+    self
+      .font(Fonts.small)
+      .kerning(WideKerning)
+  }
+}
