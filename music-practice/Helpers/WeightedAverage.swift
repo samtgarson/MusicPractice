@@ -11,10 +11,10 @@ import Foundation
 typealias weightedValue = (value: Double, weight: Double)
 
 func weightedAverage(_ values: [weightedValue]) -> Double {
-  precondition(values.count > 0)
+  guard values.count > 0 else { return 0 }
   
   let totalWeight = values.reduce(0.0) { $0 + $1.weight }
-  precondition(totalWeight > 0)
+  guard totalWeight > 0 else { return 0 }
   
   return values
     .map { $0.weight * $0.value }

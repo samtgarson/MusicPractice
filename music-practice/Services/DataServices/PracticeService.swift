@@ -36,9 +36,12 @@ public enum PracticeType: Hashable {
 public enum Practiceable: Hashable {
   case song(Song)
   case scale(Scale)
+  case interval(Interval)
   
   var type: TheoryType {
     switch self {
+    case .interval:
+      return TheoryType.Interval
     default:
       return TheoryType.Scale
     }
@@ -50,6 +53,8 @@ public enum Practiceable: Hashable {
       return scale.shortDescription
     case .song(let song):
       return song.title!
+    case .interval(let interval):
+      return interval.description
     }
   }
 }
@@ -62,6 +67,12 @@ public class PracticeService: BaseService {
     case .scale(let scale):
       let newPractice = instantiate(ScalePractice.self, context)
       newPractice.scale = scale
+      newPractice.score = score
+      save()
+      return newPractice
+    case .interval(let interval):
+      let newPractice = instantiate(IntervalPractice.self, context)
+      newPractice.interval = interval
       newPractice.score = score
       save()
       return newPractice

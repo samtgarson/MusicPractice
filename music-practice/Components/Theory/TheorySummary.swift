@@ -25,8 +25,7 @@ struct TheorySummary: View {
       Image("White\(performance)")
         .padding(.trailing, Spacing.small)
       Text(copy.uppercased())
-        .kerning(WideKerning)
-        .font(Fonts.small)
+        .withSmallFont()
         .foregroundColor(Color.white)
       Spacer()
     }
@@ -39,6 +38,8 @@ struct TheorySummary: View {
     switch type {
     case .Scale:
       return GeneralPerformanceService().scalePerformance ?? .Good
+    case .Interval:
+      return GeneralPerformanceService().intervalPerformance ?? .Good
     }
   }
   
@@ -68,10 +69,7 @@ struct TheorySummary: View {
   }
   
   private var progressScreen: some View {
-    switch type {
-    case .Scale:
-      return TheoryProgressScreen(type: type)
-    }
+    return TheoryProgressScreen(type: type)
   }
 }
 

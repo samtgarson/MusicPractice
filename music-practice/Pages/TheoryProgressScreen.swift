@@ -14,6 +14,8 @@ struct TheoryProgressScreen: View {
   
   @FetchRequest(fetchRequest: RequestFactory.raw(ScalePractice.self)) var scalePractices: FetchedResults<ScalePractice>
   
+  @FetchRequest(fetchRequest: RequestFactory.raw(IntervalPractice.self)) var intervalPractices: FetchedResults<IntervalPractice>
+  
   init(type: TheoryType) {
     self.type = type
   }
@@ -23,7 +25,7 @@ struct TheoryProgressScreen: View {
       ForEach(0..<levelCount) { level in
         Group {
           self.title(for: level)
-          MPList(collection: self.level(for: level)) {
+          MPList(collection: self.levels[level]) {
             self.row(for: $0, locked: self.locked(level))
           }
         }.opacity(self.locked(level) ? Opacity.VeryFaded : 1)
@@ -39,11 +41,7 @@ struct TheoryProgressScreen: View {
     .padding(.bottom, Spacing.tiny)
     .frame(maxWidth: .infinity, alignment: .leading)
   }
-  
-  private func level(for index: Int) -> [Practiceable] {
-    TheoryService.scaleLevels[index]
-  }
-  
+    
   private func locked(_ level: Int) -> Bool {
     level > self.currentLevel
   }
@@ -60,8 +58,20 @@ struct TheoryProgressScreen: View {
     case .scale(let scale):
       let practices = scalePractices.filter { $0.scale == scale }
       return PracticePerformanceService(practices).performance
+    case .interval(let interval):
+      let practices = intervalPractices.filter { $0.interval == interval }
+      return PracticePerformanceService(practices).performance
     default:
       return .Good
+    }
+  }
+  
+  private var levels: [[Practiceable]] {
+    switch type {
+    case .Interval:
+      return TheoryService.intervalLevels
+    case .Scale:
+      return TheoryService.scaleLevels
     }
   }
   
@@ -69,13 +79,15 @@ struct TheoryProgressScreen: View {
     TheoryService(type).level
   }
   
-  private let levelCount = TheoryService.scaleLevels.count
+  private var levelCount: Int {
+    levels.count
+  }
 }
 
 struct TheoryProgressScreen_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
-      TheoryProgressScreen(type: .Scale)
+      TheoryProgressScreen(type: .Interval)
     }
   }
 }

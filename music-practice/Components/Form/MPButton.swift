@@ -10,13 +10,13 @@ import SwiftUI
 import NoveFeatherIcons
 
 struct MPButton: View {
-  internal init(_ label: String, icon: Feather.IconName? = nil, onTap: (() -> Void)?) {
+  internal init(_ label: String? = nil, icon: Feather.IconName? = nil, onTap: (() -> Void)? = nil) {
     self.label = label
     self.iconName = icon
     self.onTap = onTap
   }
   
-  var label: String
+  var label: String?
   var onTap: (() -> Void)?
   var iconName: Feather.IconName?
   var body: some View {
@@ -24,7 +24,7 @@ struct MPButton: View {
       if let handler = self.onTap { handler() }
     }) {
       HStack {
-        Text(label)
+        Unwrap(label) { Text($0) }
         icon
       }
       .padding(.vertical, Spacing.small)
@@ -45,6 +45,7 @@ struct MPButton_Previews: PreviewProvider {
     return ModalView(description: "Testing a button") {
       MPButton("Take a picture", icon: .aperture, onTap: handler)
       MPButton("Press me") { handler() }
+      MPButton(icon: .repeatIcon)
     }
   }
 }

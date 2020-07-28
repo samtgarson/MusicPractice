@@ -87,6 +87,8 @@ struct TheoryAction: View {
     switch item {
     case .scale:
       return "Scale"
+    case .interval:
+      return "Interval"
     default:
       return "Next"
     }

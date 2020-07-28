@@ -17,6 +17,12 @@ class GeneralPerformanceService: BaseService {
     return PracticePerformanceService.metricToPerformance(metric)
   }
   
+  var intervalPerformance: Performance? {
+    if intervalPractices.count < 4 { return nil }
+    
+    let metric = 1 - PracticePerformanceService(intervalPractices).priority
+    return PracticePerformanceService.metricToPerformance(metric)
+  }
   
   var scalePerformance: Performance? {
     if scalePractices.count < 4 { return nil }
@@ -31,6 +37,10 @@ class GeneralPerformanceService: BaseService {
   
   private var scalePractices: [PracticeEntityProtocol] {
     fetch(RequestFactory.raw(ScalePractice.self))
+  }
+  
+  private var intervalPractices: [PracticeEntityProtocol] {
+    fetch(RequestFactory.raw(IntervalPractice.self))
   }
   
   private var songPractices: [PracticeEntityProtocol] {

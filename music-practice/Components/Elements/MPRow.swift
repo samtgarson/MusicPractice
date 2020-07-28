@@ -11,14 +11,16 @@ import NoveFeatherIcons
 
 struct RowLabel: View {
   var text: String
+  var alignment: Alignment
   
-  init(_ text: String) {
+  init(_ text: String, alignment: Alignment = .leading) {
     self.text = text
+    self.alignment = alignment
   }
   
   var body: some View {
     Text(text)
-      .frame(maxWidth: .infinity, alignment: .leading)
+      .frame(maxWidth: .infinity, alignment: alignment)
   }
 }
 

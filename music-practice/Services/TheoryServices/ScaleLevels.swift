@@ -9,14 +9,30 @@
 import Foundation
 import MusicTheorySwift
 
-private func createScale ( type: ScaleType, key keyType: Key.KeyType, accidental: Accidental = .natural) -> Practiceable {
+private func createScale ( type: ScaleType, key keyType: Key.KeyType, accidental: Accidental = .natural) -> Scale {
   let key = Key(type: keyType, accidental: accidental)
-  return Practiceable.scale(Scale(type: type, key: key))
+  return Scale(type: type, key: key)
 }
 
 extension TheoryService {
+  
+  static var allKeys: [Key] {
+    rawScaleLevels.flatMap { arr in
+      arr.map { scale in
+        scale.key
+      }
+    }
+  }
+  
+  static var scaleLevels: [[Practiceable]] {
+    rawScaleLevels.map { level in
+      level.map { scale in
+        Practiceable.scale(scale)
+      }
+    }
+  }
 
-  static let scaleLevels: [[Practiceable]] = [
+  private static let rawScaleLevels: [[Scale]] = [
     [
       createScale(type: .major, key: .c)
     ],

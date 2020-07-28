@@ -12,16 +12,22 @@ struct TheoryScreen: View {
   var body: some View {
     PageView {
       PageTitle("Theory")
+      
       SectionTitle("Scales")
-
-      TheoryAction(.Scale)
+      TheoryAction(.Scale, label: "Next")
       TheorySummary(type: .Scale)
+      
+      SectionTitle("Interval")
+      TheoryAction(.Interval, label: "Next")
+      TheorySummary(type: .Interval)
     }
   }
 }
 
 struct TheoryScreen_Previews: PreviewProvider {
   static var previews: some View {
-    TheoryScreen()
+    Seeder {
+      TheoryScreen()
+    }
   }
 }

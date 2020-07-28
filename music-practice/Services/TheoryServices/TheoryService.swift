@@ -13,6 +13,7 @@ let MIN_PRACTICE_COUNT = 3
 
 public enum TheoryType: String {
   case Scale = "Scale"
+  case Interval = "Interval"
 }
 
 class TheoryService: BaseService {
@@ -66,6 +67,9 @@ class TheoryService: BaseService {
     case .Scale:
       let practices = fetch(RequestFactory.raw(ScalePractice.self))
       return Dictionary(grouping: practices, by: { Practiceable.scale(($0).scale!) })
+    case .Interval:
+      let practices = fetch(RequestFactory.raw(IntervalPractice.self))
+      return Dictionary(grouping: practices, by: { Practiceable.interval(($0).interval!) })
     }
   }
   
@@ -73,6 +77,8 @@ class TheoryService: BaseService {
     switch type {
     case .Scale:
       return TheoryService.scaleLevels
+    case .Interval:
+      return TheoryService.intervalLevels
     }
   }
 }

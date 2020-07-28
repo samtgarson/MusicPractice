@@ -6,7 +6,6 @@
 //  Copyright © 2020 Sam Garson. All rights reserved.
 //
 
-import Foundation
 import CoreData
 import MusicTheorySwift
 
