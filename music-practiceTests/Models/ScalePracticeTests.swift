@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import MusicTheorySwift
+import MusicTheory
 @testable import Music_Practice
 
 class ScalePracticeTests: XCTestCase {

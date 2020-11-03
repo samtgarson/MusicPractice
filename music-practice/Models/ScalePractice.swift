@@ -7,7 +7,7 @@
 //
 
 import CoreData
-import MusicTheorySwift
+import MusicTheory
 
 extension ScalePractice: BaseEntityProtocol, PracticeEntityProtocol {
   var scale: Scale? {

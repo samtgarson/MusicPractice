@@ -1,20 +1,16 @@
 PODS:
-  - MusicTheorySwift (1.2.3)
   - NoveFeatherIcons (1.0.1)
 
 DEPENDENCIES:
-  - MusicTheorySwift
   - NoveFeatherIcons (~> 1.0)
 
 SPEC REPOS:
   trunk:
-    - MusicTheorySwift
     - NoveFeatherIcons
 
 SPEC CHECKSUMS:
-  MusicTheorySwift: e477673d9e5ef8809939557dd20ac2ce3f2d1f8e
   NoveFeatherIcons: 7dc31d48b69cfb4d7bd7886d060d664411facd03
 
-PODFILE CHECKSUM: a7c1bbaafe280cb7e8aa481378bc746b4d61f326
+PODFILE CHECKSUM: 1c9a2f68a44723586b35010751bc0a45a37300ae
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import MusicTheorySwift
+import MusicTheory
 
 struct TheoryLabel: View {
   internal init(_ item: Practiceable) {

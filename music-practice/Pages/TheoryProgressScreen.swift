@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import MusicTheorySwift
+import MusicTheory
 
 struct TheoryProgressScreen: View {
   var type: TheoryType

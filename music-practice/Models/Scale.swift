@@ -6,7 +6,7 @@
 //  Copyright © 2020 Sam Garson. All rights reserved.
 //
 
-import MusicTheorySwift
+import MusicTheory
 
 extension Scale: Hashable {
   public func hash(into hasher: inout Hasher) {

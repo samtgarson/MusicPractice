@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import MusicTheorySwift
+import MusicTheory
 
 struct IntervalDemo: View {
   internal init(interval: Interval) {

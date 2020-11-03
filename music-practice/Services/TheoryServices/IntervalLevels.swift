@@ -6,7 +6,7 @@
 //  Copyright © 2020 Sam Garson. All rights reserved.
 //
 
-import MusicTheorySwift
+import MusicTheory
 
 extension TheoryService {
   static let intervalLevels: [[Practiceable]] = [

@@ -7,7 +7,7 @@
 //
 
 import CoreData
-import MusicTheorySwift
+import MusicTheory
 
 extension IntervalPractice: BaseEntityProtocol, PracticeEntityProtocol {
   var interval: Interval? {

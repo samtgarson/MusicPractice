@@ -8,7 +8,7 @@
 
 import CoreData
 import SwiftUI
-import MusicTheorySwift
+import MusicTheory
 
 public enum PracticeType: Hashable {
   case song(SongPractice)

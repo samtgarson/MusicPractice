@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import MusicTheorySwift
+import MusicTheory
 
 struct TheoryDemoScreen: View {
   var item: Practiceable

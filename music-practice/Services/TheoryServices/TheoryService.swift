@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MusicTheorySwift
+import MusicTheory
 
 let MIN_PRACTICE_COUNT = 3
 

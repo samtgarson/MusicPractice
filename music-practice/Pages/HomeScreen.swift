@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import MusicTheorySwift
+import MusicTheory
 
 struct HomeScreen: View {
   var body: some View {

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MusicTheorySwift
+import MusicTheory
 
 private func createScale ( type: ScaleType, key keyType: Key.KeyType, accidental: Accidental = .natural) -> Scale {
   let key = Key(type: keyType, accidental: accidental)

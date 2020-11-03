@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MusicTheorySwift
+import MusicTheory
 
 class NotationHelper {
   internal init(pitches: [Pitch]) {
