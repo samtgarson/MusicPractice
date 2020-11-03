@@ -30,7 +30,7 @@ struct NewPracticeScreen: View {
   }
   
   private var newSongScreen: some View {
-    Header(title: "You practiced \(item.title)", description: "Nice work! Practice makes perfect.\n\nHow did it go?") {
+    Header(key: "NewPracticeScreen", title: "You practiced \(item.title)", description: "Nice work! Practice makes perfect.\n\nHow did it go?") {
       MPList(collection: PracticeDisplay.items) { display in
         self.practiceOption(for: display)
       }.withFooter {
@@ -56,7 +56,8 @@ struct NewPracticeScreen: View {
   }
   
   func createPractice(_ score: Int16) {
-    _ = PracticeService().createPractice(item, score)
+    PracticeService().createPractice(item, score)
+    analytics.track(goal: AnalyticsGoals.completePractice)
     hide()
   }
 }

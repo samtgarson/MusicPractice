@@ -21,7 +21,7 @@ struct TheoryProgressScreen: View {
   }
   
   var body: some View {
-    ChildView(title: "\(type)s") {
+    ChildView(key: "TheoryProgressionScreen", title: "\(type)s") {
       ForEach(0..<levelCount) { level in
         Group {
           self.title(for: level)

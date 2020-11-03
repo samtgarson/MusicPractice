@@ -45,9 +45,9 @@ class RequestFactory {
   }
   
   static func destroyEverything() {
-    _ = RequestFactory().destroyAll(SongPractice.self)
-    _ = RequestFactory().destroyAll(ScalePractice.self)
-    _ = RequestFactory().destroyAll(Song.self)
+    RequestFactory().destroyAll(SongPractice.self)
+    RequestFactory().destroyAll(ScalePractice.self)
+    RequestFactory().destroyAll(Song.self)
   }
   
   var managedContext: NSManagedObjectContext?

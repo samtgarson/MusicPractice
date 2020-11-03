@@ -37,7 +37,7 @@ struct PageTitle: View {
 
 struct PageTitle_Previews: PreviewProvider {
   static var previews: some View {
-    PageView() {
+    PageView {
       PageTitle("Theory", showBack: true)
       SectionTitle("Testing")
       RoundedRectangle(cornerRadius: CornerRadius).stroke(Colors.primary).frame(height: 1200)

@@ -13,16 +13,18 @@ struct ModalView<Content: View>: View {
   var description: String
   var bgColor: Color
   let content: Content
+  let key: String?
   
-  init(title: String? = nil, description: String, bgColor: Color = Colors.success, @ViewBuilder content: () -> Content) {
+  init(key: String? = nil, title: String? = nil, description: String, bgColor: Color = Colors.success, @ViewBuilder content: () -> Content) {
     self.title = title
     self.bgColor = bgColor
     self.description = description
+    self.key = key
     self.content = content()
   }
   
   var body: some View {
-    PageView(alignment: .center) {
+    PageView(key: key, alignment: .center) {
       VStack(spacing: 0) {
         HeaderContent(title: title, description: description)
           .padding(Spacing.medium)

@@ -20,7 +20,7 @@ struct SettingsScreen: View {
   }
   
   var body: some View {
-    PageView {
+    PageView(key: "SettingsScreen") {
       PageTitle("Settings")
       MPList(collection: SettingsItems.allCases) { i in
         self.item(i)

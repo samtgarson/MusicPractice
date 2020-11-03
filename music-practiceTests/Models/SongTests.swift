@@ -18,8 +18,9 @@ class SongTests: XCTestCase {
   
   func testPracticeArrayWithPractices() throws {
     let song = SongService().create(title: "test song")!
-    let p1 = PracticeService().createSongPractice(song, 1)!
-    let p2 = PracticeService().createSongPractice(song, 0)!
+    let practiceable = Practiceable.song(song)
+    let p1 = PracticeService().createPractice(practiceable, 1)! as! SongPractice
+    let p2 = PracticeService().createPractice(practiceable, 0)! as! SongPractice
     
     XCTAssertEqual(song.practiceArray.count, 2)
     XCTAssertEqual(song.practiceArray.first, p1)

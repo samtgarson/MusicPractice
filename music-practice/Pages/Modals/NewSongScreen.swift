@@ -14,7 +14,7 @@ struct NewSongScreen: View {
   var hide: () -> Void
   
   var body: some View {
-    ModalView(title: "Add a new song", description: "What song would you like to practice next?") {
+    ModalView(key: "NewSongScreen", title: "Add a new song", description: "What song would you like to practice next?") {
       MPForm(buttonLabel: "Save", buttonIcon: .check, onSubmit: createInstrument) {
         MPTextField(id: titleFieldName, placeholder: "Song name", required: true)
       }
@@ -24,7 +24,7 @@ struct NewSongScreen: View {
   
   func createInstrument(_ model: FormModel) {
     if let title = model[titleFieldName] {
-      _ = SongService().create(title: title)
+      SongService().create(title: title)
       hide()
     }
   }

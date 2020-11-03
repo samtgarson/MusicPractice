@@ -22,6 +22,7 @@ struct LevelUpScreen: View {
   
   var body: some View {
     ModalView(
+      key: "LevelUpScreen",
       title: "Congratulations!",
       description: "You've reached level \(level) 🎉",
       bgColor: Colors.success

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TheoryScreen: View {
   var body: some View {
-    PageView {
+    PageView(key: "TheoryScreen") {
       PageTitle("Theory")
       
       SectionTitle("Scales")

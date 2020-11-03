@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct Header<Content: View>: View {
-  internal init(title: String? = nil, description: String, performance: Performance? = nil, @ViewBuilder content: () -> Content) {
+  internal init(key: String? = nil, title: String? = nil, description: String, performance: Performance? = nil, @ViewBuilder content: () -> Content) {
     self.title = title
     self.description = description
     self.performance = performance
     self.content = content()
+    
+    if let key = key { analytics.track(page: key) }
   }
   
   var title: String?

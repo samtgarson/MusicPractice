@@ -12,7 +12,7 @@ struct NotificationSettingsScreen: View {
   @ObservedObject private var state = NotificationSettings()
   
   var body: some View {
-    ChildView(title: "Notifications") {
+    ChildView(key: "NotificationSettingsScreen", title: "Notifications") {
       VStack(spacing: Spacing.tiny) {
         toggle(for: $state.practiceTimer, title: "Practice timer", description: "Receive a notification when your practice timer is up")
         .fixedSize(horizontal: false, vertical: true)

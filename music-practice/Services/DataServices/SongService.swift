@@ -27,6 +27,7 @@ public class SongService: BaseService {
     }
   }
 
+  @discardableResult
   public func create(title: String) -> Song? {
     guard let context = managedContext else { return nil }
     

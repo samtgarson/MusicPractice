@@ -9,9 +9,12 @@
 import SwiftUI
 
 struct ChildView<Content: View>: View {
-  internal init(title: String, @ViewBuilder content: () -> Content) {
+  private let key: String?
+  
+  internal init(key: String? = nil, title: String, @ViewBuilder content: () -> Content) {
     self.title = title
     self.content = content()
+    self.key = key
   }
   
   var title: String
@@ -19,7 +22,7 @@ struct ChildView<Content: View>: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   var body: some View {
-    PageView {
+    PageView(key: key) {
       PageTitle(title, showBack: true, onBack: back)
       content
     }.asChildScreen

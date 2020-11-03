@@ -16,7 +16,7 @@ struct PracticeTimerScreen: View {
   @State var selectedTime: Int?
   
   var body: some View {
-    Header(title: copy.title, description: copy.desc) {
+    Header(key: "PracticeTimerScreen", title: copy.title, description: copy.desc) {
       if selectedTime == nil { timerChoice }
       Unwrap($selectedTime.wrappedValue) { time in
         Countdown(minutes: time, done: self.done)

@@ -13,7 +13,8 @@ import MusicTheory
 class ScalePracticeTests: XCTestCase {
   func testScale() throws {
     let scale = Scale(type: .minor, key: Key(type: .b, accidental: .flat))
-    let practice = PracticeService().createScalePractice(scale, 1)!
+    let practiceable = Practiceable.scale(scale)
+    let practice = PracticeService().createPractice(practiceable, 1)! as! ScalePractice
     
     XCTAssertEqual(practice.scale, scale)
     

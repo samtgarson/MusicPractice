@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PracticeLog: View {  
   var body: some View {
-    ChildView(title: "Practice Log") {
+    ChildView(key: "PracticeLog", title: "Practice Log") {
       PracticesList()
     }
   }

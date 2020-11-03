@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SongsScreen: View {
   var body: some View {
-    PageView {
+    PageView(key: "SongsScreen") {
       PageTitle("Songs")
       SectionTitle("Active Songs")
       SongsList(showAddSong: .Always, filter: .Active)

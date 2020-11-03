@@ -11,7 +11,7 @@ import MusicTheory
 
 struct HomeScreen: View {
   var body: some View {
-    Header(title: copy.title, description: copy.description, performance: performance ?? .Good) {
+    Header(key: "HomeScreen", title: copy.title, description: copy.description, performance: performance ?? .Good) {
       SectionTitle("Next Songs")
       SongsList(showAddSong: .WhenEmpty, filter: .Active, sort: .Performance, limit: 2)
       

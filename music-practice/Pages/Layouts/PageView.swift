@@ -10,11 +10,13 @@ import SwiftUI
 
 struct PageView<Content: View>: View {
   let content: Content
-  var alignment: Alignment
+  let alignment: Alignment
   
-  init(alignment: Alignment = .leading, @ViewBuilder content: () -> Content) {
+  init(key: String? = nil, alignment: Alignment = .leading, @ViewBuilder content: () -> Content) {
     self.content = content()
     self.alignment = alignment
+    
+    if let key = key { analytics.track(page: key) }
   }
   
   var body: some View {

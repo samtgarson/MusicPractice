@@ -59,7 +59,8 @@ public enum Practiceable: Hashable {
   }
 }
 
-public class PracticeService: BaseService {  
+public class PracticeService: BaseService {
+  @discardableResult
   func createPractice(_ item: Practiceable, _ score: Int16) -> PracticeEntityProtocol? {
     guard let context = managedContext else { return nil }
     

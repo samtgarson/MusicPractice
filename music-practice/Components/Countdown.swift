@@ -100,11 +100,11 @@ struct Countdown: View {
   private var color: (fg: Color, bg: Color) {
     switch progress {
     case 0.75..<0.95:
-      return (bg: Colors.warning, fg: Color.white)
+      return (fg: Color.white, bg: Colors.warning)
     case 0.95..<1:
-      return (bg: Colors.error, fg: Color.white)
+      return (fg: Color.white, bg: Colors.error)
     default:
-      return (bg: Color.white, fg: Colors.primary)
+      return (fg: Colors.primary, bg: Color.white)
     }
   }
   
