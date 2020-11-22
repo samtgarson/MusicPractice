@@ -19,7 +19,18 @@ export const GlobalStyles = () => {
           MozOsxFontSmoothing: `grayscale`
         },
         a: {
-          color: `inherit`
+          color: `inherit`,
+          position: 'relative',
+          textDecoration: 'none',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: 1,
+              backgroundColor: 'currentColor'
+            }
         }
       }}
     />

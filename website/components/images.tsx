@@ -17,16 +17,22 @@ const Slides = slides.map((s, i) => (
 ))
 
 const Buttons = styled(DotGroup)({
-  background: Colors.Primary,
-  margin: '0 -20px',
-  padding: 10,
+  position: 'absolute',
+  bottom: 10,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  padding: '10px 0',
   textAlign: 'center',
+  background: 'white',
+  maxHeight: 20,
+  display: 'flex',
+  borderRadius: 20,
   button: {
     borderRadius: 10,
     padding: 0,
     height: 10,
     width: 10,
-    background: 'white',
+    background: Colors.Primary,
     border: 'none',
     margin: '0 10px',
     transition: 'opacity .4s ease',
@@ -37,16 +43,18 @@ const Buttons = styled(DotGroup)({
 })
 
 export const Images = () => (
-  <CarouselProvider
-    naturalSlideWidth={700}
-    naturalSlideHeight={450}
-    totalSlides={slides.length}
-    isPlaying={true}
-    infinite={true}
-  >
-    <Slider>
-      { Slides }
-    </Slider>
-    <Buttons />
-  </CarouselProvider>
+  <div style={{ position: 'relative' }}>
+    <CarouselProvider
+      naturalSlideWidth={700}
+      naturalSlideHeight={450}
+      totalSlides={slides.length}
+      isPlaying={true}
+      infinite={true}
+    >
+      <Slider>
+        { Slides }
+      </Slider>
+      <Buttons />
+    </CarouselProvider>
+  </div>
 )

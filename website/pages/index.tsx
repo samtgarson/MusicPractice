@@ -1,11 +1,12 @@
 import { Apple } from '@/components/apple'
 import { Container } from '@/components/container'
 import { CTA } from '@/components/cta'
-import { Colors, maxWidth } from '@/styles/vars'
+import { Colors } from '@/styles/vars'
 import styled from '@emotion/styled'
-import React, { FunctionComponent } from 'react'
-import { ArrowRight, Icon, Heart, GitHub, Twitter, Shield } from 'react-feather'
+import React from 'react'
+import { ArrowRight } from 'react-feather'
 import { Images } from '@/components/images'
+import { SmallPrint } from '@/components/small-print'
 
 const HeaderSection = styled.header({
   textAlign: 'center',
@@ -32,48 +33,12 @@ const FooterSection = styled(HeaderSection)({
   margin: '0 auto'
 })
 
-const SmallPrint = styled.p({
-  maxWidth: maxWidth,
-  margin: '0 auto',
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginBottom: 30,
-  fontSize: '0.9em',
-  span: {
-    display: 'inline-flex',
-    alignItems: 'center'
-  }
-})
-
 const DownloadButton = () => (
   <CTA href="">
     <Apple color={Colors.Primary} style={{ marginRight: 14 }} />
     Download on the App Store
     <ArrowRight style={{ marginLeft: 14 }} size={22} />
   </CTA>
-)
-
-const IconLinkAnchor = styled.a({
-  display: 'inline-flex',
-  alignItems: 'center',
-  textDecoration: 'none',
-  margin: '0 8px',
-  position: 'relative',
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    bottom: 0,
-    height: 1,
-    width: '100%',
-    backgroundColor: Colors.Primary
-  }
-})
-
-const IconLink: FunctionComponent<{ icon: Icon, href: string }> = ({ icon: Icon, href, children }) => (
-  <IconLinkAnchor href={href}>
-    { children }
-    <Icon size={16} style={{ marginLeft: 6 }}/>
-  </IconLinkAnchor>
 )
 
 const RAG = styled.strong<{ color: keyof typeof Colors }>({}, props => ({
@@ -101,16 +66,13 @@ const Home = () => (
         <img className="icon" src="/icon.png" />
         <h2>No frills. No shortcuts. Just you getting better at your instrument.</h2>
         <DownloadButton />
+        <br />
+        <a href="mailto:sam@sam@samgarson.com" style={{ margin: 30, display: 'inline-block' }}>
+          Get in touch
+        </a>
       </FooterSection>
     </Container>
-    <SmallPrint>
-      <span>Built by <IconLink icon={Heart} href="https://samgarson.com">Sam Garson</IconLink></span>
-      <span>
-        <IconLink icon={GitHub} href="https://github.com/samtgarson/MusicPractice">Code</IconLink>
-        <IconLink icon={Twitter} href="https://twitter.com/samtgarson">Twitter</IconLink>
-        <IconLink icon={Shield} href="/privacy-policy">Privacy Policy</IconLink>
-      </span>
-    </SmallPrint>
+    <SmallPrint />
   </>
 )
 
