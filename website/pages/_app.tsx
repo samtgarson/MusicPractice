@@ -8,6 +8,7 @@ const App = ({ Component, pageProps }: AppPropsType) => (
     <Head>
       <title>Music Practice: Practice your instrument</title>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet" />
+      <link rel="shortcut icon" href="/favicon.png" />
     </Head>
     <GlobalStyles />
     <Component {...pageProps} />
