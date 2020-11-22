@@ -5,6 +5,7 @@ import { Colors, maxWidth } from '@/styles/vars'
 import styled from '@emotion/styled'
 import React, { FunctionComponent } from 'react'
 import { ArrowRight, Icon, Heart, GitHub, Twitter, Shield } from 'react-feather'
+import { Images } from '@/components/images'
 
 const HeaderSection = styled.header({
   textAlign: 'center',
@@ -19,7 +20,7 @@ const HeaderSection = styled.header({
   },
   h2: {
     fontWeight: 500,
-  letterSpacing: -0.5,
+    letterSpacing: -0.5,
     marginBottom: 50
   }
 
@@ -28,7 +29,7 @@ const HeaderSection = styled.header({
 const FooterSection = styled(HeaderSection)({
   background: Colors.Primary,
   color: 'white',
-  margin: '30px auto 0'
+  margin: '0 auto'
 })
 
 const SmallPrint = styled.p({
@@ -52,11 +53,27 @@ const DownloadButton = () => (
   </CTA>
 )
 
+const IconLinkAnchor = styled.a({
+  display: 'inline-flex',
+  alignItems: 'center',
+  textDecoration: 'none',
+  margin: '0 8px',
+  position: 'relative',
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    height: 1,
+    width: '100%',
+    backgroundColor: Colors.Primary
+  }
+})
+
 const IconLink: FunctionComponent<{ icon: Icon, href: string }> = ({ icon: Icon, href, children }) => (
-  <a href={href} style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', margin: '0 8px' }}>
-    <Icon size={16} style={{ marginRight: 6 }}/>
+  <IconLinkAnchor href={href}>
     { children }
-  </a>
+    <Icon size={16} style={{ marginLeft: 6 }}/>
+  </IconLinkAnchor>
 )
 
 const RAG = styled.strong<{ color: keyof typeof Colors }>({}, props => ({
@@ -76,6 +93,9 @@ const Home = () => (
         <p>I recently set myself the goal of learning piano. I&apos;m kinda familiar with music theory but my self-discipline is terrible, and I needed someone to keep track of the songs and scales I&apos;m practicing, remember how I&apos;m doing and tell me what to practice next.</p>
         <p><strong>This app does that.</strong> It will keep track of your progress so you don&apos;t have to, and it knows just enough music theory to know what you should practice next.</p>
         <p>It uses a simple rating system (<RAG color="Error">red</RAG>, <RAG color="Warning">amber</RAG>, and <RAG color="Success">green</RAG>) so you get an immediate idea of what&apos;s going well (and not so well), and even has a handy practice timer to keep you honest.</p>
+      </section>
+      <section className="images">
+        <Images />
       </section>
       <FooterSection>
         <img className="icon" src="/icon.png" />
