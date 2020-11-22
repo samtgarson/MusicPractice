@@ -5,9 +5,9 @@ import styled from '@emotion/styled'
 import { Colors } from '@/styles/vars'
 
 const slides = [
-  { src: "/web-shot-1.png", alt: "" },
-  { src: "/web-shot-2.png", alt: "" },
-  { src: "/web-shot-3.png", alt: "" }
+  { src: "/web-shot-1.png", alt: "Two iPhones with the Music Practice app home screen showing progress at a glance, and the theory screen showing a summary of progress with music theory." },
+  { src: "/web-shot-2.png", alt: "Two iPhones showing the practice timer, and the practice feedback screen asking how the practice went." },
+  { src: "/web-shot-3.png", alt: "Two iPhones showing the scales progress screen, and the songs screen with a summary of all the songs currently practiced." }
 ]
 
 const Slides = slides.map((s, i) => (
