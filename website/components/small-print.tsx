@@ -2,18 +2,28 @@ import React, { FunctionComponent } from 'react'
 import Link from 'next/link'
 import { Shield, Icon, Heart, GitHub, Twitter } from 'react-feather'
 import styled from '@emotion/styled'
-import { maxWidth, Colors } from '@/styles/vars'
+import { maxWidth, Colors, smallScreen } from '@/styles/vars'
 
 const Wrapper = styled.p({
   maxWidth: maxWidth,
   margin: '0 auto',
+  paddingBottom: 30,
   display: 'flex',
+  flexFlow: 'row wrap',
   justifyContent: 'space-between',
-  marginBottom: 30,
   fontSize: '0.9em',
   span: {
     display: 'inline-flex',
     alignItems: 'center'
+  },
+  [smallScreen]: {
+    backgroundColor: Colors.Primary,
+    span: {
+      flex: '1 0 100%',
+      justifyContent: 'center',
+      marginBottom: 20,
+      color: 'white'
+    }
   }
 })
 

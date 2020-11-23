@@ -14,6 +14,9 @@ export const CTA = styled.a<{ outlined?: boolean, inverted?: boolean }>({}, prop
   border: props.outlined ? `1px solid ${props.inverted ? 'white' : Colors.Primary}` : '',
   '&::after': {
     content: 'none'
+  },
+  svg: {
+    flexShrink: 0
   }
 }))
 

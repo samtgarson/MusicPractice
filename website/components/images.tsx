@@ -37,7 +37,8 @@ const Buttons = styled(DotGroup)({
     margin: '0 10px',
     transition: 'opacity .4s ease',
     '&[disabled]': {
-      opacity: .4
+      opacity: .4,
+      cursor: 'initial'
     }
   }
 })

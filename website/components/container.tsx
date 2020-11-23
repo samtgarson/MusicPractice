@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { maxWidth, Colors } from "@/styles/vars"
+import { maxWidth, smallScreen } from "@/styles/vars"
 
 export const Container = styled.div({
   maxWidth: maxWidth,
@@ -7,6 +7,10 @@ export const Container = styled.div({
   backgroundColor: 'white',
   borderRadius: 8,
   overflow: 'hidden',
+  [smallScreen]: {
+    margin: '0 auto',
+    borderRadius: 0
+  },
   section: {
     padding: 20,
     maxWidth: 500,

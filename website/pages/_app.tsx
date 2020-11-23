@@ -3,6 +3,7 @@ import { GlobalStyles } from '../styles/global'
 import { AppPropsType } from 'next/dist/next-server/lib/utils'
 import Head from 'next/head'
 import { useFathom } from '@/analytics'
+import { SmallPrint } from '@/components/small-print'
 
 const App = ({ Component, pageProps }: AppPropsType) => {
   useFathom()
@@ -16,6 +17,7 @@ const App = ({ Component, pageProps }: AppPropsType) => {
     </Head>
     <GlobalStyles />
     <Component {...pageProps} />
+    <SmallPrint />
   </>
 )
 }
