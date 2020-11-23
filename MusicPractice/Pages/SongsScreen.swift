@@ -23,6 +23,7 @@ struct SongsScreen: View {
   }
 }
 
+#if DEBUG
 struct SongsScreen_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
@@ -30,3 +31,4 @@ struct SongsScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

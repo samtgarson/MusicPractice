@@ -16,6 +16,7 @@ struct PracticeLog: View {
   }
 }
 
+#if DEBUG
 struct PracticeLog_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
@@ -25,3 +26,4 @@ struct PracticeLog_Previews: PreviewProvider {
     }
   }
 }
+#endif

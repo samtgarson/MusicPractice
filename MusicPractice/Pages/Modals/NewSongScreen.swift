@@ -30,6 +30,7 @@ struct NewSongScreen: View {
   }
 }
 
+#if DEBUG
 struct NewSongScreen_Previews: PreviewProvider {
   static var previews: some View {
     PreviewWrapper()
@@ -52,3 +53,4 @@ struct NewSongScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

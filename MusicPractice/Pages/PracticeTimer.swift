@@ -64,6 +64,7 @@ struct PracticeTimerScreen: View {
   }
 }
 
+#if DEBUG
 struct PracticeTimerScreen_Previews: PreviewProvider {
   static var previews: some View {
     PreviewWrapper()
@@ -82,3 +83,4 @@ struct PracticeTimerScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

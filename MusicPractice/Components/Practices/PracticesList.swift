@@ -62,6 +62,7 @@ struct PracticesList: View {
   }
 }
 
+#if DEBUG
 struct PracticesList_Previews: PreviewProvider {
   static var previews: some View {
     PreviewWrapper()
@@ -76,3 +77,4 @@ struct PracticesList_Previews: PreviewProvider {
     }
   }
 }
+#endif

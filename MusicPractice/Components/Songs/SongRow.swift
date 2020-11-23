@@ -66,6 +66,7 @@ struct SongRow: View {
   }
 }
 
+#if DEBUG
 struct SongRow_Previews: PreviewProvider {
   static var previews: some View {
     PreviewWrapper()
@@ -80,3 +81,4 @@ struct SongRow_Previews: PreviewProvider {
     }
   }
 }
+#endif

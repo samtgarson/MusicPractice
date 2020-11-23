@@ -57,6 +57,7 @@ struct Main: View {
   }
 }
 
+#if DEBUG
 struct Main_Previews: PreviewProvider {
   static var previews: some View {
     Seeder(controls: false) {
@@ -66,3 +67,4 @@ struct Main_Previews: PreviewProvider {
     }
   }
 }
+#endif

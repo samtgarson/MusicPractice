@@ -62,6 +62,7 @@ struct NewPracticeScreen: View {
   }
 }
 
+#if DEBUG
 struct NewPracticeScreen_Previews: PreviewProvider {
   static var previews: some View {
     PreviewWrapper()
@@ -88,3 +89,4 @@ struct NewPracticeScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

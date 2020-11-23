@@ -45,6 +45,7 @@ struct CollapsibleSection<Content: View>: View {
   }
 }
 
+#if DEBUG
 struct CollapsibleSection_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
@@ -52,3 +53,4 @@ struct CollapsibleSection_Previews: PreviewProvider {
     }
   }
 }
+#endif

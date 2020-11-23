@@ -24,6 +24,7 @@ struct TheoryScreen: View {
   }
 }
 
+#if DEBUG
 struct TheoryScreen_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
@@ -31,3 +32,4 @@ struct TheoryScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

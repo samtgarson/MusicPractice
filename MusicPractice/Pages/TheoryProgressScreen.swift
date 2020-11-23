@@ -84,6 +84,7 @@ struct TheoryProgressScreen: View {
   }
 }
 
+#if DEBUG
 struct TheoryProgressScreen_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
@@ -91,3 +92,4 @@ struct TheoryProgressScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

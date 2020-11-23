@@ -41,6 +41,7 @@ struct HomeScreen: View {
   }
 }
 
+#if DEBUG
 struct HomeScreen_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
@@ -49,3 +50,4 @@ struct HomeScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

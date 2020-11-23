@@ -93,9 +93,9 @@
 		22FDC2E924A006380026E78E /* ScaleDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FDC2E824A006380026E78E /* ScaleDemo.swift */; };
 		2F8A3D688DD4F1D3ABCB9D5B /* Pods_MusicPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8C28D9E696F7753C1FB56E0 /* Pods_MusicPractice.framework */; };
 		A80F27B98422B8CE0BD88102 /* Pods_MusicPracticeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22BF6D89806334F52E366B2 /* Pods_MusicPracticeTests.framework */; };
-		FA6709932550703800F4E6A6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = FA6709922550703800F4E6A6 /* SwiftPackageProductDependency */; };
+		FA6709932550703800F4E6A6 /* FathomAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FA6709922550703800F4E6A6 /* FathomAnalytics */; };
 		FA6709A025515BEA00F4E6A6 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67099F25515BEA00F4E6A6 /* Analytics.swift */; };
-		FAFFE6B525505FA000AAC183 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = FAFFE6B425505FA000AAC183 /* SwiftPackageProductDependency */; };
+		FAFFE6B525505FA000AAC183 /* MusicTheory in Frameworks */ = {isa = PBXBuildFile; productRef = FAFFE6B425505FA000AAC183 /* MusicTheory */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,7 +188,7 @@
 		22A5FD482487B3AF009E1161 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
 		22A5FD4C2487D34D009E1161 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		22A5FD4F2488087D009E1161 /* MPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextField.swift; sourceTree = "<group>"; };
-		22A5FD5124880E28009E1161 /* MPForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MPForm.swift"; sourceTree = "<group>"; };
+		22A5FD5124880E28009E1161 /* MPForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPForm.swift; sourceTree = "<group>"; };
 		22A5FD5324881030009E1161 /* MPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPButton.swift; sourceTree = "<group>"; };
 		22A5FD5524883C92009E1161 /* FormService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormService.swift; sourceTree = "<group>"; };
 		22AF152E248D30BC004BD7E1 /* WithDragAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDragAction.swift; sourceTree = "<group>"; };
@@ -212,8 +212,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFFE6B525505FA000AAC183 /* BuildFile in Frameworks */,
-				FA6709932550703800F4E6A6 /* BuildFile in Frameworks */,
+				FAFFE6B525505FA000AAC183 /* MusicTheory in Frameworks */,
+				FA6709932550703800F4E6A6 /* FathomAnalytics in Frameworks */,
 				2F8A3D688DD4F1D3ABCB9D5B /* Pods_MusicPractice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +521,6 @@
 				65CC942482D1DE893008EFA4 /* Pods-MusicPracticeTests.debug.xcconfig */,
 				7277458C274330BA85331BB3 /* Pods-MusicPracticeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -554,8 +553,8 @@
 			);
 			name = MusicPractice;
 			packageProductDependencies = (
-				FAFFE6B425505FA000AAC183 /* SwiftPackageProductDependency */,
-				FA6709922550703800F4E6A6 /* SwiftPackageProductDependency */,
+				FAFFE6B425505FA000AAC183 /* MusicTheory */,
+				FA6709922550703800F4E6A6 /* FathomAnalytics */,
 			);
 			productName = "music-practice";
 			productReference = 2252299B2483FA5E006F53F5 /* Music Practice.app */;
@@ -609,8 +608,8 @@
 			);
 			mainGroup = 225229922483FA5E006F53F5;
 			packageReferences = (
-				FAFFE6B325505FA000AAC183 /* RemoteSwiftPackageReference */,
-				FA6709912550703800F4E6A6 /* RemoteSwiftPackageReference */,
+				FAFFE6B325505FA000AAC183 /* XCRemoteSwiftPackageReference "MusicTheory" */,
+				FA6709912550703800F4E6A6 /* XCRemoteSwiftPackageReference "FathomAnalytics" */,
 			);
 			productRefGroup = 2252299C2483FA5E006F53F5 /* Products */;
 			projectDirPath = "";
@@ -973,11 +972,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.samgarson.MusicPractice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samgarson.musicpractice;
 				PRODUCT_NAME = "Music Practice";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -996,11 +995,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.samgarson.MusicPractice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samgarson.musicpractice;
 				PRODUCT_NAME = "Music Practice";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1081,7 +1080,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FA6709912550703800F4E6A6 /* RemoteSwiftPackageReference */ = {
+		FA6709912550703800F4E6A6 /* XCRemoteSwiftPackageReference "FathomAnalytics" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/samtgarson/FathomAnalytics";
 			requirement = {
@@ -1089,7 +1088,7 @@
 				minimumVersion = 0.0.1;
 			};
 		};
-		FAFFE6B325505FA000AAC183 /* RemoteSwiftPackageReference */ = {
+		FAFFE6B325505FA000AAC183 /* XCRemoteSwiftPackageReference "MusicTheory" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cemolcay/MusicTheory.git";
 			requirement = {
@@ -1100,14 +1099,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FA6709922550703800F4E6A6 /* SwiftPackageProductDependency */ = {
+		FA6709922550703800F4E6A6 /* FathomAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA6709912550703800F4E6A6 /* RemoteSwiftPackageReference */;
+			package = FA6709912550703800F4E6A6 /* XCRemoteSwiftPackageReference "FathomAnalytics" */;
 			productName = FathomAnalytics;
 		};
-		FAFFE6B425505FA000AAC183 /* SwiftPackageProductDependency */ = {
+		FAFFE6B425505FA000AAC183 /* MusicTheory */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FAFFE6B325505FA000AAC183 /* RemoteSwiftPackageReference */;
+			package = FAFFE6B325505FA000AAC183 /* XCRemoteSwiftPackageReference "MusicTheory" */;
 			productName = MusicTheory;
 		};
 /* End XCSwiftPackageProductDependency section */

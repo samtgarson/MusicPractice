@@ -34,6 +34,7 @@ struct NotificationSettingsScreen: View {
   }
 }
 
+#if DEBUG
 struct NotificationSettingsScreen_Previews: PreviewProvider {
   static var previews: some View {
     Seeder {
@@ -43,3 +44,4 @@ struct NotificationSettingsScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

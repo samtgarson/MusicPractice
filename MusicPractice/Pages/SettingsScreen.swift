@@ -104,6 +104,7 @@ struct SettingsScreen: View {
   }
 }
 
+#if DEBUG
 struct SettingsScreen_Previews: PreviewProvider {
   static var previews: some View {
     NavigationWrapper {
@@ -114,3 +115,4 @@ struct SettingsScreen_Previews: PreviewProvider {
     }
   }
 }
+#endif

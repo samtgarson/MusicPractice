@@ -51,7 +51,7 @@
 		47706763FB2CE9E0DCD99A0B71202D6B /* Pods-MusicPracticeTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MusicPracticeTests.modulemap"; sourceTree = "<group>"; };
 		4A830A039AA99E1D543DCA203482DF44 /* NoveFeatherIcons.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NoveFeatherIcons.debug.xcconfig; sourceTree = "<group>"; };
 		4D5D9E746F3C4431B76DAD73D8DA0450 /* FeatherButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FeatherButton.swift; path = NoveFeatherIcons/Classes/FeatherButton.swift; sourceTree = "<group>"; };
-		638B02C25A1856B6EE2721A8B0747673 /* NoveFeatherIcons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NoveFeatherIcons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		638B02C25A1856B6EE2721A8B0747673 /* NoveFeatherIcons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NoveFeatherIcons.framework; path = NoveFeatherIcons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7A21F93A02FAD092ABE6CC32ED71E8C7 /* FeatherBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FeatherBarButtonItem.swift; path = NoveFeatherIcons/Classes/FeatherBarButtonItem.swift; sourceTree = "<group>"; };
 		855E0A5B6070478005D1B89B1328C178 /* Pods-MusicPractice-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MusicPractice-umbrella.h"; sourceTree = "<group>"; };
@@ -61,12 +61,12 @@
 		94601A425BAB81649CB7B841BA60F32E /* FeatherIcons.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = FeatherIcons.xcassets; path = NoveFeatherIcons/Resources/FeatherIcons.xcassets; sourceTree = "<group>"; };
 		9BEAB7CCAF6884884E1885704217B2C3 /* NoveFeatherIcons-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "NoveFeatherIcons-Info.plist"; sourceTree = "<group>"; };
 		9D5A05D48D5DA63B16F0E543EB0D71FC /* NoveFeatherIcons-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NoveFeatherIcons-umbrella.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A56C6A3C6E0937052C0643D625615F19 /* Pods-MusicPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MusicPractice.release.xcconfig"; sourceTree = "<group>"; };
-		A5EE4AE66915CA4F1448247E2B3DADAF /* Pods_MusicPracticeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicPracticeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5EE4AE66915CA4F1448247E2B3DADAF /* Pods_MusicPracticeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MusicPracticeTests.framework; path = "Pods-MusicPracticeTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A808BD13105D51C499F8B140A5AA2D8B /* Pods-MusicPracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MusicPracticeTests.release.xcconfig"; sourceTree = "<group>"; };
 		B73F3F38ECC33EEC581AE70535AF74C0 /* NoveFeatherIcons.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NoveFeatherIcons.release.xcconfig; sourceTree = "<group>"; };
-		BC384E618864E19B13318F9648416E8A /* Pods_MusicPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC384E618864E19B13318F9648416E8A /* Pods_MusicPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MusicPractice.framework; path = "Pods-MusicPractice.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80DD88862BF5B5DA424F7BE3A057FC0 /* Pods-MusicPractice-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MusicPractice-Info.plist"; sourceTree = "<group>"; };
 		CCEC4934638B52D05A0C8C30EA9BEF6E /* Pods-MusicPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MusicPractice.debug.xcconfig"; sourceTree = "<group>"; };
 		D479F1CECFDF8FEBA7A564495C71E440 /* NoveFeatherIcons-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NoveFeatherIcons-prefix.pch"; sourceTree = "<group>"; };
@@ -185,6 +185,7 @@
 				ED5D89BB4095050E0BDC2A1B2B90DBDD /* Resources */,
 				EA0EE32D5A797306CEA06CE686ECBDF2 /* Support Files */,
 			);
+			name = NoveFeatherIcons;
 			path = NoveFeatherIcons;
 			sourceTree = "<group>";
 		};
@@ -321,7 +322,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 11.0";
@@ -468,7 +469,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/NoveFeatherIcons/NoveFeatherIcons-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/NoveFeatherIcons/NoveFeatherIcons-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -705,7 +706,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/NoveFeatherIcons/NoveFeatherIcons-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/NoveFeatherIcons/NoveFeatherIcons-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
