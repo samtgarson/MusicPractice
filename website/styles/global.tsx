@@ -15,11 +15,12 @@ export const GlobalStyles = () => {
           lineHeight: 1.5,
           margin: 0,
           padding: 0,
-          WebkitFontSmoothing: `antialiased`,
-          MozOsxFontSmoothing: `grayscale`
+          WebkitFontSmoothing: 'antialiased',
+          MozOsxFontSmoothing: 'grayscale',
+          scrollBehavior: 'smooth'
         },
         a: {
-          color: `inherit`,
+          color: 'inherit',
           position: 'relative',
           textDecoration: 'none',
             '&::after': {

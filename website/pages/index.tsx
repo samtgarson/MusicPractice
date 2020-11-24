@@ -6,6 +6,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 import { ArrowRight } from 'react-feather'
 import { Images } from '@/components/images'
+import { Airport } from '@/components/airport'
 
 const HeaderSection = styled.header({
   textAlign: 'center',
@@ -36,14 +37,6 @@ const FooterSection = styled(HeaderSection)({
   margin: '0 auto !important'
 })
 
-const DownloadButton = () => (
-  <CTA href="">
-    <Apple color={Colors.Primary} style={{ marginRight: 14 }} />
-    Download on the App Store
-    <ArrowRight style={{ marginLeft: 14 }} size={22} />
-  </CTA>
-)
-
 const RAG = styled.strong<{ color: keyof typeof Colors }>({}, props => ({
   color: Colors[props.color]
 }))
@@ -54,7 +47,11 @@ const Home = () => (
       <img className="icon" src="/icon.png" />
       <h1>Music Practice</h1>
       <p style={{ marginBottom: 40 }}>A friendly assistant to help keep track of your music practice.</p>
-      <DownloadButton />
+    <CTA href="#download">
+      <Apple color={Colors.Primary} style={{ marginRight: 14 }} />
+      Download on the App Store
+      <ArrowRight style={{ marginLeft: 14 }} size={22} />
+    </CTA>
     </HeaderSection>
     <section>
       <p>I recently set myself the goal of learning piano. I&apos;m kinda familiar with music theory but my self-discipline is terrible, and I needed someone to keep track of the songs and scales I&apos;m practicing, remember how I&apos;m doing and tell me what to practice next.</p>
@@ -64,10 +61,18 @@ const Home = () => (
     <section className="images">
       <Images />
     </section>
-    <FooterSection>
+    <FooterSection id="download">
       <img className="icon" src="/icon.png" />
       <h2>No frills. No shortcuts. Just you getting better at your instrument.</h2>
-      <DownloadButton />
+      <CTA style={{ opacity: .5, marginBottom: 20 }}>
+        <Apple color={Colors.Primary} style={{ marginRight: 14 }} />
+        Coming soon to the App Store
+      </CTA>
+      <CTA href="https://app.airport.community/app/reczeEl5koVpn2tPn">
+        <Airport color={Colors.Primary} style={{ marginRight: 14 }} />
+        Help us test on Airport
+        <ArrowRight style={{ marginLeft: 14 }} size={22} />
+      </CTA>
       <br />
       <a href="mailto:sam@sam@samgarson.com" style={{ margin: 30, display: 'inline-block' }}>
         Get in touch
