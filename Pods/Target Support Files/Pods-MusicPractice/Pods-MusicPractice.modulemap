@@ -1,6 +1,0 @@
-framework module Pods_MusicPractice {
-  umbrella header "Pods-MusicPractice-umbrella.h"
-
-  export *
-  module * { export * }
-}
