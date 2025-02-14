@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		89AA3B312D5D5F0A005A6C3F /* MusicPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AA3C5C2D5F6029005A6C3F /* MusicPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		89C50A7E2D5FA916000F45C1 /* swift.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swift.yml; sourceTree = "<group>"; };
+		89C50A812D5FA916000F45C1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -77,6 +79,8 @@
 		89AA3B282D5D5F0A005A6C3F = {
 			isa = PBXGroup;
 			children = (
+				89C50A802D5FA916000F45C1 /* .github */,
+				89C50A812D5FA916000F45C1 /* .gitignore */,
 				89AA3B332D5D5F0A005A6C3F /* MusicPractice */,
 				89AA3C5D2D5F6029005A6C3F /* MusicPracticeTests */,
 				89AA3B322D5D5F0A005A6C3F /* Products */,
@@ -90,6 +94,22 @@
 				89AA3C5C2D5F6029005A6C3F /* MusicPracticeTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		89C50A7F2D5FA916000F45C1 /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				89C50A7E2D5FA916000F45C1 /* swift.yml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		89C50A802D5FA916000F45C1 /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				89C50A7F2D5FA916000F45C1 /* workflows */,
+			);
+			path = .github;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
