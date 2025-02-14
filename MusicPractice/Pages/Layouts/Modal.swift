@@ -14,15 +14,21 @@ struct ModalView<Content: View>: View {
   var bgColor: Color
   let content: Content
   let key: String?
-  
-  init(key: String? = nil, title: String? = nil, description: String, bgColor: Color = Colors.success, @ViewBuilder content: () -> Content) {
+
+  init(
+    key: String? = nil,
+    title: String? = nil,
+    description: String,
+    bgColor: Color = Colors.success,
+    @ViewBuilder content: () -> Content
+  ) {
     self.title = title
     self.bgColor = bgColor
     self.description = description
     self.key = key
     self.content = content()
   }
-  
+
   var body: some View {
     PageView(key: key, alignment: .center) {
       VStack(spacing: 0) {
@@ -33,9 +39,11 @@ struct ModalView<Content: View>: View {
       }
       .cornerRadius(CornerRadius)
       .frame(maxWidth: 500)
-    }.withoutScroll
+    }
+    .withoutScroll
+    .withDefaultStyles()
   }
-  
+
   private var lowerHalf: some View {
     VStack(alignment: .leading, spacing: Spacing.small) {
       content.frame(maxWidth: .infinity, alignment: .leading)
@@ -47,11 +55,10 @@ struct ModalView<Content: View>: View {
 }
 
 
-struct ModalView_Previews: PreviewProvider {
-  static var previews: some View {
-    ModalView(description: "Add your first instrument to get started.") {
-      Text("Hello world")
-      Text("This is a very, very, very, very long piece of text.")
-    }
+#Preview {
+  ModalView(description: "Add your first instrument to get started.") {
+    Text("Hello world")
+    Text("This is a very, very, very, very long piece of text.")
   }
 }
+

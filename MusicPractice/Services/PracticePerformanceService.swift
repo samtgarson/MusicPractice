@@ -40,7 +40,7 @@ class PracticePerformanceService {
   init(_ practices: [PracticeEntityProtocol]) {
     self.practices = practices
       .filter(filterRecentPractices)
-      .sorted { $0.createdAt!.compare($1.createdAt!) == .orderedDescending }
+      .sorted { $0.createdAt.compare($1.createdAt) == .orderedDescending }
   }
   
   /// A combination of average score and frequency, which
@@ -80,7 +80,7 @@ class PracticePerformanceService {
     let scores = practices.enumerated()
       .map { (index, practice) in
         (
-          value: practiceDistance(practice.createdAt!, index == 0 ? Date() : practices[index - 1].createdAt!),
+          value: practiceDistance(practice.createdAt, index == 0 ? Date() : practices[index - 1].createdAt),
           weight: practiceAge(practice)
         )
       }
@@ -104,7 +104,7 @@ class PracticePerformanceService {
   }
   
   internal func practiceAge(_ practice: PracticeEntityProtocol) -> Double {
-    adjust(practiceDistance(practice.createdAt!, Date()))
+    adjust(practiceDistance(practice.createdAt, Date()))
   }
   
   private func adjust(_ val: Double) -> Double {
@@ -112,15 +112,13 @@ class PracticePerformanceService {
     (pow(a, val) - 1) / (a - 1)
   }
   
-  private func normaliseScore(_ score: Int16) -> Double {
+  private func normaliseScore(_ score: Int) -> Double {
     (Double(score) / 2) + 0.5
   }
 }
 
 private func filterRecentPractices(_ practice: PracticeEntityProtocol) -> Bool {
-  guard let createdAt = practice.createdAt else { return false }
-  
-  let sincePractice = createdAt.timeIntervalSinceNow
+  let sincePractice = practice.createdAt.timeIntervalSinceNow
   let daysSincePractce = Double(sincePractice)
   return daysSincePractce <= PracticePerformanceService.maxSeconds
 }

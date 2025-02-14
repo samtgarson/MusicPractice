@@ -30,7 +30,7 @@ struct ProgressBar: View {
   }
   
   private var color: Color {
-    monochrome ? Colors.primary : performanceColor(for: performance)
+    monochrome ? Colors.primary : Colors.forPerformance(performance)
   }
   
   private var limit: Int {

@@ -73,16 +73,14 @@ struct Countdown: View {
     VStack(spacing: Spacing.medium) {
       Text(self.started ? self.formattedTime : "Ready?")
         .frame(maxWidth: .infinity)
-        .foregroundColor(self.color.fg)
         .font(Fonts.large.weight(.medium))
-        .animation(.none)
         .fixedSize(horizontal: true, vertical: false)
       
       Button(action: self.exit) {
         Text("SKIP").withSmallFont()
-        Icon(iconName: .arrowRight)
+        Icon(Icons.arrowRight)
       }
-    }
+    }.foregroundColor(self.color.fg)
   }
   
   private func on(for i: Int) -> Bool {

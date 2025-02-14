@@ -15,16 +15,16 @@ struct NewSongScreen: View {
   
   var body: some View {
     ModalView(key: "NewSongScreen", title: "Add a new song", description: "What song would you like to practice next?") {
-      MPForm(buttonLabel: "Save", buttonIcon: .check, onSubmit: createInstrument) {
+      MPForm(buttonLabel: "Save", buttonIcon: Icons.check, onSubmit: createInstrument) {
         MPTextField(id: titleFieldName, placeholder: "Song name", required: true)
       }
-      MPButton("Never mind", icon: .x, onTap: hide).opacity(Opacity.VeryFaded)
+      MPButton("Never mind", icon: Icons.x, onTap: hide).opacity(Opacity.VeryFaded)
     }
   }
   
   func createInstrument(_ model: FormModel) {
     if let title = model[titleFieldName] {
-      SongService().create(title: title)
+      SongRepository().create(title: title)
       hide()
     }
   }

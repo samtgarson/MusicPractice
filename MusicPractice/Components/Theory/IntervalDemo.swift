@@ -30,7 +30,7 @@ struct IntervalDemo: View {
         RowLabel(NotationHelper(pitches: notes).render(), alignment: .center)
           .font(Fonts.notes)
           .layoutPriority(2)
-        MPButton(icon: .repeatIcon) { self.generateNotes() }
+        MPButton(icon: Icons.repeat) { self.generateNotes() }
       }
     }
     .asRowWrapper()

@@ -29,7 +29,7 @@ struct PageTitle: View {
   }
   
   private var backButton: some View {
-    Icon(iconName: .arrowLeft)
+    Icon(Icons.arrowLeft)
       .onTapGesture(perform: onBack)
       .padding(.trailing, Spacing.small)
   }

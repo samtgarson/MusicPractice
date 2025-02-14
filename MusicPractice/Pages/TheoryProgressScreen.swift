@@ -8,13 +8,13 @@
 
 import SwiftUI
 import MusicTheory
+import SwiftData
 
 struct TheoryProgressScreen: View {
   var type: TheoryType
   
-  @FetchRequest(fetchRequest: RequestFactory.raw(ScalePractice.self)) var scalePractices: FetchedResults<ScalePractice>
-  
-  @FetchRequest(fetchRequest: RequestFactory.raw(IntervalPractice.self)) var intervalPractices: FetchedResults<IntervalPractice>
+  @Query var scalePractices: [ScalePractice]
+  @Query var intervalPractices: [IntervalPractice]
   
   init(type: TheoryType) {
     self.type = type
@@ -22,7 +22,7 @@ struct TheoryProgressScreen: View {
   
   var body: some View {
     ChildView(key: "TheoryProgressionScreen", title: "\(type)s") {
-      ForEach(0..<levelCount) { level in
+      ForEach(0..<levels.count) { level in
         Group {
           self.title(for: level)
           MPList(collection: self.levels[level]) {
@@ -35,13 +35,13 @@ struct TheoryProgressScreen: View {
   
   private func title(for level: Int) -> some View {
     SectionTitle("Level \(level + 1)",
-      icon: self.locked(level) ? Icon(iconName: .lock, scale: .small) : nil
+                 icon: self.locked(level) ? Icon(Icons.lock, scale: .small) : nil
     )
     .padding(.top, Spacing.small)
     .padding(.bottom, Spacing.tiny)
     .frame(maxWidth: .infinity, alignment: .leading)
   }
-    
+  
   private func locked(_ level: Int) -> Bool {
     level > self.currentLevel
   }
@@ -79,17 +79,10 @@ struct TheoryProgressScreen: View {
     TheoryService(type).level
   }
   
-  private var levelCount: Int {
-    levels.count
-  }
 }
 
-#if DEBUG
-struct TheoryProgressScreen_Previews: PreviewProvider {
-  static var previews: some View {
-    Seeder {
-      TheoryProgressScreen(type: .Interval)
-    }
+#Preview {
+  Seeder {
+    TheoryProgressScreen(type: .Interval)
   }
 }
-#endif

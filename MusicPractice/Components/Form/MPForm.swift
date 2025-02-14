@@ -7,18 +7,22 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
 
 struct MPForm<Fields: View>: View {
   var buttonLabel: String = "Let's go"
-  var buttonIcon: Feather.IconName?
+  var buttonIcon: UIImage?
   var onSubmit: ((FormModel) -> Void)?
   var content: Fields
   @ObservedObject var state = FormService()
   
-  internal init(buttonLabel: String = "Let's go", buttonIcon: Feather.IconName? = nil, onSubmit: ((FormModel) -> Void)? = nil, @ViewBuilder content: () -> Fields) {
+  internal init(
+    buttonLabel: String = "Let's go",
+    buttonIcon: UIImage? = nil,
+    onSubmit: ((FormModel) -> Void)? = nil,
+    @ViewBuilder content: () -> Fields
+  ) {
     self.buttonLabel = buttonLabel
-    self.buttonIcon = buttonIcon ?? .arrowRight
+    self.buttonIcon = buttonIcon ?? Icons.arrowRight
     self.content = content()
     self.onSubmit = onSubmit
   }
@@ -49,7 +53,7 @@ struct MPForm_Previews: PreviewProvider {
     func onSubmit (model: FormModel) { dump(model) }
     
     return ModalView(description: "Test this form") {
-      MPForm(buttonIcon: .check, onSubmit: onSubmit) {
+      MPForm(buttonIcon: Icons.check, onSubmit: onSubmit) {
         MPTextField(id: "test", placeholder: "This is a text field", required: true)
       }
     }

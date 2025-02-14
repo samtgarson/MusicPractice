@@ -7,36 +7,55 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
+import LucideIcons
+
+public typealias Icons = Lucide
 
 struct Icon: View {
-  var iconName: Feather.IconName
-  var color: Color = Colors.primary
+  var icon: UIImage
+  var color: Color? = nil
   var scale: IconSize = .normal
-  
+
+  init(_ icon: UIImage, color: Color? = nil, scale: IconSize = .normal) {
+    self.icon = icon
+    self.color = color
+    self.scale = scale
+  }
+
   enum IconSize: CGFloat {
-    case small = 0.75
-    case normal = 1
-    case large = 2
+    case small = 0.95
+    case normal = 1.2
+    case large = 1.5
   }
-  
+
   var body: some View {
-    Image(uiImage: uiImage)
+    if let color = color {
+      image.foregroundColor(color)
+    } else {
+      image
+    }
   }
-  
-  private var uiImage: UIImage {
-    let color = Colors.ui(self.color)
-    let img = Feather.getIcon(iconName)!.withTintColor(color)
-    return UIImage.scale(image: img, by: scale.rawValue)!
+
+  private var image: Image {
+    let ui = UIImage.scale(image: icon, by: scale.rawValue)!
+    return Image(uiImage: ui).renderingMode(.template)
+//    }
+//
+//    let img = icon.withTintColor(Colors.ui(color))
+//    return UIImage.scale(image: img, by: scale.rawValue)!
   }
 }
 
-struct Icon_Previews: PreviewProvider {
-  static var previews: some View {
+#Preview {
+  VStack(spacing: 40) {
+    Icon(Icons.aArrowDown)
+    Icon(Icons.moon, color: Colors.success)
     VStack {
-      Icon(iconName: .cloud)
-      Icon(iconName: .moon, color: Colors.success)
-      Icon(iconName: .moon, scale: .large)
+      Icon(Icons.star, scale: .large)
     }
+    .foregroundColor(.white)
+    .padding()
+    .background(.success)
   }
 }
+

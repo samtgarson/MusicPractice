@@ -39,7 +39,7 @@ struct StatusBarEnvironmentKey: EnvironmentKey {
 
 extension EnvironmentValues {
   var statusBar: StatusBarService {
-    get { return self[StatusBarEnvironmentKey] }
+    get { return self[StatusBarEnvironmentKey.self] }
   }
 }
 

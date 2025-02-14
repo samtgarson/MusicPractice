@@ -34,7 +34,7 @@ struct LevelUpScreen: View {
             .fontWeight(.medium)
             .padding(.bottom, -Spacing.small)
         }
-        MPButton("Let's do it", icon: .arrowRight, onTap: self.hide)
+        MPButton("Let's do it", icon: Icons.arrowRight, onTap: self.hide)
       }.frame(maxWidth: .infinity)
     }
   }

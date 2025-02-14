@@ -30,7 +30,7 @@ struct SettingsScreen: View {
         .padding(.top, Spacing.medium)
       aboutRows
       
-      SectionTitle("Danger Zone", icon: Icon(iconName: .alertOctagon, scale: .small))
+      SectionTitle("Danger Zone", icon: Icon(Icons.octagonAlert, scale: .small))
         .padding(.top, Spacing.medium)
       resetRow.asRowWrapper()
       
@@ -42,7 +42,7 @@ struct SettingsScreen: View {
       NavigationLink(destination: screen(for: item)) {
         RowLabel(item.rawValue)
       }
-      Icon(iconName: .chevronRight)
+      Icon(Icons.chevronRight)
     }
   }
 
@@ -59,7 +59,7 @@ struct SettingsScreen: View {
     VStack(spacing: Spacing.tiny) {
       MPRow(onTap: { self.showAboutSheet = true }) {
         RowLabel("Built by Sam Garson")
-        Icon(iconName: .heart, scale: .small)
+        Icon(Icons.heart, scale: .small)
       }.actionSheet(isPresented: $showAboutSheet) { aboutSheet }
       MPRow() {
         RowLabel("Version")
@@ -71,7 +71,7 @@ struct SettingsScreen: View {
   private var resetRow: some View {
     MPRow(onTap: { self.showConfirmReset = true }) {
       RowLabel("Factory reset")
-      Icon(iconName: .trash2, color: Colors.error)
+      Icon(Icons.trash2, color: Colors.error)
     }
     .actionSheet(isPresented: $showConfirmReset) { resetSheet }
   }
@@ -99,7 +99,7 @@ struct SettingsScreen: View {
   }
   
   private func reset () {
-    RequestFactory.destroyEverything()
+//    RequestFactory.destroyEverything()
     mainNav.go(to: .Home)
   }
 }

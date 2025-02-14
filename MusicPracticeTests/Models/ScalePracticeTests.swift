@@ -1,26 +1,28 @@
 //
-//  SongTests.swift
-//  MusicPracticeTests
+//  ScalePracticeTests.swift
+//  MusicPractice
 //
-//  Created by Sam Garson on 17/06/2020.
-//  Copyright © 2020 Sam Garson. All rights reserved.
+//  Created by Sam Garson on 14/02/2025.
 //
 
-import XCTest
+import Testing
 import MusicTheory
-@testable import Music_Practice
+import SwiftData
+@testable import MusicPractice
 
-class ScalePracticeTests: XCTestCase {
+@MainActor
+final class ScalePracticeTests: TestSuiteWithDatabase {
+  @Test("Scale practice creates and modifies scales correctly")
   func testScale() throws {
     let scale = Scale(type: .minor, key: Key(type: .b, accidental: .flat))
     let practiceable = Practiceable.scale(scale)
-    let practice = PracticeService().createPractice(practiceable, 1)! as! ScalePractice
-    
-    XCTAssertEqual(practice.scale, scale)
-    
+    let practice = PracticeRepository(modelRepo: repo).createPractice(practiceable, 1)! as! ScalePractice
+
+    #expect(practice.scale == scale)
+
     practice.scale!.key.accidental = .natural
-    
+
     let expected = Scale(type: .minor, key: Key(type: .b))
-    XCTAssertEqual(practice.scale, expected)
+    #expect(practice.scale == expected)
   }
 }

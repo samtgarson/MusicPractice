@@ -1,0 +1,51 @@
+{
+  "originHash" : "3da859d81e4e6c3b27229fc68b50237dfa78daeb9f9e4b7a36eb77e5f99e608b",
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
+      }
+    },
+    {
+      "identity" : "fathomanalytics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/samtgarson/FathomAnalytics",
+      "state" : {
+        "branch" : "main",
+        "revision" : "63e1d23e67f38453a30cf35acba1e05f2e8fbd4a"
+      }
+    },
+    {
+      "identity" : "lucide-icons-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JakubMazur/lucide-icons-swift",
+      "state" : {
+        "revision" : "9831572d1a01a9c5c8947e57085f3eed2e1db14a",
+        "version" : "0.475.0"
+      }
+    },
+    {
+      "identity" : "musictheory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cemolcay/MusicTheory",
+      "state" : {
+        "revision" : "ce9ecb92eb5c6b47583c58ce4de20ce6fe9aae5d",
+        "version" : "1.6.0"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "96a2f8a0fa41e9e09af4585e2724c4e825410b91",
+        "version" : "1.6.2"
+      }
+    }
+  ],
+  "version" : 3
+}

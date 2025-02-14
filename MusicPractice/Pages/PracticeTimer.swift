@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
 
 struct PracticeTimerScreen: View {
   var subject: String
@@ -34,7 +33,7 @@ struct PracticeTimerScreen: View {
     }.withFooter {
       MPRow(onTap: self.done) {
         Text("I practiced it already").frame(maxWidth: .infinity, alignment: .leading)
-        Icon(iconName: .arrowRight)
+        Icon(Icons.arrowRight)
       }
     }
   }
@@ -42,7 +41,7 @@ struct PracticeTimerScreen: View {
   var backButton: some View {
     MPRow(onTap: done) {
       RowLabel("Never mind")
-      Icon(iconName: .x)
+      Icon(Icons.x)
     }
   }
   

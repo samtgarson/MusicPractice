@@ -9,7 +9,11 @@
 import Foundation
 import FathomAnalytics
 
-let analytics = FathomAnalyticsClient(siteID: "DSHBHQKV", environment: "https://music-practice.samgarson.com/production", url: "https://prawn.samgarson.com")
+let analytics = FathomAnalyticsClient(
+  siteID: "DSHBHQKV",
+  environment: "https://music-practice.samgarson.com/production",
+  url: "https://cdn.usefathom.com"
+)
 
 struct AnalyticsGoals {
   static let completePractice = "BIIHESBR"

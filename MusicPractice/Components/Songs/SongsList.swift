@@ -7,18 +7,12 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
+import SwiftData
 
 enum ShowAddSongState {
   case Always
   case WhenEmpty
   case Never
-}
-
-enum SongFilter {
-  case All
-  case Active
-  case Archived
 }
 
 enum SongSort {
@@ -27,32 +21,25 @@ enum SongSort {
 }
 
 struct SongsList: View {
-  internal init(
+  var showAddSong: ShowAddSongState
+  var sort: SongSort
+
+  init(
     showAddSong: ShowAddSongState = .WhenEmpty,
     filter: SongFilter = .All,
     sort: SongSort = .CreatedAt,
     limit: Int? = nil
   ) {
     self.showAddSong = showAddSong
-    self.limit = limit
     self.sort = sort
-    
-    switch filter {
-    case .All:
-      self.fetchRequest = SongService.all()
-    case .Active:
-      self.fetchRequest = SongService.active()
-    case .Archived:
-      self.fetchRequest = SongService.archived()
-    }
+    var descriptor = SongRepository.predicate(for: filter)
+    descriptor.fetchLimit = limit
+    self._songQuery = Query(descriptor)
   }
-  
+
+  @Query() var songQuery: [Song]
+
   @State(initialValue: false) var showSheet
-  
-  private var fetchRequest: FetchRequest<Song>
-  var showAddSong: ShowAddSongState = .WhenEmpty
-  var limit: Int?
-  var sort: SongSort
   
   var body: some View {
     MPList(collection: songs) { song in
@@ -62,18 +49,11 @@ struct SongsList: View {
   }
   
   var songs: Array<Song> {
-    var songs = Array(fetchRequest.wrappedValue)
-    if let limit = limit {
-      songs = Array(songs.prefix(limit))
-    }
+    guard sort == .Performance else { return songQuery }
 
-    if sort == .Performance {
-      songs = songs.sorted(by: {
-        PracticePerformanceService($0.practiceArray).priority > PracticePerformanceService($1.practiceArray).priority
-      })
-    }
-    
-    return songs
+    return songQuery.sorted(by: {
+      PracticePerformanceService($0.practiceArray).priority > PracticePerformanceService($1.practiceArray).priority
+    })
   }
   
   private var footer: some View {
@@ -83,7 +63,7 @@ struct SongsList: View {
           self.showSheet = true
         }) {
           RowLabel("Add a new song")
-          Image(uiImage: Feather.getIcon(.plus)!)
+          Icon(Icons.plus)
         }
         .sheet(isPresented: $showSheet) {
           NewSongScreen { self.showSheet = false }

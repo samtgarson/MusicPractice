@@ -7,15 +7,9 @@
 //
 
 import Foundation
-import CoreData
-
-protocol BaseEntityProtocol: Identifiable, NSManagedObject {
-  init(context: NSManagedObjectContext)
-  var id: UUID? { get set }
-  var createdAt: Date? { get set }
-}
+import SwiftData
 
 protocol PracticeEntityProtocol {
-  var createdAt: Date? { get set }
-  var score: Int16 { get set }
+  var createdAt: Date { get set }
+  var score: Int { get set }
 }

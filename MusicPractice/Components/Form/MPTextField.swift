@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
 
 struct MPTextField: View {
   var id: String
@@ -41,7 +40,7 @@ struct MPTextField: View {
   }
   
   var validationWarning: some View {
-    Image(uiImage: Feather.getIcon(.alertCircle)!)
+    Image(uiImage: Icons.circleAlert)
   }
 }
 

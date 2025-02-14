@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
 
 extension Comparable {
   func clamped(to limits: ClosedRange<Self>) -> Self {
@@ -108,7 +107,7 @@ struct WithDragAction<Content: View, A: View>: View {
 struct WithDragAction_Previews: PreviewProvider {
   static var previews: some View {
     func action () { print("actioned!") }
-    var icon: some View { Icon(iconName: .package).foregroundColor(Colors.error) }
+    var icon: some View { Icon(Icons.package).foregroundColor(Colors.error) }
     
     return PageView {
       WithDragAction(icon: icon, action: action) {

@@ -23,7 +23,7 @@ struct CollapsibleSection<Content: View>: View {
       HStack {
         Unwrap(self.title) { title in SectionTitle(title) }
         Spacer()
-        Icon(iconName: .chevronUp)
+        Icon(Icons.chevronUp)
           .rotationEffect(expanded ? Angle(degrees: 180) : Angle.zero)
       }
       .onTapGesture { self.toggle() }

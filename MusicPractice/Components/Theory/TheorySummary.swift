@@ -60,7 +60,7 @@ struct TheorySummary: View {
       NavigationLink(destination: progressScreen) {
         Text("View progress")
           .font(Fonts.sized(FontSizes.body * 0.75))
-        Icon(iconName: .arrowRight, scale: .small)
+        Icon(Icons.arrowRight, scale: .small)
       }
     }
     .padding(Spacing.small)

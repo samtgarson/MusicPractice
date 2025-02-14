@@ -7,7 +7,18 @@
 //
 
 import Foundation
-import CoreData
+import SwiftData
 
-extension SongPractice: BaseEntityProtocol, PracticeEntityProtocol {
+
+@Model class SongPractice: PracticeEntityProtocol {
+  var createdAt: Date = Date()
+  var score: Int = 0
+  @Relationship()
+  var song: Song
+
+  init(score: Int, song: Song, createdAt: Date = Date()) {
+    self.score = score
+    self.song = song
+    self.createdAt = createdAt
+  }
 }

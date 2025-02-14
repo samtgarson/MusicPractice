@@ -9,17 +9,23 @@
 import Foundation
 import MusicTheory
 
-let MIN_PRACTICE_COUNT = 3
-
 public enum TheoryType: String {
   case Scale = "Scale"
   case Interval = "Interval"
 }
 
-class TheoryService: BaseService {
-  
-  internal init(_ type: TheoryType) {
+@MainActor
+class TheoryService {
+  var repo: ModelRepository
+
+  let MIN_PRACTICE_COUNT = 3
+
+  init (
+    _ type: TheoryType,
+    repo: ModelRepository = .init()
+  ) {
     self.type = type
+    self.repo = repo
   }
   
   let type: TheoryType
@@ -61,14 +67,14 @@ class TheoryService: BaseService {
       return PracticePerformanceService(practices).performance == .Good
     }
   }
-  
+
   private var allPractices: [Practiceable: [PracticeEntityProtocol]] {
     switch type {
     case .Scale:
-      let practices = fetch(RequestFactory.raw(ScalePractice.self))
+      let practices = repo.query(ScalePractice.self)
       return Dictionary(grouping: practices, by: { Practiceable.scale(($0).scale!) })
     case .Interval:
-      let practices = fetch(RequestFactory.raw(IntervalPractice.self))
+      let practices = repo.query(IntervalPractice.self)
       return Dictionary(grouping: practices, by: { Practiceable.interval(($0).interval!) })
     }
   }

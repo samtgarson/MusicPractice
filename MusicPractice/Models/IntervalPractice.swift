@@ -6,10 +6,22 @@
 //  Copyright © 2020 Sam Garson. All rights reserved.
 //
 
-import CoreData
+import Foundation
 import MusicTheory
+import SwiftData
 
-extension IntervalPractice: BaseEntityProtocol, PracticeEntityProtocol {
+
+@Model class IntervalPractice: PracticeEntityProtocol {
+  var createdAt: Date = Date()
+  var intervalId: String?
+  var score: Int = 0
+
+  init(createdAt: Date = Date(), intervalId: String? = nil, score: Int = 0) {
+    self.createdAt = createdAt
+    self.intervalId = intervalId
+    self.score = score
+  }
+
   var interval: Interval? {
     get {
       guard let intervalId = intervalId else { return nil }

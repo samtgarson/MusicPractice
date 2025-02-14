@@ -8,11 +8,7 @@
 
 import MusicTheory
 
-extension Scale: Hashable {
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(self.description)
-  }
-  
+extension Scale {
   var shortDescription: String {
     "\(key.description) \(type.description)"
   }

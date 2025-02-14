@@ -12,14 +12,16 @@ import SwiftUI
 
 #if DEBUG
 struct Seeder<Content : View>: View {
-  var context: NSManagedObjectContext
   var controls: Bool = true
   var content: Content
-  
+  var database: Database
+  let repo: ModelRepository
+
   init(controls: Bool? = nil, _ content: () -> Content) {
     self.controls = controls ?? true
     self.content = content()
-    self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    self.database = Database.forTest()
+    self.repo = ModelRepository(with: self.database.container)
   }
   
   var body: some View {
@@ -32,23 +34,23 @@ struct Seeder<Content : View>: View {
         }        
       }
     }
-    .environment(\.managedObjectContext, context)
+    .modelContainer(database.container)
   }
   
   func seedAllEntities() {
     for i in 1...5 {
       let item = TheoryService.scaleLevels.randomElement()!.first!
-      PracticeService().createPractice(item, Int16.random(in: -1...1))
-      
-      let song = SongService().create(title: "Song \(i)")
+      PracticeRepository(modelRepo: repo).createPractice(item, .random(in: -1...1))
+
+      let song = SongRepository(modelRepo: repo).create(title: "Song \(i)")
       if i < 3 {
-        PracticeService().createPractice(Practiceable.song(song!), Int16.random(in: -1...1))
+        PracticeRepository(modelRepo: repo).createPractice(Practiceable.song(song!), .random(in: -1...1))
       }
     }
   }
   
   func clearAllEntities() {
-    RequestFactory.destroyEverything()
+    database.reset()
   }
 }
 #endif

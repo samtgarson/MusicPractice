@@ -36,7 +36,7 @@ struct SectionTitle_Previews: PreviewProvider {
   static var previews: some View {
     PageView {
       SectionTitle("Next Song")
-      SectionTitle("Next Song", icon: Icon(iconName: .lifeBuoy))
+      SectionTitle("Next Song", icon: Icon(Icons.lifeBuoy))
     }
   }
 }

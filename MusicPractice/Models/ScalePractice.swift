@@ -6,10 +6,22 @@
 //  Copyright © 2020 Sam Garson. All rights reserved.
 //
 
-import CoreData
+import Foundation
 import MusicTheory
+import SwiftData
 
-extension ScalePractice: BaseEntityProtocol, PracticeEntityProtocol {
+
+@Model class ScalePractice: PracticeEntityProtocol {
+  var createdAt: Date = Date()
+  var scaleId: String?
+  var score: Int = 0
+
+  init(score: Int, scaleId: String? = nil, createdAt: Date = Date()) {
+    self.createdAt = createdAt
+    self.scaleId = scaleId
+    self.score = score
+  }
+
   var scale: Scale? {
     get {
       guard let scaleId = scaleId else { return nil }

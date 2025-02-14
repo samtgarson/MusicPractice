@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
 
 struct RowLabel: View {
   var text: String

@@ -8,8 +8,14 @@
 
 import Foundation
 
-class GeneralPerformanceService: BaseService {
-  
+@MainActor
+class GeneralPerformanceService {
+  var repo: ModelRepository
+
+  init(repo: ModelRepository = .init()) {
+    self.repo = repo
+  }
+
   var performance: Performance? {
     if allPractices.count < 4 { return nil }
     
@@ -34,17 +40,17 @@ class GeneralPerformanceService: BaseService {
   private var allPractices: [PracticeEntityProtocol] {
     scalePractices + songPractices
   }
-  
+
   private var scalePractices: [PracticeEntityProtocol] {
-    fetch(RequestFactory.raw(ScalePractice.self))
+    return repo.query(ScalePractice.self)
   }
   
   private var intervalPractices: [PracticeEntityProtocol] {
-    fetch(RequestFactory.raw(IntervalPractice.self))
+    return repo.query(IntervalPractice.self)
   }
   
   private var songPractices: [PracticeEntityProtocol] {
-    fetch(RequestFactory.raw(SongPractice.self))
+    return repo.query(SongPractice.self)
   }
   
 }

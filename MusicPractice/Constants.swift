@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Colors {
   static let background = Color("Background")
-  static let primary = Color("Primary")
+  static let primary = Color("Brand")
   static let success = Color("Success")
   static let warning = Color("Warning")
   static let error = Color("Error")
@@ -37,7 +37,7 @@ struct Colors {
     case Color("Error"):
       return UIColor(named: "Error")!
     default:
-      return UIColor(named: "Primary")!
+      return UIColor(named: "Brand")!
     }
   }
 }

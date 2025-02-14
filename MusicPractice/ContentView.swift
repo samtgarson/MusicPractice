@@ -2,42 +2,25 @@
 //  ContentView.swift
 //  MusicPractice
 //
-//  Created by Sam Garson on 31/05/2020.
-//  Copyright © 2020 Sam Garson. All rights reserved.
+//  Created by Sam Garson on 12/02/2025.
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+  @Query private var items: [Item]
+
   var body: some View {
     NavigationWrapper {
       Main()
         .withDefaultStyles()
-    }
+    }.modelContainer(Database.instance.container)
   }
 }
 
-struct DefaultStyles: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(Fonts.body)
-      .background(Colors.background.edgesIgnoringSafeArea(.all))
-      .foregroundColor(Colors.primary)
+#Preview {
+  Seeder(controls: false) {
+    ContentView()
   }
 }
-
-extension View {
-  func withDefaultStyles() -> some View {
-    self.modifier(DefaultStyles())
-  }
-}
-
-#if DEBUG
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    Seeder(controls: false) {
-      ContentView()
-    }
-  }
-}
-#endif

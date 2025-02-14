@@ -7,17 +7,32 @@
 //
 
 import Foundation
-import CoreData
+import SwiftData
 
-extension Song: BaseEntityProtocol {
-  public var practiceArray: [SongPractice] {
-    practices?.allObjects.sorted(by: { a, b in
-      guard let a = a as? SongPractice,
-            let b = b as? SongPractice,
-            let aDate = a.createdAt,
-            let bDate = b.createdAt else { return false }
-      
-      return aDate <= bDate
-    }) as? [SongPractice] ?? []
+
+@Model class Song {
+  var archivedAt: Date? = nil
+  var createdAt: Date = Date()
+  var title: String
+  @Relationship(deleteRule: .cascade, inverse: \SongPractice.song)
+  var practices: [SongPractice]
+
+  init(title: String, archivedAt: Date? = nil, createdAt: Date = Date(), practices: [SongPractice] = []) {
+    self.archivedAt = archivedAt
+    self.createdAt = createdAt
+    self.title = title
+    self.practices = practices
+  }
+
+  func archive() {
+    archivedAt = Date()
+  }
+
+  func unarchive() {
+    archivedAt = nil
+  }
+
+  var practiceArray: [SongPractice] {
+    practices.sorted(by: { a, b in a.createdAt <= b.createdAt })
   }
 }

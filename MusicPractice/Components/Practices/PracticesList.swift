@@ -7,18 +7,20 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
+import SwiftData
 
 struct PracticesList: View {
   @State(initialValue: false) var showScreen
-  @FetchRequest(fetchRequest: RequestFactory.raw(SongPractice.self)) var songPractices: FetchedResults<SongPractice>
-  @FetchRequest(fetchRequest: RequestFactory.raw(ScalePractice.self)) var scalePractices: FetchedResults<ScalePractice>
+//  @FetchRequest(fetchRequest: RequestFactory.raw(SongPractice.self)) var songPractices: FetchedResults<SongPractice>
+//  @FetchRequest(fetchRequest: RequestFactory.raw(ScalePractice.self)) var scalePractices: FetchedResults<ScalePractice>
+  @Query var songPractices: [SongPractice] = []
+  @Query var scalePractices: [ScalePractice] = []
 
   var practices: [PracticeType] {
     var practices = [PracticeType]()
     practices += songPractices.map { p in PracticeType.song(p) }
     practices += scalePractices.map { p in PracticeType.scale(p) }
-    return practices.sorted { $0.createdAt > $1.createdAt }
+    return practices.sorted(by: { $0.createdAt > $1.createdAt })
   }
   
   var body: some View {
@@ -40,21 +42,21 @@ struct PracticesList: View {
     HStack {
       RowLabel("Go practice a song or some theory!")
       Spacer().frame(width: Spacing.medium)
-      Icon(iconName: .coffee)
+      Icon(Icons.coffee)
     }
   }
   
   private func label(for practice: PracticeType) -> some View {
     switch practice {
     case .song(let songPractice):
-      return RowLabel(songPractice.song!.title!)
+      return RowLabel(songPractice.song.title)
     case .scale(let scalePractice):
       return RowLabel(scalePractice.scale!.shortDescription)
     }
   }
   
   private func icon(for practice: PracticeType) -> Icon {
-    PracticeDisplay.with(score: practice.score)!.iconImage
+    PracticeDisplay.with(score: practice.score).iconImage
   }
   
   private func formatDate(_ practice: PracticeType) -> String {

@@ -40,7 +40,7 @@ struct TheoryDemoScreen: View {
         Unwrap(interval) { interval in
           IntervalDemo(interval: interval)
         }
-        MPButton("Practice time", icon: .arrowRight, onTap: self.done)
+        MPButton("Practice time", icon: Icons.arrowRight, onTap: self.done)
       }
     }
   }

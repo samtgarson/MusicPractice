@@ -30,15 +30,15 @@ struct SongRow: View {
     if song.archivedAt == nil {
       self.confirmArchive.toggle()
     } else {
-      withAnimation { SongService().unarchive(song: song) }
+      withAnimation { SongRepository().unarchive(song: song) }
     }
   }
   
   private var icon: some View {
     if song.archivedAt == nil {
-      return Icon(iconName: .archive)
+      return Icon(Icons.archive)
     } else {
-      return Icon(iconName: .cornerRightUp)
+      return Icon(Icons.cornerRightUp)
     }
   }
   
@@ -53,9 +53,9 @@ struct SongRow: View {
   
   private var archiveSheet: ActionSheet {
     ActionSheet(
-      title: Text("Archive \(song.title!)?"),
+      title: Text("Archive \(song.title)?"),
       buttons: [
-        .default(Text("Archive it")) { withAnimation { SongService().archive(song: self.song) } },
+        .default(Text("Archive it")) { withAnimation { SongRepository().archive(song: self.song) } },
         .cancel(Text("Never mind"))
       ]
     )

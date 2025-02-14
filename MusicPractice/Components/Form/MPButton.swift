@@ -7,45 +7,37 @@
 //
 
 import SwiftUI
-import NoveFeatherIcons
 
 struct MPButton: View {
-  internal init(_ label: String? = nil, icon: Feather.IconName? = nil, onTap: (() -> Void)? = nil) {
+  internal init(_ label: String? = nil, icon: UIImage? = nil, onTap: (() -> Void)? = nil) {
     self.label = label
-    self.iconName = icon
+    self.iconImage = icon
     self.onTap = onTap
   }
-  
+
   var label: String?
   var onTap: (() -> Void)?
-  var iconName: Feather.IconName?
+  var iconImage: UIImage?
   var body: some View {
     Button(action: {
       if let handler = self.onTap { handler() }
     }) {
       HStack {
         Unwrap(label) { Text($0) }
-        icon
+        if let img = iconImage { Icon(img) }
       }
       .padding(.vertical, Spacing.small)
       .frame(maxWidth: .infinity, alignment: .trailing)
     }
   }
-  
-  var icon: Image? {
-    guard let iconName = iconName else { return nil }
-    return Image(uiImage: Feather.getIcon(iconName)!)
-  }
 }
 
-struct MPButton_Previews: PreviewProvider {
-  static var previews: some View {
-    func handler () { print("tapped!") }
+#Preview {
+  func handler () { print("tapped!") }
 
-    return ModalView(description: "Testing a button") {
-      MPButton("Take a picture", icon: .aperture, onTap: handler)
-      MPButton("Press me") { handler() }
-      MPButton(icon: .repeatIcon)
-    }
+  return ModalView(description: "Testing a button") {
+    MPButton("Take a picture", icon: Icons.aperture, onTap: handler)
+    MPButton("Press me") { handler() }
+    MPButton(icon: Icons.repeat)
   }
 }
