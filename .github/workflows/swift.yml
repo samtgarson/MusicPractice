@@ -7,8 +7,8 @@ on:
 jobs:
   tests:
 
-    runs-on: macos-latest
-
+    runs-on: macos-15
+    
     steps:
     - uses: actions/checkout@v2
     - name: Build and test
