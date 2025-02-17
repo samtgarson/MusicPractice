@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - MusicPractice*
+      - MusicPractice*/**
 
 jobs:
   tests:
