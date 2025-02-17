@@ -2,18 +2,19 @@ name: Swift
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+    paths:
+      - MusicPractice*
 
 jobs:
   tests:
-
     runs-on: macos-15
-    
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Build and test
-      run: |
-        xcodebuild clean test \
-          -scheme MusicPractice \
-          -destination 'platform=iOS Simulator,name=iPhone 16' \
-          CODE_SIGNING_REQUIRED=NO
+      - uses: actions/checkout@v2
+      - name: Build and test
+        run: |
+          xcodebuild clean test \
+            -scheme MusicPractice \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            CODE_SIGNING_REQUIRED=NO

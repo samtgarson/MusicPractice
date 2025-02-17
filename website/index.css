@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --color-green: #67cb55;
+  --color-blue: #213660;
+  --color-bg: #f7f8fa;
+
+  background-color: var(--color-bg);
+  color: var(--color-blue);
+  font-family: Inter, sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.5;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1; /* fix for Chrome */
+  -webkit-font-smoothing: antialiased;
+}
+
+@theme {
+  --color-green: var(--color-green);
+  --color-blue: var(--color-blue);
+  --color-bg: var(--color-blue);
+}
+
+p a {
+  position: relative;
+  line-height: 1.5;
+  display: inline-block;
+}
+
+p a::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 1px;
+    background-color: currentcolor;
+  }
