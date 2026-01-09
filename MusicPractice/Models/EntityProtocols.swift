@@ -12,4 +12,5 @@ import SwiftData
 protocol PracticeEntityProtocol {
   var createdAt: Date { get set }
   var score: Int { get set }
+  var minutesPracticed: Int { get set }
 }

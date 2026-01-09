@@ -28,7 +28,7 @@ final class PracticePerformanceServiceTests: TestSuiteWithDatabase {
     let svc = PracticePerformanceService(song.practiceArray)
 
     compareDoubles(svc.averageScore, 0.25)
-    #expect(svc.performance == Performance.Bad)
+    #expect(svc.performance == Performance.bad)
   }
 
   @Test("Practice age calculation for various time intervals")

@@ -30,7 +30,7 @@ struct TheoryDemoScreen: View {
   }
   
   var body: some View {
-    Header(key: "TheoryDemoScreen", title: "Ready to practice \(item.title)", description: "Here's a quick reminder. Ready to go?", performance: .Good) {
+    Header(key: "TheoryDemoScreen", title: "Ready to practice \(item.title)", description: "Here's a quick reminder. Ready to go?", performance: .good) {
       VStack(spacing: Spacing.medium) {
         Unwrap(scale) { scale in
           MPRow {

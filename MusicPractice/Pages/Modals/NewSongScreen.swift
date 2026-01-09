@@ -18,7 +18,7 @@ struct NewSongScreen: View {
       MPForm(buttonLabel: "Save", buttonIcon: Icons.check, onSubmit: createInstrument) {
         MPTextField(id: titleFieldName, placeholder: "Song name", required: true)
       }
-      MPButton("Never mind", icon: Icons.x, onTap: hide).opacity(Opacity.VeryFaded)
+      MPButton("Never mind", icon: Icons.x, onTap: hide).opacity(Opacity.veryFaded)
     }
   }
   

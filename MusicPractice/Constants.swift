@@ -17,11 +17,11 @@ struct Colors {
   
   static func forPerformance(_ performance: Performance) -> Color {
     switch performance {
-    case .Good:
+    case .good:
       return Colors.success
-    case .Meh:
+    case .meh:
       return Colors.warning
-    case .Bad:
+    case .bad:
       return Colors.error
     }
   }
@@ -54,26 +54,30 @@ let CornerRadius: CGFloat = 5.0
 let WideKerning: CGFloat = 1.5
 
 enum Performance {
-  case Good
-  case Bad
-  case Meh
+  case good
+  case bad
+  case meh
 }
 
 struct Opacity {
-  static let Faded: Double = 0.75
-  static let VeryFaded: Double = 0.65
+  static let slightlyFaded: Double = 0.85
+  static let faded: Double = 0.75
+  static let veryFaded: Double = 0.65
 }
 
 struct FontSizes {
   static let body: CGFloat = 22.0
   static let small: CGFloat = body * 0.55
+  static let medium: CGFloat = body * 0.8
   static let large: CGFloat = body * 1.5
   static let huge: CGFloat = body * 2.5
 }
 
 struct Fonts {
   static let body = Font.custom("Inter-Light", size: FontSizes.body)
-  static let small = Font.custom("Inter-Light", size: FontSizes.small).weight(.medium)
+  static let small = Font.custom("Inter-SemiBold", size: FontSizes.small)
+  static let medium = Font.custom("Inter-Light", size: FontSizes.medium)
+  static let mediumBold = Font.custom("Inter-SemiBold", size: FontSizes.medium)
   static let large = Font.custom("Inter-Light", size: FontSizes.large)
   static let notes = Font.custom("MusiQwik", size: FontSizes.huge)
   

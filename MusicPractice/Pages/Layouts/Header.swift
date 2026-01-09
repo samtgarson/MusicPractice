@@ -60,7 +60,7 @@ struct Header<Content: View>: View {
 
 struct Header_Previews: PreviewProvider {
   static var previews: some View {
-    Header(title: "Long title title title title title title title title title title title title ", description: "Description", performance: .Good) {
+    Header(title: "Long title title title title title title title title title title title title ", description: "Description", performance: .good) {
       Text("Body")
       Text("Text")
       Rectangle().stroke(Colors.error).frame(height: 1200)

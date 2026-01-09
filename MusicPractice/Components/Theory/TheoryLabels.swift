@@ -24,10 +24,12 @@ struct TheoryLabel: View {
   var scale: Scale?
   var interval: Interval?
 
+  private let letterSpacing: CGFloat = 8
+
   var body: some View {
     Group {
-      Unwrap(scale) { self.scaleLabel($0) }
-      Unwrap(interval) { self.intervalLabel($0) }
+      if let scale = scale { self.scaleLabel(scale) }
+      if let interval = interval { self.intervalLabel(interval) }
     }
   }
 
@@ -35,18 +37,16 @@ struct TheoryLabel: View {
     HStack(spacing: 0) {
       Text(scale.key.type.description)
         .font(Fonts.sized(FontSizes.large * 1.2))
-      Unwrap(scale.key.accidental) { accidental in
-        Text(accidental.description)
+      Text(scale.key.accidental.description)
           .font(Fonts.sized(FontSizes.large * 0.8))
           .padding(.leading, -1)
-      }
       Text(scale.type.description.uppercased())
         .withSmallFont()
         .fixedSize()
-        .padding(.leading, Spacing.small)
+        .padding(.leading, letterSpacing)
     }
   }
-  
+
   private func intervalLabel(_ interval: Interval) -> some View {
     HStack(spacing: 0) {
       if specialIntervals[interval] != nil {
@@ -58,7 +58,7 @@ struct TheoryLabel: View {
           .fixedSize()
         Text("\(interval.degree)")
           .font(Fonts.sized(FontSizes.large * 1.2))
-          .padding(.leading, Spacing.small)
+          .padding(.leading, letterSpacing)
           .padding(.trailing, Spacing.tiny)
         Text(formatDegree(interval.degree))
           .withSmallFont()
@@ -66,41 +66,33 @@ struct TheoryLabel: View {
       }
     }
   }
-  
+
   func formatDegree(_ degree: Int) -> String {
     let str = NumberFormatter.localizedString(from: NSNumber(value: degree), number: .ordinal)
     return String(str.dropFirst()).uppercased()
   }
-  
+
   let specialIntervals: [Interval: String] = [.P1: "Unison", .P8: "Octave"]
 }
 
-struct TheoryLabels_Previews: PreviewProvider {
-  static var previews: some View {
-    let scale1 = Scale(type: .major, key: .init(type: .g))
-    let scale2 = Scale(type: .major, key: .init(type: .g, accidental: .sharp))
-    let scale3 = Scale(type: .major, key: .init(type: .b, accidental: .flat))
-    return PageView {
-      VStack(spacing: Spacing.small) {
-        MPRow {
-          TheoryLabel(Practiceable.scale(scale1)).frame(maxWidth: .infinity, alignment: .leading)
-        }
-        MPRow {
-          TheoryLabel(Practiceable.scale(scale2)).frame(maxWidth: .infinity, alignment: .leading)
-        }
-        MPRow {
-          TheoryLabel(Practiceable.scale(scale3)).frame(maxWidth: .infinity, alignment: .leading)
-        }
-        MPRow {
-          TheoryLabel(Practiceable.interval(.P5)).frame(maxWidth: .infinity, alignment: .leading)
-        }
-        MPRow {
-          TheoryLabel(Practiceable.interval(.P8)).frame(maxWidth: .infinity, alignment: .leading)
-        }
-        MPRow {
-          TheoryLabel(Practiceable.interval(.P1)).frame(maxWidth: .infinity, alignment: .leading)
-        }
-      }
-    }
-  }
+#Preview {
+  let scale1 = Scale(type: .major, key: .init(type: .g))
+  let scale2 = Scale(type: .major, key: .init(type: .g, accidental: .sharp))
+  let scale3 = Scale(type: .major, key: .init(type: .b, accidental: .flat))
+
+
+  VStack(spacing: Spacing.small) {
+    TheoryLabel(Practiceable.scale(scale1)).frame(maxWidth: .infinity, alignment: .leading)
+
+    TheoryLabel(Practiceable.scale(scale2)).frame(maxWidth: .infinity, alignment: .leading)
+
+    TheoryLabel(Practiceable.scale(scale3)).frame(maxWidth: .infinity, alignment: .leading)
+
+    TheoryLabel(Practiceable.interval(.P5)).frame(maxWidth: .infinity, alignment: .leading)
+
+    TheoryLabel(Practiceable.interval(.P8)).frame(maxWidth: .infinity, alignment: .leading)
+
+    TheoryLabel(Practiceable.interval(.P1)).frame(maxWidth: .infinity, alignment: .leading)
+
+  }.padding()
 }

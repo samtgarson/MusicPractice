@@ -18,21 +18,28 @@ class PracticeRepository {
   }
 
   @MainActor @discardableResult
-  func createPractice(_ item: Practiceable, _ score: Int) -> PracticeEntityProtocol? {
+  func createPractice(_ item: Practiceable, _ score: Int, _ minutesPracticed: Int = 0) -> PracticeEntityProtocol? {
     switch item {
     case .scale(let scale):
-      let newPractice = ScalePractice(score: score)
-      newPractice.scale = scale
+      let newPractice = try! ScalePractice.fromScale(
+        scale: scale,
+        minutesPracticed: minutesPracticed,
+        score: score
+      )
       try! modelRepo.upsert(newPractice)
       return newPractice
+
     case .interval(let interval):
-      let newPractice = IntervalPractice()
-      newPractice.interval = interval
-      newPractice.score = score
+      let newPractice = try! IntervalPractice.fromInterval(
+        interval: interval,
+        minutesPracticed: minutesPracticed,
+        score: score
+      )
       try! modelRepo.upsert(newPractice)
       return newPractice
+      
     case .song(let song):
-      let newPractice = SongPractice(score: score, song: song)
+      let newPractice = SongPractice(score: score, song: song, minutesPracticed: minutesPracticed)
       try! modelRepo.upsert(newPractice)
       return newPractice
     }

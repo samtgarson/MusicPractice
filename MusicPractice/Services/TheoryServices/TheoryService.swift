@@ -9,11 +9,6 @@
 import Foundation
 import MusicTheory
 
-public enum TheoryType: String {
-  case Scale = "Scale"
-  case Interval = "Interval"
-}
-
 @MainActor
 class TheoryService {
   var repo: ModelRepository
@@ -64,7 +59,7 @@ class TheoryService {
       let practices = allPractices[item] ?? []
       guard practices.count >= MIN_PRACTICE_COUNT else { return false }
       
-      return PracticePerformanceService(practices).performance == .Good
+      return PracticePerformanceService(practices).performance == .good
     }
   }
 

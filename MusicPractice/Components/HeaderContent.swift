@@ -12,34 +12,42 @@ struct HeaderContent: View {
   var title: String?
   var description: String
   var performance: Performance?
-  
+
   var body: some View {
     VStack(alignment: .leading, spacing: Spacing.small) {
-      Image(self.icon).padding(.bottom, Spacing.small)
-      Unwrap(self.title) { t in Text(t).opacity(Opacity.VeryFaded) }
+      Image(icon).padding(.bottom, Spacing.small)
+      Unwrap(self.title) { t in Text(t).opacity(Opacity.veryFaded) }
       Text(self.description).fixedSize(horizontal: false, vertical: true)
     }
     .frame(maxWidth: .infinity, alignment: .leading)
-    .foregroundColor(self.fgColor)
+    .foregroundColor(fgColor)
   }
-  
-  var icon: String {
-    let color = performance != nil ? "White" : "Blue"
-    return "\(color)\(performance ?? Performance.Good)"
+
+  var icon: ImageResource {
+    switch performance {
+    case .good:
+        .whiteGood
+    case .bad:
+        .whiteBad
+    case .meh:
+        .whiteMeh
+      default:
+        .blueGood
+    }
   }
-  
+
   var fgColor: Color {
     if performance != nil { return Color.white }
-    
+
     return Colors.primary
   }
 }
 
 struct HeaderContent_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderContent(
-          title: "Hello",
-          description: "World"
-      ).withDefaultStyles()
-    }
+  static var previews: some View {
+    HeaderContent(
+      title: "Hello",
+      description: "World"
+    ).withDefaultStyles()
+  }
 }

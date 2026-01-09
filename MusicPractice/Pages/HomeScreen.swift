@@ -11,7 +11,12 @@ import MusicTheory
 
 struct HomeScreen: View {
   var body: some View {
-    Header(key: "HomeScreen", title: copy.title, description: copy.description, performance: performance ?? .Good) {
+    Header(
+      key: "HomeScreen",
+      title: copy.title,
+      description: copy.description,
+      performance: performance ?? .good
+    ) {
       SectionTitle("Next Songs")
       SongsList(showAddSong: .WhenEmpty, filter: .Active, sort: .Performance, limit: 2)
       
@@ -31,11 +36,11 @@ struct HomeScreen: View {
     switch performance {
     case nil:
       return (title: "Welcome!", description: "Practice a song or some theory to get started.")
-    case .Good:
+    case .good:
       return (title: "Welcome back!", description: "What shall we practice today?")
-    case .Meh:
+    case .meh:
       return (title: "Welcome back!", description: "It's easier when you're in a routine, practice makes perfect!")
-    case .Bad:
+    case .bad:
       return (title: "Welcome back!", description: "Been a while since you practiced, don't give up!")
     }
   }

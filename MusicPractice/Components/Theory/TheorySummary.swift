@@ -37,19 +37,19 @@ struct TheorySummary: View {
   private var performance: Performance {
     switch type {
     case .Scale:
-      return GeneralPerformanceService().scalePerformance ?? .Good
+      return GeneralPerformanceService().scalePerformance ?? .good
     case .Interval:
-      return GeneralPerformanceService().intervalPerformance ?? .Good
+      return GeneralPerformanceService().intervalPerformance ?? .good
     }
   }
   
   private var copy: String {
     switch performance {
-    case .Good:
+    case .good:
       return "\(type)s are going great"
-    case .Meh:
+    case .meh:
       return "Keep practicing \(type)s"
-    case .Bad:
+    case .bad:
       return "Don't give up on \(type)s"
     }
   }

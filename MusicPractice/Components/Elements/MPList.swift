@@ -31,7 +31,7 @@ struct MPList<T: RandomAccessCollection, R: View>: View where T.Element: Hashabl
     VStack(spacing: Spacing.tiny) {
       body
       footer()
-        .opacity(Opacity.VeryFaded)
+        .opacity(Opacity.veryFaded)
         .asRowWrapper()
     }
   }

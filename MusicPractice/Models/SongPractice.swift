@@ -11,14 +11,16 @@ import SwiftData
 
 
 @Model class SongPractice: PracticeEntityProtocol {
+  var minutesPracticed: Int
   var createdAt: Date = Date()
   var score: Int = 0
   @Relationship()
   var song: Song
 
-  init(score: Int, song: Song, createdAt: Date = Date()) {
+  init(score: Int, song: Song, minutesPracticed: Int, createdAt: Date = Date()) {
     self.score = score
     self.song = song
+    self.minutesPracticed = minutesPracticed
     self.createdAt = createdAt
   }
 }

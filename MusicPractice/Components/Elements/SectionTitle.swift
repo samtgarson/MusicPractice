@@ -22,7 +22,7 @@ struct SectionTitle: View {
       Text(text.uppercased())
         .withSmallFont()
         .fixedSize(horizontal: true, vertical: false)
-        .opacity(Opacity.Faded)
+        .opacity(Opacity.faded)
       
       Unwrap(icon) { icon in
         Spacer()

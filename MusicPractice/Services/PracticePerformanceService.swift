@@ -19,13 +19,13 @@ class PracticePerformanceService {
   static func metricToPerformance(_ metric: Double) -> Performance {
     switch metric {
     case 0..<0.3:
-      return .Bad
+      return .bad
     case 0.3..<0.6:
-      return .Meh
+      return .meh
     case 0.6...1:
-      return .Good
+      return .good
     default:
-      return .Good
+      return .good
     }
   }
   

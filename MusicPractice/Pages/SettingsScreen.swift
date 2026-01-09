@@ -64,7 +64,7 @@ struct SettingsScreen: View {
       MPRow() {
         RowLabel("Version")
         Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
-      }.opacity(Opacity.Faded)
+      }.opacity(Opacity.faded)
     }.asRowWrapper()
   }
   

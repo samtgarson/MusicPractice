@@ -23,7 +23,7 @@ struct MPButton: View {
       if let handler = self.onTap { handler() }
     }) {
       HStack {
-        Unwrap(label) { Text($0) }
+        if let label = label { Text(label) }
         if let img = iconImage { Icon(img) }
       }
       .padding(.vertical, Spacing.small)
@@ -35,7 +35,7 @@ struct MPButton: View {
 #Preview {
   func handler () { print("tapped!") }
 
-  return ModalView(description: "Testing a button") {
+  return VStack {
     MPButton("Take a picture", icon: Icons.aperture, onTap: handler)
     MPButton("Press me") { handler() }
     MPButton(icon: Icons.repeat)

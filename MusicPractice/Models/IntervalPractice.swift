@@ -12,33 +12,39 @@ import SwiftData
 
 
 @Model class IntervalPractice: PracticeEntityProtocol {
+  var minutesPracticed: Int
   var createdAt: Date = Date()
-  var intervalId: String?
+  var intervalId: String
   var score: Int = 0
 
-  init(createdAt: Date = Date(), intervalId: String? = nil, score: Int = 0) {
+  init(intervalId: String, minutesPracticed: Int, score: Int = 0, createdAt: Date = Date()) {
     self.createdAt = createdAt
+    self.minutesPracticed = minutesPracticed
     self.intervalId = intervalId
     self.score = score
   }
 
+  static func fromInterval(
+    interval: Interval,
+    minutesPracticed: Int,
+    score: Int = 0
+  ) throws -> IntervalPractice {
+    let data = try JSONEncoder().encode(interval)
+    let intervalId = String(decoding: data, as: UTF8.self)
+
+    return IntervalPractice(
+      intervalId: intervalId,
+      minutesPracticed: minutesPracticed,
+      score: score
+    )
+  }
+
   var interval: Interval? {
-    get {
-      guard let intervalId = intervalId else { return nil }
-      
-      do {
-        return try JSONDecoder().decode(Interval.self, from: Data(intervalId.utf8))
-      } catch let err {
-        print(err)
-        return nil
-      }
-    }
-    set {
-      do {
-        self.intervalId = try String(data: JSONEncoder().encode(newValue), encoding: .utf8)
-      } catch let err {
-        print(err)
-      }
+    do {
+      return try JSONDecoder().decode(Interval.self, from: Data(intervalId.utf8))
+    } catch let err {
+      print(err)
+      return nil
     }
   }
 }

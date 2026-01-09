@@ -25,7 +25,10 @@ struct NewPracticeScreen: View {
   }
 
   private var practiceTimer: some View {
-    PracticeTimerScreen(subject: item.title, done: { self.timerFinished.toggle() })
+    PracticeTimerScreen(
+      practiceable: item,
+      done: { self.timerFinished.toggle() }
+    )
   }
 
   private var newSongScreen: some View {

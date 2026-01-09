@@ -8,12 +8,6 @@
 
 import SwiftUI
 
-extension Comparable {
-  func clamped(to limits: ClosedRange<Self>) -> Self {
-    return min(max(self, limits.lowerBound), limits.upperBound)
-  }
-}
-
 struct WithDragAction<Content: View, A: View>: View {
   var content: Content
   var action: () -> Void

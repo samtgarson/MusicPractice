@@ -35,11 +35,11 @@ struct ProgressBar: View {
   
   private var limit: Int {
     switch performance {
-    case .Good:
+    case .good:
       return 3
-    case .Meh:
+    case .meh:
       return 2
-    case .Bad:
+    case .bad:
       return 1
     }
   }
@@ -48,9 +48,9 @@ struct ProgressBar: View {
 struct ProgressBar_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      ProgressBar(for: .Good)
-      ProgressBar(for: .Meh)
-      ProgressBar(for: .Bad)
+      ProgressBar(for: .good)
+      ProgressBar(for: .meh)
+      ProgressBar(for: .bad)
     }
   }
 }

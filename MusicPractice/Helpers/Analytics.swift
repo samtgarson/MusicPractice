@@ -9,11 +9,18 @@
 import Foundation
 import FathomAnalytics
 
-let analytics = FathomAnalyticsClient(
-  siteID: "DSHBHQKV",
-  environment: "https://music-practice.samgarson.com/production",
-  url: "https://cdn.usefathom.com"
-)
+//let analytics = FathomAnalyticsClient(
+//  siteID: "DSHBHQKV",
+//  environment: "https://music-practice.samgarson.com/production",
+//  url: "https://cdn.usefathom.com",
+//)
+
+struct FakeAnalytics {
+  func track(page: String) {}
+  func track(goal: String) {}
+}
+
+let analytics = FakeAnalytics()
 
 struct AnalyticsGoals {
   static let completePractice = "BIIHESBR"

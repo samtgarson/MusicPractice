@@ -9,32 +9,16 @@
 import SwiftUI
 
 struct Countdown: View {
-  
+
   var totalSeconds: Double
-  var target: Date
+  @Binding var secondsPast: Double
   var done: () -> Void
-  
-  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-  let formatter = DateComponentsFormatter()
-  
-  @State(initialValue: 0) var secondsLeft: Double
-  @State(initialValue: false) var started: Bool
-  @State(initialValue: 0) var size: CGFloat
-  
-  internal init(minutes: Int, done: @escaping () -> Void) {
-    self.done = done
-    self.totalSeconds = Double(minutes * 60) + 2
-    self.target = Date().addingTimeInterval(self.totalSeconds)
-    formatter.unitsStyle = .positional
-    formatter.allowedUnits = [ .minute, .second ]
-    formatter.zeroFormattingBehavior = [ .pad ]
-    
-    self.secondsLeft = self.totalSeconds
-    self.updateTime()
-    
-    scheduleNotification(in: totalSeconds)
-  }
-  
+
+  let totalTicks = 180
+
+  @State var started: Bool = false
+  @State var size: CGFloat = 0
+
   var body: some View {
     VStack {
       GeometryReader { geometry in
@@ -47,13 +31,13 @@ struct Countdown: View {
       }
     }
   }
-  
+
   private func clock(size: CGFloat) -> some View {
     ZStack {
       Circle().fill(self.color.bg)
         .allowsHitTesting(false)
-      
-      ForEach(0..<180) { i in
+
+      ForEach(0..<totalTicks) { i in
         RoundedRectangle(cornerRadius: 1)
           .fill(self.color.fg)
           .frame(width: 2, height: self.on(for: i) ? 30 : 20)
@@ -66,35 +50,36 @@ struct Countdown: View {
       self.countdownText
     }
     .frame(width: size, height: size)
-    .onReceive(self.timer) { _ in self.updateTime() }
+    .onChange(of: secondsPast, updateTime)
   }
-  
+
   private var countdownText: some View {
     VStack(spacing: Spacing.medium) {
       Text(self.started ? self.formattedTime : "Ready?")
+        .contentTransition(.numericText())
         .frame(maxWidth: .infinity)
         .font(Fonts.large.weight(.medium))
         .fixedSize(horizontal: true, vertical: false)
-      
-      Button(action: self.exit) {
-        Text("SKIP").withSmallFont()
+
+      Button(action: self.done) {
+        Text("Skip").withSmallFont().textCase(.uppercase)
         Icon(Icons.arrowRight)
       }
     }.foregroundColor(self.color.fg)
   }
-  
+
   private func on(for i: Int) -> Bool {
-    return Double(i)/Double(180) < self.progress
+    return Double(i)/Double(totalTicks) < self.progress
   }
-  
+
   private var progress: Double {
-    (totalSeconds - secondsLeft) / totalSeconds
+    secondsPast / totalSeconds
   }
-  
+
   private var formattedTime: String {
-    formatter.string(from: secondsLeft) ?? ""
+    formatForCountdown(secondsPast)
   }
-  
+
   private var color: (fg: Color, bg: Color) {
     switch progress {
     case 0.75..<0.95:
@@ -105,44 +90,40 @@ struct Countdown: View {
       return (fg: Colors.primary, bg: Color.white)
     }
   }
-  
+
   private func updateTime() {
     if !started { self.started = true }
-    
-    guard self.secondsLeft >= 0 else {
-      self.exit()
-      return
-    }
-    
-    withAnimation {
-      self.secondsLeft = self.target.timeIntervalSinceNow
+
+    if secondsPast > totalSeconds {
+      self.done()
     }
   }
-  
-  private func exit () {
-    self.timer.upstream.connect().cancel()
-    NotificationService().cancelAll()
-    self.done()
-  }
-  
-  private func scheduleNotification(in seconds: Double) {
-    guard NotificationSettings().practiceTimer else { return }
-    NotificationService().schedule(in: seconds, title: "⏲ Time's up!", body: "Report back to let me know how your practice went.")
-  }
-  
+
   struct ClockSizeKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
-    
+
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
       value = nextValue()
     }
   }
 }
 
-struct Timer_Previews: PreviewProvider {
-  static var previews: some View {
-    PageView {
-      Countdown(minutes: 1) { print("done!") }
+#Preview {
+  @Previewable @State var secondsPast: Double = 0
+  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+  PageView {
+    VStack(spacing: 50) {
+      Countdown(
+        totalSeconds: 120,
+        secondsPast: $secondsPast,
+        done: { print("done!") }
+      )
+      Button("Reset") { secondsPast = 0 }
     }
+  }
+  .onReceive(timer) { _ in
+    guard secondsPast <= 120 else { return }
+    withAnimation { secondsPast += 1 }
   }
 }

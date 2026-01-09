@@ -18,9 +18,9 @@ struct PracticeDisplay: Hashable {
   
   static var items: [PracticeDisplay] {
     [
-      self.init(icon: Icons.smile, iconColor: Colors.forPerformance(.Good), score: 1, description: "It was easy!"),
-      self.init( icon: Icons.meh, iconColor: Colors.forPerformance(.Meh), score: 0, description: "It was OK, needs more work."),
-      self.init(icon: Icons.frown, iconColor: Colors.forPerformance(.Bad), score: -1, description: "I found this really difficult.")
+      self.init(icon: Icons.smile, iconColor: Colors.forPerformance(.good), score: 1, description: "It was easy!"),
+      self.init( icon: Icons.meh, iconColor: Colors.forPerformance(.meh), score: 0, description: "It was OK, needs more work."),
+      self.init(icon: Icons.frown, iconColor: Colors.forPerformance(.bad), score: -1, description: "I found this really difficult.")
     ]
   }
   

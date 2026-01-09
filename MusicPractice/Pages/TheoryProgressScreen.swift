@@ -28,7 +28,7 @@ struct TheoryProgressScreen: View {
           MPList(collection: self.levels[level]) {
             self.row(for: $0, locked: self.locked(level))
           }
-        }.opacity(self.locked(level) ? Opacity.VeryFaded : 1)
+        }.opacity(self.locked(level) ? Opacity.veryFaded : 1)
       }
     }
   }
@@ -62,7 +62,7 @@ struct TheoryProgressScreen: View {
       let practices = intervalPractices.filter { $0.interval == interval }
       return PracticePerformanceService(practices).performance
     default:
-      return .Good
+      return .good
     }
   }
   

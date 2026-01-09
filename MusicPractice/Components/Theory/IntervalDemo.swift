@@ -24,7 +24,7 @@ struct IntervalDemo: View {
         Unwrap(alias ) { alias in
           Text("AKA").withSmallFont()
           Text(alias).fixedSize()
-        }.opacity(Opacity.Faded)
+        }.opacity(Opacity.faded)
       }
       MPRow {
         RowLabel(NotationHelper(pitches: notes).render(), alignment: .center)
